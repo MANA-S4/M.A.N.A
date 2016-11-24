@@ -111,7 +111,25 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Authentification\CookieAuthentication.cs" />
+    <Compile Include="Authentification\ExternalAuthenticationEvents.cs" />
+    <Compile Include="Authentification\GoogleAppBuilderExtensions.cs" />
+    <Compile Include="Authentification\GoogleExternalAuthenticationManager.cs" />
+    <Compile Include="Authentification\IExternalAuthenticationManager.cs" />
+    <Compile Include="Authentification\JwtBearerAuthentication.cs" />
+    <Compile Include="Authentification\TokenProviderMiddleware.cs" />
+    <Compile Include="Authentification\TokenProviderOptions.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ControllerExtensions.cs" />
+    <Compile Include="Models\AccountViewModels\LoginViewModel.cs" />
+    <Compile Include="Models\AccountViewModels\RegisterViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\TokenService.cs" />
+    <Compile Include="Services\UserService.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
