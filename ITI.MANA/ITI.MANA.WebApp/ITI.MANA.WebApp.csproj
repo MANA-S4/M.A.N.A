@@ -129,6 +129,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App\mana\src\" />
     <Folder Include="Views\" />
   </ItemGroup>
   <PropertyGroup>
