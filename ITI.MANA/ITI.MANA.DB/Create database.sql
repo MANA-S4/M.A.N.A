@@ -101,8 +101,8 @@ create table iti.Relationships
 	RelationType  nvarchar(32),
 	UserRelationID int,
 	
-	constraint PK_Tasks primary key(RelationID),
-	constraint FK_Tasks_UserId foreign key(UserId) references iti.Users(UserId)
+	constraint PK_Relationships primary key(RelationID),
+	constraint FK_Relationships_UserId foreign key(UserId) references iti.Users(UserId)
 );
 
 create table iti.Events
