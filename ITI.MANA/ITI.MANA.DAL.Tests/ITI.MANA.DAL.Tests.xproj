@@ -7,7 +7,7 @@
 
   <Import Project="$(VSToolsPath)\DotNet\Microsoft.DotNet.Props" Condition="'$(VSToolsPath)' != ''" />
   <PropertyGroup Label="Globals">
-    <ProjectGuid>2ec23b05-c60e-410d-bdb9-09e5b31aff7a</ProjectGuid>
+    <ProjectGuid>8591f453-4d76-4eba-851c-f3aba93d4544</ProjectGuid>
     <RootNamespace>ITI.MANA.DAL.Tests</RootNamespace>
     <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'=='' ">.\obj</BaseIntermediateOutputPath>
     <OutputPath Condition="'$(OutputPath)'=='' ">.\bin\</OutputPath>
