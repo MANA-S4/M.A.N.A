@@ -5,6 +5,7 @@
   },
 
   "dependencies": {
+    "Dapper": "1.50.2",
     "ITI.MANA.DAL": "1.0.0-*",
     "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.0",
     "Microsoft.Extensions.Configuration.Json": "1.0.0",
