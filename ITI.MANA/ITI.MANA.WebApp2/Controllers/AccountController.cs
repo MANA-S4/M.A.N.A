@@ -4,12 +4,12 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using ITI.MANA.DAL;
-using ITI.MANA.WebApp.Authentication;
 using ITI.MANA.WebApp.Models.AccountViewModels;
 using ITI.MANA.WebApp.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.Authentication;
 using Microsoft.AspNetCore.Mvc;
+using ITI.MANA.WebApp.Authentification;
 using Mvc.Client.Extensions;
 
 namespace ITI.MANA.WebApp.Controllers
@@ -155,5 +155,4 @@ namespace ITI.MANA.WebApp.Controllers
             return Convert.ToBase64String(data);
         }
     }
-}
 }

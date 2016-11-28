@@ -1,4 +1,4 @@
-﻿using ITI.PrimarySchool.DAL;
+﻿using ITI.MANA.DAL;
 using Microsoft.AspNetCore.Authentication.OAuth;
 
 namespace ITI.MANA.WebApp.Authentification

@@ -7,8 +7,11 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependancyInjection;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Authentication.OAuth;
+using Microsoft.AspNetCore.Identity;
 
 namespace ITI.MANA.WebApp
 {
@@ -16,7 +19,7 @@ namespace ITI.MANA.WebApp
     {
         public Startup(IHostingEnvironment env)
         {
-            Configuation = new ConfigurationBuilder()
+            Configuration = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true)
                 .AddEnvironmentVariables()
