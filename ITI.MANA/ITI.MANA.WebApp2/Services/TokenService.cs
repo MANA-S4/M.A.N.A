@@ -10,6 +10,11 @@ namespace ITI.MANA.WebApp.Services
     {
         readonly TokenProviderOptions _options;
 
+        public TokenService(IOptions<TokenProviderOptions> options)
+        {
+            _options = options.Value;
+        }
+
         public Token GenerateToken(string userId, string email)
         {
             var now = DateTime.UtcNow;
