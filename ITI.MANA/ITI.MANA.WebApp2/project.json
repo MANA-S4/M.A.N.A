@@ -20,7 +20,8 @@
     "Microsoft.AspNetCore.Authentication.JwtBearer": "1.0.0",
     "Microsoft.Extensions.Configuration.FileExtensions": "1.0.0",
     "Microsoft.Extensions.Configuration.Json": "1.0.0",
-    "Microsoft.DotNet.Cli.Utils": "1.0.0-preview2-003121"
+    "Microsoft.DotNet.Cli.Utils": "1.0.0-preview2-003121",
+    "Microsoft.AspNetCore.Mvc": "1.0.1"
   },
 
   "tools": {

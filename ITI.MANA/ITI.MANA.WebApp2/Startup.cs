@@ -2,11 +2,9 @@
 using ITI.MANA.DAL;
 using ITI.MANA.WebApp.Authentification;
 using ITI.MANA.WebApp.Services;
-using Microsoft.AspNetCore.Authentification.OAuth;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependancyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
