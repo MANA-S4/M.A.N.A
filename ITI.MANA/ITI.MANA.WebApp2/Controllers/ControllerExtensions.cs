@@ -2,8 +2,6 @@
 using ITI.MANA.WebApp.Services;
 using Microsoft.AspNetCore.Mvc;
 using ITI.MANA.WebApp;
-using ITI.PrimarySchool.WebApp.Services;
-using ITI.PrimarySchool.WebApp.Controllers;
 
 namespace ITI.MANA.WebApp.Controllers
 {

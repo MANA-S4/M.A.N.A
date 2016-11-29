@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using Microsoft.AspNetCore.Hosting;
 
-namespace ITI.PrimarySchool.WebApp
+namespace ITI.MANA.WebApp
 {
     public class Program
     {

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using ITI.MANA.DAL;
 using Microsoft.AspNetCore.Identity;
-using ITI.PrimarySchool.WebApp;
 
 namespace ITI.MANA.WebApp.Services
 {
