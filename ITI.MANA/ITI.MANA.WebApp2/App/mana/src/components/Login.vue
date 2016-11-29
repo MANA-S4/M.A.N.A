@@ -27,16 +27,16 @@
 
         created() {
             AuthService.registerAuthenticatedCallback(this.onAuthenticated);
-        }
+        },
 
         beforeDestroy() {
             AuthService.removeAuthenticatedCallback(this.onAuthenticated);
-        }
+        },
 
         methods: {
             login(provider) {
                 AuthService.login(provider);
-            }
+            },
 
             onAuthenticated() {
                 this.$router.replace('/');
