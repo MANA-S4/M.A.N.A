@@ -6,9 +6,9 @@ import store from './vuex/store'
 import VueRouter from 'vue-router'
 
 import App from './components/App.vue'
+import Home from './components/Home.vue'
 import Login from './components/Login.vue'
 import Logout from './components/Logout.vue'
-import Home from './components/Home.vue'
 
 import AuthService from './services/AuthService'
 
@@ -39,6 +39,8 @@ const router = new VueRouter({
   routes: [
     { path: '/login', component: Login },
     { path: '/logout', component: Logout, beforeEnter: requireAuth },
+
+    { path: '', component: Home, beforeEnter: requireAuth }
 
   ]
 })
