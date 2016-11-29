@@ -11,11 +11,11 @@ class AuthService {
     }
 
     get identity() {
-        return ITI.PrimarySchool.getIdentity();
+        return ITI.MANA.getIdentity();
     }
 
     set identity(i) {
-        ITI.PrimarySchool.setIdentity(i);
+        ITI.MANA.setIdentity(i);
     }
 
     get isConnected() {
@@ -62,7 +62,7 @@ class AuthService {
     login = (selectedProvider, authenticatedCallback) => {
         var provider = this.providers[selectedProvider];
         
-        var popup = window.open(provider.endpoint, "Connexion à ITI.PrimarySchool", "menubar=no, status=no, scrollbars=no, menubar=no, width=700, height=700");
+        var popup = window.open(provider.endpoint, "Connexion à MANA", "menubar=no, status=no, scrollbars=no, menubar=no, width=700, height=700");
     }
 
     registerAuthenticatedCallback(cb) {
@@ -82,7 +82,7 @@ class AuthService {
     }
 
     logout = () => {
-        var popup = window.open(this.logoutEndpoint, "Déconnexion d'ITI.PrimarySchool", "menubar=no, status=no, scrollbars=no, menubar=no, width=700, height=600");        
+        var popup = window.open(this.logoutEndpoint, "Déconnexion de MANA", "menubar=no, status=no, scrollbars=no, menubar=no, width=700, height=600");        
     }
 
     registerSignedOutCallback(cb) {

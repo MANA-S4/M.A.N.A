@@ -8,6 +8,7 @@ import VueRouter from 'vue-router'
 import App from './components/App.vue'
 import Login from './components/Login.vue'
 import Logout from './components/Logout.vue'
+import Home from './components/Home.vue'
 
 import AuthService from './services/AuthService'
 
