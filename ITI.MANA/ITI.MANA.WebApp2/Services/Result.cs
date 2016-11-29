@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ITI.PrimarySchool.WebApp.Services
+namespace ITI.MANA.WebApp.Services
 {
     public class Result<TSuccess>
     {

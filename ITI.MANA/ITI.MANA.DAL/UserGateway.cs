@@ -6,7 +6,6 @@ using System.Data;
 using System.Data.SqlClient;
 using Dapper;
 
-
 namespace ITI.MANA.DAL
 {
     public class UserGateway
