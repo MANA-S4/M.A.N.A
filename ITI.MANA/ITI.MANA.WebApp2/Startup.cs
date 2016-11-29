@@ -2,14 +2,13 @@
 using ITI.MANA.DAL;
 using ITI.MANA.WebApp.Authentification;
 using ITI.MANA.WebApp.Services;
+using Microsoft.AspNetCore.Authentication.OAuth;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.AspNetCore.Authentication.OAuth;
-using Microsoft.AspNetCore.Identity;
 
 namespace ITI.MANA.WebApp
 {

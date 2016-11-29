@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using ITI.MANA.DAL;
-using Microsoft.AspNetCore.Identity;
 
 namespace ITI.MANA.WebApp.Services
 {
@@ -30,10 +29,6 @@ namespace ITI.MANA.WebApp.Services
             {
                 _userGateway.CreateGoogleUser(email, refreshToken);
                 return true;
-            }
-            if (user.GithubAccessToken == string.Empty)
-            {
-                _userGateway.AddGoogleToken(user.UserId, refreshToken);
             }
             else
             {
