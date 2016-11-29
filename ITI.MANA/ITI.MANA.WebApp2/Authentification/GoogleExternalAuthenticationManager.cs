@@ -5,7 +5,7 @@ using ITI.MANA.WebApp.Authentication;
 
 namespace ITI.MANA.WebApp.Authentification
 {
-    public class GoogleExternalAuthenticationManager
+    public class GoogleExternalAuthenticationManager : IExternalAuthenticationManager
     {
         readonly UserService _userService;
 
