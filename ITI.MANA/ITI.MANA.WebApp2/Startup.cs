@@ -40,7 +40,7 @@ namespace ITI.MANA.WebApp
             });
 
             services.AddMvc();
-            services.AddSingleton(_ => new UserGateway(Configuration["ConnectionStrings:PrimarySchoolDB"]));
+            services.AddSingleton(_ => new UserGateway(Configuration["ConnectionStrings:MANADB"]));
             services.AddSingleton<PasswordHasher>();
             services.AddSingleton<UserService>();
             services.AddSingleton<TokenService>();

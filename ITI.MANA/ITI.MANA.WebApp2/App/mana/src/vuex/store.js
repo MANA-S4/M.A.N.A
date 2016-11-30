@@ -14,10 +14,7 @@ export default new Vuex.Store({
   actions,
   getters,
   modules: {
-      app,
-      classes,
-      students, 
-      teachers
+      app
   },
   strict: debug
 })
