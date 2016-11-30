@@ -58,4 +58,24 @@
   <ItemGroup>
     <Folder Include="Properties" />
   </ItemGroup>
+  <ItemGroup>
+    <Build Include="iti.sql" />
+    <Build Include="sGoogleUserUpdate.sql" />
+    <Build Include="sMicrosoftUserUpdate.sql" />
+    <Build Include="sUserAddMicrosoftToken.sql" />
+    <Build Include="sUserAddPassword.sql" />
+    <Build Include="sUserDelete.sql" />
+    <Build Include="sUserUpdate.sql" />
+    <Build Include="tGoogleUser.sql" />
+    <Build Include="tMicrosoftUser.sql" />
+    <Build Include="tPasswordUser.sql" />
+    <Build Include="tUser.sql" />
+    <Build Include="vAuthenticationProvider.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="sPasswordUserCreate.sql" />
+    <None Include="sPasswordUserUpdate.sql" />
+    <None Include="sUserAddGoogleToken.sql" />
+    <None Include="vUser.sql" />
+  </ItemGroup>
 </Project>
