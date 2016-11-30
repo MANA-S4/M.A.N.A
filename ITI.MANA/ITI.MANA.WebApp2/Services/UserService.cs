@@ -37,6 +37,26 @@ namespace ITI.MANA.WebApp.Services
             return false;
         }
 
+        /// <summary>
+        /// To create or update a microsoft User
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="refreshToken"></param>
+        /// <returns></returns>
+        /*public bool CreateOrUpdateMicrosoftUser(string email, string refreshToken)
+        {
+            User user = _userGateway.FindByEmail(email);
+            if(user == null)
+            {
+                _userGateway.CreateMicrosoftUser(email, refreshToken);
+                return true;
+            } 
+            else
+            {
+                _userGateway.UpdateMicrosoftToken(user.UserId, refreshToken);
+            }
+        }*/
+
         public User FindUser(string email, string password)
         {
             User user = _userGateway.FindByEmail(email);

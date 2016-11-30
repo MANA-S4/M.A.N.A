@@ -55,6 +55,9 @@ AuthService.providers = {
   },
   'Google': {
     endpoint: '/Account/ExternalLogin?provider=Google'
+  },
+  'Microsoft': {
+    endpoint: '/Account/ExternalLogin?provider=Microsoft'
   }
 };
 

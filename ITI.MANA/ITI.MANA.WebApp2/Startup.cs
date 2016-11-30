@@ -96,6 +96,22 @@ namespace ITI.MANA.WebApp
                 c.AccessType = "offline";
             });
 
+            // On devra créer une classe MicrosoftExternalAuthenticationManager
+            /*ExternalAuthenticationEvents microsoftAuthenticationEvents = new ExternalAuthenticationEvents(
+                new MicrosoftExternalAuthenticationManager(app.ApplicationServices.GetRequiredService<UserService>()));*/
+
+            /*app.UseMicrosoftAuthentication(c =>
+            {
+                c.SignInScheme = CookieAuthentication.AuthenticationScheme;
+                c.ClientId = Configuration["Authentication:Microsoft:ClientId"];
+                c.ClientSecret = Configuration["Authentication:Microsoft:ClientSecret"];
+                c.Events = new OAuthEvents
+                {
+                    OnCreatingTicket = microsoftAuthenticationEvents.OnCreatingTicket
+                };
+                c.AccessType = "offline";
+            })*/
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
