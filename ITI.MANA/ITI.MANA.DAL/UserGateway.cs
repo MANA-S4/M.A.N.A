@@ -69,6 +69,22 @@ namespace ITI.MANA.DAL
             }
         }
 
+        /// <summary>
+        /// To Create a Microsoft User
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="refreshToken"></param>
+        public void CreateMicrosoftUser(string email, string refreshToken)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                con.Execute(
+                   "iti.sMicrosoftUserCreate",
+                   new { Email = email, RefreshToken = refreshToken },
+                   commandType: CommandType.StoredProcedure);
+            }
+        }
+
         public IEnumerable<string> GetAuthenticationProviders(string userId)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
@@ -120,6 +136,22 @@ namespace ITI.MANA.DAL
             }
         }
 
+        /// <summary>
+        /// To Update Microsoft Token
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="refreshToken"></param>
+        public void UpdateMicrosoftToken(int userId, string refreshToken)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                con.Execute(
+                    "iti.sMicrosoftUserUpdate",
+                    new { UserId = userId, refreshToken = refreshToken },
+                    commandType: CommandType.StoredProcedure);
+            }
+        }
+
         public void AddPassword(int userId, byte[] password)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
@@ -137,6 +169,22 @@ namespace ITI.MANA.DAL
             {
                 con.Execute(
                     "iti.sUserAddGoogleToken",
+                    new { UserId = userId, RefreshToken = refreshToken },
+                    commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        /// <summary>
+        /// To Add Microsoft Token
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="refreshToken"></param>
+        public void AddMicrosoftToken(int userId, string refreshToken)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                con.Execute(
+                    "iti.sUserAddMicrosoftToken",
                     new { UserId = userId, RefreshToken = refreshToken },
                     commandType: CommandType.StoredProcedure);
             }
