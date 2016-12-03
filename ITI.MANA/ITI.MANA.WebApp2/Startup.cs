@@ -84,6 +84,22 @@ namespace ITI.MANA.WebApp
             ExternalAuthenticationEvents googleAuthenticationEvents = new ExternalAuthenticationEvents(
                 new GoogleExternalAuthenticationManager(app.ApplicationServices.GetRequiredService<UserService>()));
 
+            /// Allow to authenticated a User with Microsoft
+            ExternalAuthenticationEvents microsoftAuthenticationEvents = new ExternalAuthenticationEvents(
+                new MicrosoftExternalAuthenticationManager(app.ApplicationServices.GetRequiredService<UserService>()));
+
+            app.UseMicrosoftAccountAuthentication(c =>
+            {
+                c.SignInScheme = CookieAuthentication.AuthenticationScheme;
+                c.ClientId = Configuration["Authentication:Microsoft:ClientId"];
+                c.ClientSecret = Configuration["Authentication:Microsoft:ClientSecret"];
+                c.Events = new OAuthEvents
+                {
+                    OnCreatingTicket = microsoftAuthenticationEvents.OnCreatingTicket
+                };
+            });
+            /// End of microsoftAuthenticationEvents
+            
             app.UseGoogleAuthentication(c =>
             {
                 c.SignInScheme = CookieAuthentication.AuthenticationScheme;
@@ -95,22 +111,6 @@ namespace ITI.MANA.WebApp
                 };
                 c.AccessType = "offline";
             });
-
-            // On devra créer une classe MicrosoftExternalAuthenticationManager
-            /*ExternalAuthenticationEvents microsoftAuthenticationEvents = new ExternalAuthenticationEvents(
-                new MicrosoftExternalAuthenticationManager(app.ApplicationServices.GetRequiredService<UserService>()));*/
-
-            /*app.UseMicrosoftAuthentication(c =>
-            {
-                c.SignInScheme = CookieAuthentication.AuthenticationScheme;
-                c.ClientId = Configuration["Authentication:Microsoft:ClientId"];
-                c.ClientSecret = Configuration["Authentication:Microsoft:ClientSecret"];
-                c.Events = new OAuthEvents
-                {
-                    OnCreatingTicket = microsoftAuthenticationEvents.OnCreatingTicket
-                };
-                c.AccessType = "offline";
-            })*/
 
             app.UseMvc(routes =>
             {
@@ -124,7 +124,6 @@ namespace ITI.MANA.WebApp
                     template: "Home/{*anything}",
                     defaults: new { controller = "Home", action = "Index" });
             });
-
             app.UseStaticFiles();
         }
     }
