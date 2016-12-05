@@ -4,9 +4,9 @@
 )
 as
 begin
-	delete from iti.tPasswordUser where UserId = @UserId;
-	delete from iti.tGoogleUser where UserId = @UserId;
-	delete from iti.tMicrosoftUser where UserId = @UserId;
-	delete from iti.tUser where UserId = @UserId;
+	delete from iti.PasswordUser where UserId = @UserId;
+	delete from iti.GoogleUser where UserId = @UserId;
+	delete from iti.MicrosoftUser where UserId = @UserId;
+	delete from iti.User where UserId = @UserId;
 	return 0;
 end;

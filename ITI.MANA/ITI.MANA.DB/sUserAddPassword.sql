@@ -5,7 +5,7 @@
 )
 as
 begin
-	insert into iti.tPasswordUser(UserId,  [Password])
+	insert into iti.PasswordUser(UserId,  [Password])
 	                       values(@UserId, @Password);
 	return 0;
 end;

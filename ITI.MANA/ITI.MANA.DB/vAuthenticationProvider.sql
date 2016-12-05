@@ -3,13 +3,13 @@ as
 	select usr.UserId, usr.ProviderName
 	from (select UserId = u.UserId,
 			  ProviderName = 'MANA'
-		  from iti.tPasswordUser u
+		  from iti.PasswordUser u
 		  union
-		  select UserId = u.UserId,
+		  select UserId = u.MicrosoftUserId,
 			  ProviderName = 'Microsoft'
-		  from iti.tMicrosoftUser u
+		  from iti.MicrosoftUser u
 		  union
-		  select UserId = u.UserId,
+		  select UserId = u.GoogleUserId,
 			  ProviderName = 'Google'
-		  from iti.tGoogleUser u) usr
+		  from iti.GoogleUser u) usr
 	where usr.UserId <> 0;

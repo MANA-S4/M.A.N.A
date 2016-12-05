@@ -1,8 +1,8 @@
-﻿create table iti.tMicrosoftUser
+﻿create table iti.MicrosoftUser
 (
-	UserId       int,
+	MicrosoftUserId int identity(1,1),
 	AccessToken varchar(64) not null,
 
-	constraint PK_tMicrosoftUser primary key(UserId),
-	constraint FK_tMicrosoftUser_UserId foreign key(UserId) references iti.tUser(UserId)
+	constraint PK_MicrosoftUserId primary key(MicrosoftUserId),
+	constraint FK_MicrosoftUser_UserId foreign key(MicrosoftUserId) references iti.Users(UserId)
 );

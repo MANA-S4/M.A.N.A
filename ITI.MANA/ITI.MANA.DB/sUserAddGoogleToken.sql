@@ -1,11 +1,11 @@
 ﻿create procedure iti.sUserAddGoogleToken
 (
-	@UserId       int,
+	@GoogleUserId int,
 	@RefreshToken varchar(64)
 )
 as
 begin
-	insert into iti.tGoogleUser(UserId,  RefreshToken)
-	                     values(@UserId, @RefreshToken);
+	insert into iti.GoogleUser(GoogleUserId,  RefreshToken)
+	                     values(@GoogleUserId, @RefreshToken);
 	return 0;
 end;

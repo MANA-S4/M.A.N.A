@@ -1,8 +1,11 @@
-﻿create table iti.tUser
+﻿create table iti.Users
 (
-	UserId int identity(0, 1),
-	Email  nvarchar(64) not null,
+	UserId  int identity(1, 1),
+	Email nvarchar(64),
+	FirstName nvarchar(32),
+	LastName  nvarchar(32),
+	BirthDate datetime2,
+	UserPassword binary(32),
 
-	constraint PK_tUser primary key(UserId),
-	constraint UK_tUser_Email unique(Email)
+	constraint PK_UserId primary key(UserId)
 );

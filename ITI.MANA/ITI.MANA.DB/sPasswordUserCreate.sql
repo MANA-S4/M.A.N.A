@@ -5,10 +5,10 @@
 )
 as
 begin
-	insert into iti.tUser(Email) values(@Email);
+	insert into iti.Users(Email) values(@Email);
 	declare @userId int;
 	select @userId = scope_identity();
-	insert into iti.tPasswordUser(UserId,  [Password])
+	insert into iti.PasswordUser(UserId,  [Password])
 	                       values(@userId, @Password);
 	return 0;
 end;

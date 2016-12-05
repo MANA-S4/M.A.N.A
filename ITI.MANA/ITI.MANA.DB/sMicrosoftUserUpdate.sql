@@ -1,10 +1,10 @@
 ﻿create procedure iti.sMicrosoftUserUpdate
 (
-	@UserId       int,
-	@RefreshToken varchar(64)
+	@MicrosoftUserId       int,
+	@AccessToken varchar(64)
 )
 as
 begin
-	update iti.tMicrosoftUser set RefreshToken = @RefreshToken where UserId = @UserId;
+	update iti.MicrosoftUser set AccessToken = @AccessToken where MicrosoftUserId = @MicrosoftUserId;
 	return 0;
 end;

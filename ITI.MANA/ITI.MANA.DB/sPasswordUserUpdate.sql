@@ -5,6 +5,6 @@
 )
 as
 begin
-	update iti.tPasswordUser set [Password] = @Password where UserId = @UserId;
+	update iti.PasswordUser set [Password] = @Password where UserId = @UserId;
 	return 0;
 end;
