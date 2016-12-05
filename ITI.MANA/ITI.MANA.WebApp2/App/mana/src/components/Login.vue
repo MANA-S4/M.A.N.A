@@ -2,7 +2,7 @@
     <div>
         <div class="text-center">
             <div class="page-header">
-                <h1>Bienvenue sur MANA</h1>
+                <h1>Bienvenue sur M.A.N.A</h1>
             </div>
 
           <button type="button" @click="login('Google')" class="btn btn-lg btn-block btn-primary"><i class="fa fa-google" aria-hidden="true"></i> Se connecter via Google</button>
