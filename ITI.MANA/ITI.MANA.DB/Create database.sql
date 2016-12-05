@@ -113,6 +113,7 @@ GO
 create table iti.Users
 (
 	UserId  int identity(1, 1),
+	Email nvarchar(64),
 	FirstName nvarchar(32),
 	LastName  nvarchar(32),
 	BirthDate datetime2,
@@ -180,7 +181,7 @@ create table iti.GoogleUser
 create table iti.MicrosoftUser
 (
 	MicrosoftUserId int identity(1,1),
-	RefreshToken varchar(64) not null,
+	AccessToken varchar(64) not null,
 
 	constraint PK_MicrosoftUserId primary key(MicrosoftUserId)
 );
