@@ -21,7 +21,7 @@ namespace ITI.MANA.DAL
         {
             using(SqlConnection con = new SqlConnection(_connectionString))
             {
-                return con.Query<User>("select u.UserId, u.Email, u.UserPassword, u.GoogleRefreshToken, u.MicrosoftRefreshToken from iti.vUser u;");
+                return con.Query<User>("select u.UserId, u.Email, u.[Password], u.GoogleRefreshToken, u.MicrosoftRefreshToken from iti.vUser u;");
             }
         }
 
@@ -30,7 +30,7 @@ namespace ITI.MANA.DAL
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 return con.Query<User>(
-                        "select u.UserId, u.Email, u.UserPassword, u.MicrosoftAccessToken, u.GoogleRefreshToken from iti.vUser u where u.UserId = @UserId",
+                        "select u.UserId, u.Email, u.[Password], u.MicrosoftAccessToken, u.GoogleRefreshToken from iti.vUser u where u.UserId = @UserId",
                         new { UserId = userId })
                     .FirstOrDefault();
             }
@@ -41,7 +41,7 @@ namespace ITI.MANA.DAL
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 return con.Query<User>(
-                        "select u.UserId, u.Email, u.UserPassword, u.MicrosoftAccessToken, u.GoogleRefreshToken from iti.vUser u where u.Email = @Email",
+                        "select u.UserId, u.Email, u.[Password], u.MicrosoftAccessToken, u.GoogleRefreshToken from iti.vUser u where u.Email = @Email",
                         new { Email = email })
                     .FirstOrDefault();
             }
