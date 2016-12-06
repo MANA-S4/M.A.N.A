@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using Dapper;
 
 namespace ITI.MANA.DAL
 {
@@ -29,7 +30,7 @@ namespace ITI.MANA.DAL
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 return con.Query<User>(
-                        "select u.UserId, u.Email, u.[Password], u.GithubAccessToken, u.GoogleRefreshToken from iti.vUser u where u.UserId = @UserId",
+                        "select u.UserId, u.Email, u.[Password], u.MicrosoftAccessToken, u.GoogleRefreshToken from iti.vUser u where u.UserId = @UserId",
                         new { UserId = userId })
                     .FirstOrDefault();
             }
@@ -40,7 +41,7 @@ namespace ITI.MANA.DAL
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 return con.Query<User>(
-                        "select u.UserId, u.Email, u.[Password], u.GithubAccessToken, u.GoogleRefreshToken from iti.vUser u where u.Email = @Email",
+                        "select u.UserId, u.Email, u.[Password], u.MicrosoftAccessToken, u.GoogleRefreshToken from iti.vUser u where u.Email = @Email",
                         new { Email = email })
                     .FirstOrDefault();
             }
@@ -65,6 +66,22 @@ namespace ITI.MANA.DAL
                     "iti.sGoogleUserCreate",
                     new { Email = email, RefreshToken = refreshToken },
                     commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        /// <summary>
+        /// To Create a Microsoft User
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="refreshToken"></param>
+        public void CreateMicrosoftUser(string email, string accessToken)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                con.Execute(
+                   "iti.sMicrosoftUserCreate",
+                   new { Email = email, AccessToken = accessToken },
+                   commandType: CommandType.StoredProcedure);
             }
         }
 
@@ -119,6 +136,22 @@ namespace ITI.MANA.DAL
             }
         }
 
+        /// <summary>
+        /// To Update Microsoft Token
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="refreshToken"></param>
+        public void UpdateMicrosoftToken(int userId, string accessToken)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                con.Execute(
+                    "iti.sMicrosoftUserUpdate",
+                    new { UserId = userId, accessToken = accessToken },
+                    commandType: CommandType.StoredProcedure);
+            }
+        }
+
         public void AddPassword(int userId, byte[] password)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
@@ -136,6 +169,22 @@ namespace ITI.MANA.DAL
             {
                 con.Execute(
                     "iti.sUserAddGoogleToken",
+                    new { UserId = userId, RefreshToken = refreshToken },
+                    commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        /// <summary>
+        /// To Add Microsoft Token
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="refreshToken"></param>
+        public void AddMicrosoftToken(int userId, string refreshToken)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                con.Execute(
+                    "iti.sUserAddMicrosoftToken",
                     new { UserId = userId, RefreshToken = refreshToken },
                     commandType: CommandType.StoredProcedure);
             }

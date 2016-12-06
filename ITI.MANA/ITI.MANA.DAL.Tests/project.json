@@ -1,12 +1,24 @@
 {
   "version": "1.0.0-*",
+  "buildOptions": {
+    "emitEntryPoint": true
+  },
 
   "dependencies": {
-    "NETStandard.Library": "1.6.1"
+    "Dapper": "1.50.2",
+    "ITI.MANA.DAL": "1.0.0-*",
+    "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.0",
+    "Microsoft.Extensions.Configuration.Json": "1.0.0",
+    "Microsoft.Extensions.Configuration.Xml": "1.0.0",
+    "Microsoft.NETCore.App": {
+      "type": "platform",
+      "version": "1.0.1"
+    },
+    "NUnitLite": "3.5.0"
   },
 
   "frameworks": {
-    "netstandard1.6": {
+    "netcoreapp1.0": {
       "imports": "dnxcore50"
     }
   }

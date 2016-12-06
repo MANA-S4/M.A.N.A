@@ -17,6 +17,13 @@ DROP CONSTRAINT FK_Tasks_UserId
 end
 GO
 
+if exists(SELECT * FROM sys.objects WHERE name='FK_Notifications_UserId')
+begin 
+	ALTER TABLE iti.notifications 
+DROP CONSTRAINT FK_Notifications_UserId
+end
+GO
+
 if exists(SELECT * FROM sys.objects WHERE name = 'PK_Relationships')
 begin 
 	ALTER TABLE iti.Relationships   
@@ -24,10 +31,31 @@ DROP CONSTRAINT PK_Relationships
 end
 GO
 
+if exists(SELECT * FROM sys.objects WHERE name = 'FK_Relationships_UserId')
+begin 
+	ALTER TABLE iti.Relationships   
+DROP CONSTRAINT FK_Relationships_UserId
+end
+GO
+
 if exists(SELECT * FROM sys.objects WHERE name = 'PK_UserId')
 begin 
 	ALTER TABLE iti.Users   
 DROP CONSTRAINT PK_UserId
+end
+GO
+
+if exists(SELECT * FROM sys.objects WHERE name = 'PK_GoogleUserId')
+begin 
+	ALTER TABLE iti.GoogleUser   
+DROP CONSTRAINT PK_GoogleUserId
+end
+GO
+
+if exists(SELECT * FROM sys.objects WHERE name = 'PK_MicrosoftUserId')
+begin 
+	ALTER TABLE iti.MicrosoftUser   
+DROP CONSTRAINT PK_MicrosoftUserId
 end
 GO
 
@@ -61,6 +89,18 @@ begin
 end
 GO
 
+if exists(select * from INFORMATION_SCHEMA.TABLES t where t.TABLE_NAME = 'GoogleUser' and t.TABLE_SCHEMA = 'iti')
+begin
+	drop table iti.GoogleUser;
+end
+GO
+
+if exists(select * from INFORMATION_SCHEMA.TABLES t where t.TABLE_NAME = 'MicrosoftUser' and t.TABLE_SCHEMA = 'iti')
+begin
+	drop table iti.MicrosoftUser;
+end
+GO
+
 if exists(select * from sys.schemas s where s.[name] = 'iti')
 begin
 	exec('drop schema iti;');
@@ -73,6 +113,7 @@ GO
 create table iti.Users
 (
 	UserId  int identity(1, 1),
+	Email nvarchar(64),
 	FirstName nvarchar(32),
 	LastName  nvarchar(32),
 	BirthDate datetime2,
@@ -127,4 +168,22 @@ create table iti.Notifications
 
 	constraint PK_Notifications primary key(UserId),
 	constraint FK_Notifications_UserId foreign key(UserId) references iti.Users
+);
+
+create table iti.GoogleUser
+(
+	UserId int identity(1,1),
+	RefreshToken varchar(64) not null,
+	
+	constraint PK_GoogleUserId primary key(UserId),
+	constraint FK_GoogleUser_UserId foreign key(UserId) references iti.Users(UserId)
+);
+
+create table iti.MicrosoftUser
+(
+	UserId int identity(1,1),
+	AccessToken varchar(64) not null,
+
+	constraint PK_MicrosoftUserId primary key(UserId),
+	constraint FK_MicrosoftUser_UserId foreign key(UserId) references iti.Users(UserId)
 );
