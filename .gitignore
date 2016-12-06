@@ -29,3 +29,5 @@ _ReSharper*/
 [Tt]est[Rr]esult*
 /ITI.MANA/ITI.MANA.DB/ITI.MANA.DB.dbmdl
 /ITI.MANA/ITI.MANA.DB/ITI.MANA.DB.jfm
+ITI.MANA/ITI.MANA.WebApp2/App/mana/node_modules/
+ITI.MANA/ITI.MANA.WebApp2/appsettings.json
