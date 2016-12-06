@@ -43,17 +43,17 @@ namespace ITI.MANA.WebApp.Services
         /// <param name="email"></param>
         /// <param name="refreshToken"></param>
         /// <returns></returns>
-        public bool CreateOrUpdateMicrosoftUser(string email, string refreshToken)
+        public bool CreateOrUpdateMicrosoftUser(string email, string accessToken)
         {
             User user = _userGateway.FindByEmail(email);
             if(user == null)
             {
-                _userGateway.CreateMicrosoftUser(email, refreshToken);
+                _userGateway.CreateMicrosoftUser(email, accessToken);
                 return true;
             } 
             else
             {
-                _userGateway.UpdateMicrosoftToken(user.UserId, refreshToken);
+                _userGateway.UpdateMicrosoftToken(user.UserId, accessToken);
             }
             return false;
         }

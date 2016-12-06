@@ -71,11 +71,13 @@
     <Build Include="tPasswordUser.sql" />
     <Build Include="tUser.sql" />
     <Build Include="vAuthenticationProvider.sql" />
+    <Build Include="sGoogleUserCreate.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="sPasswordUserCreate.sql" />
     <None Include="sPasswordUserUpdate.sql" />
     <None Include="sUserAddGoogleToken.sql" />
     <None Include="vUser.sql" />
+    <None Include="sMicrosoftUserCreate.sql" />
   </ItemGroup>
 </Project>

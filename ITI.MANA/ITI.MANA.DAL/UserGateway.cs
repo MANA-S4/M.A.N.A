@@ -74,13 +74,13 @@ namespace ITI.MANA.DAL
         /// </summary>
         /// <param name="email"></param>
         /// <param name="refreshToken"></param>
-        public void CreateMicrosoftUser(string email, string refreshToken)
+        public void CreateMicrosoftUser(string email, string accessToken)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 con.Execute(
                    "iti.sMicrosoftUserCreate",
-                   new { Email = email, RefreshToken = refreshToken },
+                   new { Email = email, AccessToken = accessToken },
                    commandType: CommandType.StoredProcedure);
             }
         }
@@ -141,13 +141,13 @@ namespace ITI.MANA.DAL
         /// </summary>
         /// <param name="userId"></param>
         /// <param name="refreshToken"></param>
-        public void UpdateMicrosoftToken(int userId, string refreshToken)
+        public void UpdateMicrosoftToken(int userId, string accessToken)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 con.Execute(
                     "iti.sMicrosoftUserUpdate",
-                    new { UserId = userId, refreshToken = refreshToken },
+                    new { UserId = userId, accessToken = accessToken },
                     commandType: CommandType.StoredProcedure);
             }
         }
