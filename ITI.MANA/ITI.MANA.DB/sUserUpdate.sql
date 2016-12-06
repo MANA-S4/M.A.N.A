@@ -5,7 +5,7 @@
 )
 as
 begin
-	update iti.tUser
+	update iti.Users
 	set Email = @Email
 	where UserId = @UserId;
 	return 0;

@@ -1,11 +1,11 @@
 ﻿create procedure iti.sUserAddMicrosoftToken
 (
-	@MicrosoftUserId       int,
+	@UserId      int,
 	@AccessToken  varchar(64)
 )
 as
 begin
-	insert into iti.MicrosoftUser(MicrosoftUserId,  AccessToken)
-	                     values(@MicrosoftUserId, @AccessToken);
+	insert into iti.MicrosoftUser(UserId,  AccessToken)
+	                     values(@UserId, @AccessToken);
 	return 0;
 end;

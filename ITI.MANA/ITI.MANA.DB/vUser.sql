@@ -7,6 +7,8 @@ as
            GoogleRefreshToken = case when gl.RefreshToken is null then '' else gl.RefreshToken end
 	from iti.Users u
 		left outer join iti.PasswordUser p on p.UserId = u.UserId
-		left outer join iti.MicrosoftUser mc on mc.MicrosoftUserId = u.UserId
-		left outer join iti.GoogleUser gl on gl.GoogleUserId = u.UserId
+		left outer join iti.MicrosoftUser mc on mc.UserId = u.UserId
+		left outer join iti.GoogleUser gl on gl.UserId = u.UserId
 	where u.UserId <> 0;
+
+	

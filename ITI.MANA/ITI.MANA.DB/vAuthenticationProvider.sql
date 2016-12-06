@@ -5,11 +5,11 @@ as
 			  ProviderName = 'MANA'
 		  from iti.PasswordUser u
 		  union
-		  select UserId = u.MicrosoftUserId,
+		  select UserId = u.UserId,
 			  ProviderName = 'Microsoft'
 		  from iti.MicrosoftUser u
 		  union
-		  select UserId = u.GoogleUserId,
+		  select UserId = u.UserId,
 			  ProviderName = 'Google'
 		  from iti.GoogleUser u) usr
 	where usr.UserId <> 0;

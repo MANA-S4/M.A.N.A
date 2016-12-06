@@ -1,10 +1,10 @@
 ﻿create procedure iti.sGoogleUserUpdate
 (
-	@GoogleUserId       int,
+	@UserId       int,
 	@RefreshToken varchar(64)
 )
 as
 begin
-	update iti.GoogleUser set RefreshToken = @RefreshToken where GoogleUserId = @GoogleUserId;
+	update iti.GoogleUser set RefreshToken = @RefreshToken where UserId = @UserId;
 	return 0;
 end;

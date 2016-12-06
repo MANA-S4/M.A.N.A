@@ -16,9 +16,9 @@ namespace ITI.MANA.WebApp.Authentification
 
         public void CreateOrUpdateUser(OAuthCreatingTicketContext context)
         {
-            if (context.RefreshToken != null)
+            if (context.AccessToken != null)
             {
-                _userService.CreateOrUpdateGoogleUser(context.GetEmail(), context.RefreshToken);
+                _userService.CreateOrUpdateGoogleUser(context.GetEmail(), context.AccessToken);
             }
         }
 
