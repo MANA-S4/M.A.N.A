@@ -16,7 +16,7 @@ namespace ITI.MANA.DAL.Tests
             {
                 get
                 {
-                    return Configuration["ConnectionStrings:PrimarySchoolDB"];
+                    return Configuration["ConnectionStrings:MANADB"];
                 }
             }
 

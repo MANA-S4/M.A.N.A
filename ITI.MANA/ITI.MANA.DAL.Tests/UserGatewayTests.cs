@@ -9,10 +9,12 @@ namespace ITI.MANA.DAL.Tests
     [TestFixture]
     public class UserGatewayTests
     {
+        public UserGateway sut = new UserGateway(TestHelpers.ConnectionString);
+
         [Test]
         public void can_create_find_update_and_delete_user()
         {
-            UserGateway sut = new UserGateway(TestHelpers.ConnectionString);
+            
             string email = string.Format("user{0}@test.com", Guid.NewGuid());
             byte[] password = Guid.NewGuid().ToByteArray();
 
@@ -50,7 +52,6 @@ namespace ITI.MANA.DAL.Tests
         [Test]
         public void can_create_google_user()
         {
-            UserGateway sut = new UserGateway(TestHelpers.ConnectionString);
             string email = string.Format("user{0}@test.com", Guid.NewGuid());
             string refreshToken = Guid.NewGuid().ToString().Replace("-", string.Empty);
 
@@ -71,7 +72,7 @@ namespace ITI.MANA.DAL.Tests
         [Test]
         public void can_create_microsoft_user()
         {
-            UserGateway sut = new UserGateway(TestHelpers.ConnectionString);
+            
             string email = string.Format("user{0}@test.com", Guid.NewGuid());
             string refreshToken = Guid.NewGuid().ToString().Replace("-", string.Empty);
 
