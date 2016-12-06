@@ -47,7 +47,6 @@ namespace ITI.MANA.DAL.Tests
             }
         }
 
-        [Ignore("Not work because we didn't have Google Connexion")]
         [Test]
         public void can_create_google_user()
         {
@@ -65,6 +64,27 @@ namespace ITI.MANA.DAL.Tests
 
             user = sut.FindById(user.UserId);
             Assert.That(user.GoogleRefreshToken, Is.EqualTo(refreshToken));
+
+            sut.Delete(user.UserId);
+        }
+
+        [Test]
+        public void can_create_microsoft_user()
+        {
+            UserGateway sut = new UserGateway(TestHelpers.ConnectionString);
+            string email = string.Format("user{0}@test.com", Guid.NewGuid());
+            string refreshToken = Guid.NewGuid().ToString().Replace("-", string.Empty);
+
+            sut.CreateMicrosoftUser(email, refreshToken);
+            User user = sut.FindByEmail(email);
+
+            Assert.That(user.MicrosoftRefreshToken, Is.EqualTo(refreshToken));
+
+            refreshToken = Guid.NewGuid().ToString().Replace("-", string.Empty);
+            sut.UpdateMicrosoftToken(user.UserId, refreshToken);
+
+            user = sut.FindById(user.UserId);
+            Assert.That(user.MicrosoftRefreshToken, Is.EqualTo(refreshToken));
 
             sut.Delete(user.UserId);
         }
