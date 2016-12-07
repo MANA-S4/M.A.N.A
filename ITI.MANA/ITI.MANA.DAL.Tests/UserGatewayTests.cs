@@ -13,8 +13,7 @@ namespace ITI.MANA.DAL.Tests
 
         [Test]
         public void can_create_find_update_and_delete_user()
-        {
-            
+        {        
             string email = string.Format("user{0}@test.com", Guid.NewGuid());
             byte[] password = Guid.NewGuid().ToByteArray();
 
@@ -71,8 +70,7 @@ namespace ITI.MANA.DAL.Tests
 
         [Test]
         public void can_create_microsoft_user()
-        {
-            
+        {        
             string email = string.Format("user{0}@test.com", Guid.NewGuid());
             string refreshToken = Guid.NewGuid().ToString().Replace("-", string.Empty);
 
