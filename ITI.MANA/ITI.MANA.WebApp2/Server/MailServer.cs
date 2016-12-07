@@ -10,7 +10,7 @@ namespace ITI.MANA.WebApp.Server
 {
     public class MailServer
     {
-        public static void Main(string[] args)
+        public static void MailServerTest()
         {
             var message = new MimeMessage();
             message.From.Add(new MailboxAddress("Marie Dupond", "marie.dupond@test.com"));

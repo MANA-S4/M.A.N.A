@@ -5379,7 +5379,7 @@
       ]
     },
     "Microsoft.NETCore.App/1.0.1": {
-      "sha512": "1ZiTaAAc3Msi4siXtdVmallNCrFA5ZUzoGkIh4litHjBJBZcRgWvwRXT60woB5FpWPC9qDiTFc6L1Gr8EbOPog==",
+      "sha512": "FZUMmphX9I3it2/pUpECD65pk5WoN9DCdj3AlyL4vSMYekHqI6JX+7PClm1T7ZWxh0+A+Zqi4gFamU/GL4MGWw==",
       "type": "package",
       "path": "Microsoft.NETCore.App/1.0.1",
       "files": [
@@ -5427,7 +5427,7 @@
       ]
     },
     "Microsoft.NETCore.Jit/1.0.4": {
-      "sha512": "s336ryZlopR+pQ4VfKlILX1LxiQzpCPnmiGot0p5aFPeCjwmKtHC88MI8jXdvdGPySON9i1bPUKJP8jiiPIAjA==",
+      "sha512": "CpzDl+jRpKFyrshNN1CJGhnLvtjM4+y8jVuZQmERjFYBFnRyx0v+OAclTSTVmSK1WcKB2UMNpMM80pAJQX8sgw==",
       "type": "package",
       "path": "Microsoft.NETCore.Jit/1.0.4",
       "files": [
@@ -5452,7 +5452,7 @@
       ]
     },
     "Microsoft.NETCore.Runtime.CoreCLR/1.0.4": {
-      "sha512": "NTd+F7MQJi5wFh6Hq3uVH0L3om+pVcfF+bpw0hSd+Ka92QSZ4IfDJw/IWqTQ9jUtLyWYR4XR+52HD5HW+a+zoQ==",
+      "sha512": "bEfmCyOzMyvDeE35i17NTDViyBDUr2g19P8vjwJ4SQuxMmERaz+sdpAAM1p8WhUsdUCwSTW7g+XBHQjTV2B9uQ==",
       "type": "package",
       "path": "Microsoft.NETCore.Runtime.CoreCLR/1.0.4",
       "files": [
