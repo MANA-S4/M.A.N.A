@@ -10,5 +10,3 @@ as
 		left outer join iti.MicrosoftUser mc on mc.UserId = u.UserId
 		left outer join iti.GoogleUser gl on gl.UserId = u.UserId
 	where u.UserId <> 0;
-
-	

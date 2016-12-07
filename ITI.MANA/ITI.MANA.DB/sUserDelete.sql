@@ -10,3 +10,5 @@ begin
 	delete from iti.Users where UserId = @UserId;
 	return 0;
 end;
+
+drop proc iti.sUserDelete;

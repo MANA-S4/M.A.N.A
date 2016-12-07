@@ -5,11 +5,12 @@
 )
 as
 begin
+set identity_insert iti.GoogleUser on;
 	insert into iti.Users(Email) values(@Email);
 	declare @userId int;
 	select @userId = scope_identity();
-	insert into iti.GoogleUser(UserId,  RefreshToken)
-	                     values(@userId, @RefreshToken);
+	insert into iti.GoogleUser(UserId,RefreshToken)
+	                     values(@userId,@RefreshToken);
 	return 0;
 end;
 
