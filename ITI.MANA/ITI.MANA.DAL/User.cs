@@ -18,6 +18,6 @@ namespace ITI.MANA.DAL
         /// <summary>
         /// We have to verify the name and the possibility
         /// </summary>
-        public string MicrosoftRefreshToken { get; set; }
+        public string MicrosoftAccessToken { get; set; }
     }
 }
