@@ -16,7 +16,7 @@ namespace ITI.MANA.DAL
         public string GoogleRefreshToken { get; set; }
 
         /// <summary>
-        /// We have to verify the name and the possibility
+        /// To connect with Microsoft
         /// </summary>
         public string MicrosoftAccessToken { get; set; }
     }

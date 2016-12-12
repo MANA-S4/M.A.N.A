@@ -10,25 +10,31 @@ namespace ITI.MANA.WebApp.Server
 {
     public class MailServer
     {
-        public static void MailServerTest()
+        public MailServer()
+        {
+
+        }
+
+        public void MailServerTest()
         {
             var message = new MimeMessage();
-            message.From.Add(new MailboxAddress("Marie Dupond", "marie.dupond@test.com"));
-            message.To.Add(new MailboxAddress("Mrs. Chanandler Bong", "chandler@friends.com"));
+            message.From.Add(new MailboxAddress("Julie Laco", "cookit2015m@gmail.com"));
+            message.To.Add(new MailboxAddress("Chergui Yacine", "chergui@intechinfo.fr"));
             message.Subject = "How you doin'?";
             message.Body = new TextPart("plain")
             {
-                Text = @"Hey Chandler, I just wanted to let you know that Monica and I were goint to go play some paintball, you in ? --Juju"
+                Text = @"Hey Yacine, I just wanted to let you know that Monica 
+and I were goint to go play some paintball, you in ? --Juju"
             };
 
             using(var client = new SmtpClient())
             {
                 client.ServerCertificateValidationCallback = (s, c, h, e) => true;
-                client.Connect("smtp.friends.com", 587, false);
-
+                client.Connect("smtp.gmail.com", 587, false);
+                
                 client.AuthenticationMechanisms.Remove("XOAUTH2");
 
-                client.Authenticate("juju", "password");
+                client.Authenticate("cookit2015m@gmail.com", "intechinfo");
 
                 client.Send(message);
                 client.Disconnect(true);
