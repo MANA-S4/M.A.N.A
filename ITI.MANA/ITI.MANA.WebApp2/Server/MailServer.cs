@@ -30,7 +30,7 @@ and I were goint to go play some paintball, you in ? --Juju"
             using(var client = new SmtpClient())
             {
                 client.ServerCertificateValidationCallback = (s, c, h, e) => true;
-                client.Connect("smtp.gmail.com", 587, false);
+                client.Connect("smtp.gmail.com", 465, true);
                 
                 client.AuthenticationMechanisms.Remove("XOAUTH2");
 
