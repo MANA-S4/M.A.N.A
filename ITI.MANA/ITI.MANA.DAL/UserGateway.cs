@@ -58,13 +58,13 @@ namespace ITI.MANA.DAL
             }
         }
 
-        public void CreateGoogleUser(string email, string refreshToken)
+        public void CreateGoogleUser(string email,string accessToken , string refreshToken, string tokenType, TimeSpan? expireIn)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 con.Execute(
                     "iti.sGoogleUserCreate",
-                    new { Email = email, RefreshToken = refreshToken },
+                    new { Email = email,AccessToken = accessToken, RefreshToken = refreshToken, TokenType = tokenType, ExpireIn = expireIn },
                     commandType: CommandType.StoredProcedure);
             }
         }
@@ -125,13 +125,13 @@ namespace ITI.MANA.DAL
             }
         }
 
-        public void UpdateGoogleToken(int userId, string refreshToken)
+        public void UpdateGoogleToken(int userId, string accessToken , string refreshToken, string tokenType, TimeSpan? expireIn)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 con.Execute(
                     "iti.sGoogleUserUpdate",
-                    new { UserId = userId, refreshToken = refreshToken },
+                    new { UserId = userId, AccessToken = accessToken, RefreshToken = refreshToken, TokenType = tokenType, ExpireIn = expireIn },
                     commandType: CommandType.StoredProcedure);
             }
         }
