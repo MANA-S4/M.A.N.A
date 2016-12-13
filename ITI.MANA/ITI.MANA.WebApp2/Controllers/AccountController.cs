@@ -73,6 +73,12 @@ namespace ITI.MANA.WebApp.Controllers
                     return View(model);
                 }
                 User user = _userService.FindUser(model.Email);
+
+                // Call MailService
+                MailService mail = new MailService(user.Email);
+                mail.SendConfirmationMail(user.Email);
+                // End Call MailService
+
                 await SignIn(user.Email, user.UserId.ToString());
                 return RedirectToAction(nameof(Authenticated));
             }

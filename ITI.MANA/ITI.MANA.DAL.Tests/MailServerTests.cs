@@ -35,9 +35,7 @@ namespace ITI.MANA.DAL.Tests
             }
 
             // Send confirmation mail 
-            mail.MailServerTest();
-
-
+            mail.SendMail(email);
         }
     }
 }
