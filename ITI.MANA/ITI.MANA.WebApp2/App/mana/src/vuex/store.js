@@ -5,6 +5,7 @@ import * as actions from './actions'
 import * as getters from './getters'
 
 import app from './modules/app'
+import contacts from './modules/contacts'
 
 Vue.use(Vuex)
 
@@ -14,7 +15,8 @@ export default new Vuex.Store({
   actions,
   getters,
   modules: {
-      app
+      app,
+      contacts
   },
   strict: debug
 })

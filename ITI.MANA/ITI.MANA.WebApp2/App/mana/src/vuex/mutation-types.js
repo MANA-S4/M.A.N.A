@@ -1,3 +1,9 @@
 // App
 export const SET_IS_LOADING = 'SET_IS_LOADING'
 export const ERROR_HAPPENED = 'ERROR_HAPPENED'
+
+// Contacts
+export const ADD_CONTACT = 'ADD_CONTACT'
+export const EDIT_CONTACT = 'EDIT_CONTACT'
+export const REMOVE_CONTACT = 'REMOVE_CONTACT'
+export const REFRESH_CONTACT_LIST = 'REFRESH_CONTACT_LIST'
