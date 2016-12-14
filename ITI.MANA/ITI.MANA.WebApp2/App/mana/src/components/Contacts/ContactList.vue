@@ -23,7 +23,6 @@
                     <th>Nom</th>
                     <th>Prénom</th>
                     <th>Date de naissance</th>
-                    <!--<th>Classe</th> permet de faire un tableau-->
                     <th>Options</th>       
                 </tr>
             </thead>
@@ -38,7 +37,6 @@
                     <td>{{ i.lastName }}</td>
                     <td>{{ i.firstName }}</td>
                     <td>{{ i.birthDate }}</td>
-                    <!-- <td>{{ i.classId }}</td> ajout class id -->
                     <td>
                         <router-link :to="`contacts/edit/${i.contactId}`"><i class="glyphicon glyphicon-pencil"></i></router-link>
                         <a href="#" @click="followContact(i.contactId)"><i class="glyphicon glyphicon-plus"></i></a> <!-- rajouter followContact et je pense que ça va être un nouveau routeur-->

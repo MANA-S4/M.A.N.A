@@ -28,11 +28,6 @@
                 <label class="required">Date de naissance</label>
                 <input type="date" v-model="item.birthDate" class="form-control" required>
             </div>
-            
-            <!--<div class="form-group">
-                <label class="required">Lien</label>
-                <input type="number" v-model="item.classId" class="form-control" required>
-            </div>-->
 
             <button type="submit" class="btn btn-primary">Sauvegarder</button>
         </form>
@@ -53,7 +48,7 @@
         },
 
         computed: {
-            ...mapGetters(['contactList'])
+            ...mapGetters(['ContactList'])
         },
 
         created() {
