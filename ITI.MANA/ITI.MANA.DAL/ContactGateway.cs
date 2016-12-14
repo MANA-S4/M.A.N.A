@@ -42,12 +42,12 @@ namespace ITI.MANA.DAL
                                  c.BirthDate,
                           from iti.vContact c
                           where c.ContactId = @ContactId;",
-                        new { StudentId = contactId })
+                        new { ContactId = contactId })
                     .FirstOrDefault();
             }
         }
 
-        public Contact FindByName(string firctName, string lactName)
+        public Contact FindByName(string firstName, string lastName)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
@@ -56,9 +56,9 @@ namespace ITI.MANA.DAL
                                  c.FirstName,
                                  c.LastName,
                                  c.BirthDate,
-                          from iti.vStudent c
-                          where c.firctName = @FirctName and c.lactName = @LactName;",
-                        new { FirctName = firctName, LactName = lactName })
+                          from iti.vContact c
+                          where c.firstName = @FirstName and c.lastName = @LastName;",
+                        new { FirstName = firstName, LastName = lastName })
                     .FirstOrDefault();
             }
         }
@@ -68,7 +68,7 @@ namespace ITI.MANA.DAL
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 con.Execute(
-                    "iti.cContactCreate",
+                    "iti.sContactCreate",
                     new { FirstName = firstName, LastName = lastName, BirthDate = birthDate },
                     commandType: CommandType.StoredProcedure);
             }
@@ -79,8 +79,8 @@ namespace ITI.MANA.DAL
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 con.Execute(
-                    "iti.cContactDelete",
-                    new { StudentId = contactId },
+                    "iti.sContactDelete",
+                    new { ContactId = contactId },
                     commandType: CommandType.StoredProcedure);
             }
         }
@@ -90,7 +90,7 @@ namespace ITI.MANA.DAL
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 con.Execute(
-                    "iti.cContactUpdate",
+                    "iti.sContactUpdate",
                     new { ContactId = contactId, FirstName = firstName, LastName = lastName, BirthDate = birthDate },
                     commandType: CommandType.StoredProcedure);
             }
@@ -101,8 +101,8 @@ namespace ITI.MANA.DAL
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 con.Execute(
-                    "iti.cAccignClacc",
-                    new { StudentId = contactId, UserId = userId },
+                    "iti.sAssignPerson",
+                    new { ContactId = contactId, UserId = userId },
                     commandType: CommandType.StoredProcedure);
             }
         }
