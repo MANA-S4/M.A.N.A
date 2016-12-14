@@ -4,7 +4,7 @@
 	@AccessToken  varchar(64),
 	@RefreshToken varchar(64),
 	@TokenType    varchar(64),
-	@ExpireIn     datetime2
+	@ExpireIn     bigint
 )
 as
 begin

@@ -177,7 +177,7 @@ create table iti.GoogleUser
 	AccessToken varchar(64) not null,
 	RefreshToken varchar(64),
 	TokenType varchar(64),
-	ExpireIn datetime2
+	ExpireIn bigint
 	
 	constraint PK_GoogleUserId primary key(UserId),
 	constraint FK_GoogleUser_UserId foreign key(UserId) references iti.Users(UserId)

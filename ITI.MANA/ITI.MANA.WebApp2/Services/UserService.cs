@@ -22,7 +22,7 @@ namespace ITI.MANA.WebApp.Services
             return true;
         }
 
-        public bool CreateOrUpdateGoogleUser(string email,string accessToken, string refreshToken, string tokenType, TimeSpan? expireIn)
+        public bool CreateOrUpdateGoogleUser(string email,string accessToken, string refreshToken, string tokenType, long expireIn)
         {
             User user = _userGateway.FindByEmail(email);
             if (user == null)
