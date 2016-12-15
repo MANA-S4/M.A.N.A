@@ -63,26 +63,26 @@ namespace ITI.MANA.WebApp.Services
         static string ApplicationName = "Google Calendar API .NET Quickstart";
         UserCredential credential = null;
 
-        public TokenResponse CreateTokenResponse()
+        public TokenResponse CreateTokenResponse(string accessToken, string refreshToken, string tokenType)
         {
             return new TokenResponse()
             {
-                AccessToken = "ya29.Ci-zA2cwpj6J0yrqlOU45p9Sf4ZTgXBQFtvAz9gsTWXKZX_sitc8r97qRfBsVAelZQ",
-                RefreshToken = "1/axW-ScRAOwv7WyAptzpJpBTPcsXGUqR-qka0qCuNkZw",
+                AccessToken = accessToken,
+                RefreshToken = refreshToken,
                 Issued = DateTime.Now,
                 ExpiresInSeconds = 36000000000,
-                TokenType = "Bearer"
+                TokenType = tokenType
             };
         }
 
-        public GoogleAuthorizationCodeFlow.Initializer CreateInitializer()
+        public GoogleAuthorizationCodeFlow.Initializer CreateInitializer(string clientId, string clientSecret)
         {
             return new GoogleAuthorizationCodeFlow.Initializer
             {
                 ClientSecrets = new ClientSecrets
                 {
-                    ClientId = "847663728233-9a1fjnu2dui4o9drhc8dtjgnvkck51kc.apps.googleusercontent.com",
-                    ClientSecret = "G3mSLUh3l4u9lO1IqC8NBiBx",
+                    ClientId = clientId,
+                    ClientSecret = clientSecret
                 },
                 Scopes = Scopes
             };
