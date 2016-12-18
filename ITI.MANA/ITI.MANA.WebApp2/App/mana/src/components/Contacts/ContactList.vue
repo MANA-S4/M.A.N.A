@@ -71,7 +71,7 @@
         },
 
         computed: {
-            ...mapGetters(['ContactList']),
+            ...mapGetters(['contactList']),
 
             /// ---------------------- Question 4 -------------------------------------
             list: function() {

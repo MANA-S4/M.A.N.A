@@ -76,7 +76,6 @@
                 if(!this.item.lastName) errors.push("Nom")
                 if(!this.item.firstName) errors.push("Prénom")
                 if(!this.item.birthDate) errors.push("Date de naissance")
-                //if(!this.item.classId) errors.push("Classe")
 
                 this.errors = errors;
 
