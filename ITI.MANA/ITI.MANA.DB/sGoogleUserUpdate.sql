@@ -1,8 +1,8 @@
 ﻿create procedure iti.sGoogleUserUpdate
 (
 	@UserId       int,
-	@AccessToken  varchar(64),
-	@RefreshToken varchar(64),
+	@AccessToken  varchar(72),
+	@RefreshToken varchar(72),
 	@TokenType    varchar(64),
 	@ExpireIn     bigint
 )

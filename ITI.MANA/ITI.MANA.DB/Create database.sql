@@ -174,8 +174,8 @@ create table iti.Notifications
 create table iti.GoogleUser
 (
 	UserId int identity(1,1),
-	AccessToken varchar(64) not null,
-	RefreshToken varchar(64),
+	AccessToken nvarchar(72) not null,
+	RefreshToken nvarchar(72),
 	TokenType varchar(64),
 	ExpireIn bigint
 	
@@ -186,8 +186,8 @@ create table iti.GoogleUser
 create table iti.MicrosoftUser
 (
 	UserId int identity(1,1),
-	AccessToken varchar(64) not null,
-
+	AccessToken varchar(72) not null,
+	RefreshToken varchar(72),
 	constraint PK_MicrosoftUserId primary key(UserId),
 	constraint FK_MicrosoftUser_UserId foreign key(UserId) references iti.Users(UserId)
 );
