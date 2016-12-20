@@ -45,7 +45,7 @@ namespace ITI.MANA.WebApp.Controllers
         [HttpPost]
         public IActionResult CreateContact([FromBody] ContactViewModel model)
         {
-            Result<Contact> result = _contactService.CreateContact(model.FirstName, model.LastName, model.BirthDate);
+            Result<Contact> result = _contactService.CreateContact(model.Email, model.Link);
             return this.CreateResult<Contact, ContactViewModel>(result, o =>
             {
                 o.ToViewModel = s => s.ToContactViewModel();
@@ -57,7 +57,7 @@ namespace ITI.MANA.WebApp.Controllers
         [HttpPut("{id}")]
         public IActionResult UpdateContact(int id, [FromBody] ContactViewModel model)
         {
-            Result<Contact> result = _contactService.UpdateContact(id, model.FirstName, model.LastName, model.BirthDate);
+            Result<Contact> result = _contactService.UpdateContact(id, model.Email, model.Link);
             return this.CreateResult<Contact, ContactViewModel>(result, o =>
             {
                 o.ToViewModel = s => s.ToContactViewModel();

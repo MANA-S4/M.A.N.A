@@ -9,10 +9,8 @@ namespace ITI.MANA.DAL
     {
         public int ContactId { get; set; }
 
-        public string FirstName { get; set; }
+        public string Email { get; }
 
-        public string LastName { get; set; }
-
-        public DateTime BirthDate { get; set; }
+        public string Link { get; set; }
     }
 }

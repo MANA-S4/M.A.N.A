@@ -14,9 +14,8 @@ namespace ITI.MANA.WebApp.Controllers
             return new ContactViewModel
             {
                 ContactId = @this.ContactId,
-                FirstName = @this.FirstName,
-                LastName = @this.LastName,
-                BirthDate = @this.BirthDate
+                Email = @this.Email,
+                Link = @this.Link
             };
         }
 

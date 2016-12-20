@@ -102,6 +102,12 @@ begin
 end
 GO
 
+if exists(select * from INFORMATION_SCHEMA.TABLES t where t.TABLE_NAME = 'Contact' and t.TABLE_SCHEMA = 'iti')
+begin 
+	drop table iti.Contact;
+end
+GO
+
 if exists(select * from sys.schemas s where s.[name] = 'iti')
 begin
 	exec('drop schema iti;');
@@ -191,6 +197,16 @@ create table iti.MicrosoftUser
 	constraint PK_MicrosoftUserId primary key(UserId),
 	constraint FK_MicrosoftUser_UserId foreign key(UserId) references iti.Users(UserId)
 );
+
+create table iti.Contact
+(
+	ContactId int identity(1,1),
+	UserId int not null,
+	Type varchar(64) not null,
+
+	constraint PK_ContactId primary key(ContactId),
+	constraint FK_Users_UserId foreign key(UserId) references iti.Users(UserId)
+)
 
 create table iti.PasswordUser
 (
