@@ -74,8 +74,8 @@
 
                 var errors = [];
 
-                if(!this.item.email) errors.push("email")
-                if(!this.item.link) errors.push("link")
+                if(!this.item.email) errors.push("Email")
+                if(!this.item.link) errors.push("Link")
 
                 this.errors = errors;
 

@@ -10,8 +10,8 @@ import Home from './components/Home.vue'
 import Login from './components/Login.vue'
 import Logout from './components/Logout.vue'
 
-import ContactEdit from './components/contacts/ContactEdit.vue'
-import ContactList from './components/contacts/ContactList.vue'
+import ContactEdit from './components/Contacts/ContactEdit.vue'
+import ContactList from './components/Contacts/ContactList.vue'
 
 import AuthService from './services/AuthService'
 

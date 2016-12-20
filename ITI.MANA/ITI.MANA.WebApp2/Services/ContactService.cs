@@ -39,7 +39,6 @@ namespace ITI.MANA.WebApp.Services
         public Result<Contact> CreateContact(string email, string link)
         {
             if (!IsMailValid(email)) return Result.Failure<Contact>(Status.BadRequest, "The email is not valid.");
-            //if (_contactGateway.FindByMail(email) != null) return Result.Failure<Contact>(Status.BadRequest, "A student with this name already exists.");
             _contactGateway.Create(email, link);
             Contact contact = _contactGateway.FindByMail(email);
             return Result.Success(Status.Created, contact);
