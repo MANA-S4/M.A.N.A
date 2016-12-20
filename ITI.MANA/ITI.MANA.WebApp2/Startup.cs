@@ -41,9 +41,11 @@ namespace ITI.MANA.WebApp
 
             services.AddMvc();
             services.AddSingleton(_ => new UserGateway(Configuration["ConnectionStrings:MANADB"]));
+            services.AddSingleton(_ => new GoogleCalendarGateway(Configuration["ConnectionString:MANADB"]));
             services.AddSingleton<PasswordHasher>();
             services.AddSingleton<UserService>();
             services.AddSingleton<TokenService>();
+            services.AddSingleton<GoogleTokenService>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)

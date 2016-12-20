@@ -15,9 +15,14 @@ namespace ITI.MANA.DAL
         static string[] Scopes = { CalendarService.Scope.CalendarReadonly };
         static string ApplicationName = "Google Calendar API .NET Quickstart";
         static EventsResource.ListRequest request = service.Events.List("primary");
-
+        readonly string _connectionString;
         static UserCredential credential;
         Events events;
+
+        public GoogleCalendarGateway(string connectionString)
+        {
+            _connectionString = connectionString;
+        }
 
         static CalendarService service = new CalendarService(new BaseClientService.Initializer()
         {
