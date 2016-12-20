@@ -21,7 +21,7 @@
 
             <div class="form-group">
                 <label class="required">Lien</label>
-                <select v-model="item.link" class="form-control" required>
+                <select v-model="item.relationType" class="form-control" required>
                     <option>Père</option>
                     <option>Mère</option>
                     <option>Frère</option>
@@ -75,7 +75,7 @@
                 var errors = [];
 
                 if(!this.item.email) errors.push("Email")
-                if(!this.item.link) errors.push("Link")
+                if(!this.item.relationType) errors.push("RelationType")
 
                 this.errors = errors;
 

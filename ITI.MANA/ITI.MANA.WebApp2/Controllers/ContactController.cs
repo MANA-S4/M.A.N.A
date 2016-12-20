@@ -23,14 +23,14 @@ namespace ITI.MANA.WebApp.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetContactList()
+        /*public IActionResult GetContactList()
         {
             Result<IEnumerable<Contact>> result = _contactService.GetAll();
             return this.CreateResult<IEnumerable<Contact>, IEnumerable<ContactViewModel>>(result, o =>
             {
                 o.ToViewModel = x => x.Select(s => s.ToContactViewModel());
             });
-        }
+        }*/
 
         [HttpGet("{id}", Name = "GetContact")]
         public IActionResult GetContactById(int id)
@@ -45,7 +45,7 @@ namespace ITI.MANA.WebApp.Controllers
         [HttpPost]
         public IActionResult CreateContact([FromBody] ContactViewModel model)
         {
-            Result<Contact> result = _contactService.CreateContact(model.Email, model.Link);
+            Result<Contact> result = _contactService.CreateContact(model.RelationType, model.Email);
             return this.CreateResult<Contact, ContactViewModel>(result, o =>
             {
                 o.ToViewModel = s => s.ToContactViewModel();
@@ -57,7 +57,7 @@ namespace ITI.MANA.WebApp.Controllers
         [HttpPut("{id}")]
         public IActionResult UpdateContact(int id, [FromBody] ContactViewModel model)
         {
-            Result<Contact> result = _contactService.UpdateContact(id, model.Email, model.Link);
+            Result<Contact> result = _contactService.UpdateContact(id, model.RelationType);
             return this.CreateResult<Contact, ContactViewModel>(result, o =>
             {
                 o.ToViewModel = s => s.ToContactViewModel();

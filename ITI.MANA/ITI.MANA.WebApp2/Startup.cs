@@ -46,6 +46,7 @@ namespace ITI.MANA.WebApp
             services.AddSingleton<UserService>();
             services.AddSingleton<TokenService>();
             services.AddSingleton<MailService>();
+            services.AddSingleton<ContactService>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)

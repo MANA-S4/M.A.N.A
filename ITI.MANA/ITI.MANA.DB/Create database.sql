@@ -66,9 +66,9 @@ begin
 end
 GO
 
-if exists(select * from INFORMATION_SCHEMA.TABLES t where t.TABLE_NAME = 'Relationships' and t.TABLE_SCHEMA = 'iti')
+if exists(select * from INFORMATION_SCHEMA.TABLES t where t.TABLE_NAME = 'Contacts' and t.TABLE_SCHEMA = 'iti')
 begin
-	drop table iti.Relationships;
+	drop table iti.Contacts;
 end
 GO
 
@@ -99,12 +99,6 @@ GO
 if exists(select * from INFORMATION_SCHEMA.TABLES t where t.TABLE_NAME = 'MicrosoftUser' and t.TABLE_SCHEMA = 'iti')
 begin
 	drop table iti.MicrosoftUser;
-end
-GO
-
-if exists(select * from INFORMATION_SCHEMA.TABLES t where t.TABLE_NAME = 'Contact' and t.TABLE_SCHEMA = 'iti')
-begin 
-	drop table iti.Contact;
 end
 GO
 
@@ -142,15 +136,15 @@ create table iti.Tasks
 	constraint FK_Tasks_UserId foreign key(UserId) references iti.Users(UserId)
 );
 
-create table iti.Relationships
+create table iti.Contacts
 (
-	RelationID  int identity(1, 1),
+	ContactId  int identity(1, 1),
 	UserId int,
 	RelationType  nvarchar(32),
-	UserRelationID int,
+	UserRelationId int,
 	
-	constraint PK_Relationships primary key(RelationID),
-	constraint FK_Relationships_UserId foreign key(UserId) references iti.Users(UserId)
+	constraint PK_Contacts primary key(ContactId),
+	constraint FK_Contacts_UserId foreign key(UserId) references iti.Users(UserId)
 );
 
 create table iti.Events
@@ -197,16 +191,6 @@ create table iti.MicrosoftUser
 	constraint PK_MicrosoftUserId primary key(UserId),
 	constraint FK_MicrosoftUser_UserId foreign key(UserId) references iti.Users(UserId)
 );
-
-create table iti.Contact
-(
-	ContactId int identity(1,1),
-	UserId int not null,
-	Type varchar(64) not null,
-
-	constraint PK_ContactId primary key(ContactId),
-	constraint FK_Users_UserId foreign key(UserId) references iti.Users(UserId)
-)
 
 create table iti.PasswordUser
 (

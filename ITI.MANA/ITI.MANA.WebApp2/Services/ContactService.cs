@@ -24,10 +24,17 @@ namespace ITI.MANA.WebApp.Services
             return Result.Success(Status.Ok, contact);
         }
 
-        public Result<IEnumerable<Contact>> GetAll()
+        public int GetIdByMail(string email)
+        {
+            int contactId;
+            if ((contactId = _contactGateway.FindIdByMail(email)) == 0) return 0;
+            return contactId;
+        }
+
+        /*public Result<IEnumerable<Contact>> GetAll()
         {
             return Result.Success(Status.Ok, _contactGateway.GetAll());
-        }
+        }*/
 
         /// <summary>
         /// To create a contact
@@ -36,10 +43,14 @@ namespace ITI.MANA.WebApp.Services
         /// <param name="lastName"></param>
         /// <param name="birthDate"></param>
         /// <returns></returns>
-        public Result<Contact> CreateContact(string email, string link)
+        public Result<Contact> CreateContact(string relationType, string email)
         {
-            if (!IsMailValid(email)) return Result.Failure<Contact>(Status.BadRequest, "The email is not valid.");
-            _contactGateway.Create(email, link);
+            //if (!IsMailValid(email)) return Result.Failure<Contact>(Status.BadRequest, "The email is not valid.");
+            //int userRelationId = GetIdByMail(email);
+
+            int userId = GetIdByMail(); // Use to recup the email of local user
+            
+            _contactGateway.Create(userId, relationType, GetIdByMail(email));
             Contact contact = _contactGateway.FindByMail(email);
             return Result.Success(Status.Created, contact);
         }
@@ -52,9 +63,9 @@ namespace ITI.MANA.WebApp.Services
         /// <param name="lastName"></param>
         /// <param name="birthDate"></param>
         /// <returns></returns>
-        public Result<Contact> UpdateContact(int contactId, string email, string link)
+        public Result<Contact> UpdateContact(int contactId, string relationType)
         {
-            if (!IsMailValid(email)) return Result.Failure<Contact>(Status.BadRequest, "The mail is not valid.");
+            //if (!IsMailValid(email)) return Result.Failure<Contact>(Status.BadRequest, "The mail is not valid.");
             Contact contact;
             if ((contact = _contactGateway.FindById(contactId)) == null)
             {
@@ -62,11 +73,11 @@ namespace ITI.MANA.WebApp.Services
             }
 
             {
-                Contact c = _contactGateway.FindByMail(email);
+                Contact c = _contactGateway.FindById(contactId);
                 if (c != null && c.ContactId != contact.ContactId) return Result.Failure<Contact>(Status.BadRequest, "A contact with this name already exists.");
             }
 
-            _contactGateway.Update(contactId, email, link);
+            _contactGateway.Update(contactId, relationType);
             contact = _contactGateway.FindById(contactId);
             return Result.Success(Status.Ok, contact);
         }

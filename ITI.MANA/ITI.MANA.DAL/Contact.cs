@@ -11,6 +11,6 @@ namespace ITI.MANA.DAL
 
         public string Email { get; }
 
-        public string Link { get; set; }
+        public string RelationType { get; set; }
     }
 }
