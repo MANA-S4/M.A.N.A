@@ -18,19 +18,21 @@ namespace ITI.MANA.DAL
             _connectionString = connectionString;
         }
 
-        /*public IEnumerable<Contact> GetAll()
+        public IEnumerable<Contact> GetAll(int userId)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 return con.Query<Contact>(
-                    @"select c.ContactId,
-                             c.UserId,
-                             c.RelationType,
-                             c.UserRelationId
-                      from iti.Contacts c
-                      where c.UserId = @UserId;");
+                    @"select c.UserRelationId, 
+                        u.Email, 
+                        c.RelationType
+                        from iti.Contacts c 
+                        join iti.Users u 
+                        on c.UserRelationId = u.UserId 
+                        where c.UserId = @UserId;",
+                    new { UserId = userId });
             }
-        }*/
+        }
 
         public Contact FindById(int contactId)
         {

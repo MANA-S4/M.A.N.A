@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace ITI.MANA.WebApp.Controllers
@@ -23,14 +24,15 @@ namespace ITI.MANA.WebApp.Controllers
         }
 
         [HttpGet]
-        /*public IActionResult GetContactList()
+        public IActionResult GetContactList()
         {
-            Result<IEnumerable<Contact>> result = _contactService.GetAll();
+            int userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            Result<IEnumerable<Contact>> result = _contactService.GetAll(userId);
             return this.CreateResult<IEnumerable<Contact>, IEnumerable<ContactViewModel>>(result, o =>
             {
                 o.ToViewModel = x => x.Select(s => s.ToContactViewModel());
             });
-        }*/
+        }
 
         [HttpGet("{id}", Name = "GetContact")]
         public IActionResult GetContactById(int id)
@@ -45,7 +47,8 @@ namespace ITI.MANA.WebApp.Controllers
         [HttpPost]
         public IActionResult CreateContact([FromBody] ContactViewModel model)
         {
-            Result<Contact> result = _contactService.CreateContact(model.RelationType, model.Email);
+            int userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            Result<Contact> result = _contactService.CreateContact(model.RelationType, userId, model.Email);
             return this.CreateResult<Contact, ContactViewModel>(result, o =>
             {
                 o.ToViewModel = s => s.ToContactViewModel();

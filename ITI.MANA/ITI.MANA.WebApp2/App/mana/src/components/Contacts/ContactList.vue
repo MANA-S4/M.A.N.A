@@ -19,9 +19,9 @@
         <table class="table table-striped table-hover table-bordered">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>UserRelationId</th>
                     <th>Email</th>
-                    <th>Lien</th>
+                    <th>RelationType</th>
                     <th>Options</th>       
                 </tr>
             </thead>
@@ -32,9 +32,9 @@
                 </tr>
 
                 <tr v-for="i of list"> <!-- modification de contactList en list pour afficher les contacts en fonction de ma recherche -->
-                    <td>{{ i.contactId }}</td>
+                    <td>{{ i.userRelationId }}</td>
                     <td>{{ i.email }}</td>
-                    <td>{{ i.link }}</td>
+                    <td>{{ i.relationType }}</td>
                     <td>
                         <router-link :to="`contacts/edit/${i.contactId}`"><i class="glyphicon glyphicon-pencil"></i></router-link>
                         <a href="#" @click="deleteContact(i.contactId)"><i class="glyphicon glyphicon-remove"></i></a>          
@@ -76,7 +76,7 @@
                 let i = 0;
                 
                 for(i = 0; i < this.contactList.length; i++) {
-                    if (this.contactList[i].firstName.includes(this.search) || this.contactList[i].lastName.includes(this.search)) {
+                    if (this.contactList[i].email.includes(this.search)) {
                         contact.push(this.contactList[i]);
                     }
                 }

@@ -10,7 +10,7 @@ namespace ITI.MANA.WebApp.Services
     {
         readonly ContactGateway _contactGateway;
         readonly PasswordHasher _passwordHasher;
-
+        
         public ContactService(ContactGateway contactGateway, PasswordHasher passwordHasher)
         {
             _contactGateway = contactGateway;
@@ -31,10 +31,10 @@ namespace ITI.MANA.WebApp.Services
             return contactId;
         }
 
-        /*public Result<IEnumerable<Contact>> GetAll()
+        public Result<IEnumerable<Contact>> GetAll(int userId)
         {
-            return Result.Success(Status.Ok, _contactGateway.GetAll());
-        }*/
+            return Result.Success(Status.Ok, _contactGateway.GetAll(userId));
+        }
 
         /// <summary>
         /// To create a contact
@@ -43,13 +43,8 @@ namespace ITI.MANA.WebApp.Services
         /// <param name="lastName"></param>
         /// <param name="birthDate"></param>
         /// <returns></returns>
-        public Result<Contact> CreateContact(string relationType, string email)
+        public Result<Contact> CreateContact(string relationType, int userId, string email)
         {
-            //if (!IsMailValid(email)) return Result.Failure<Contact>(Status.BadRequest, "The email is not valid.");
-            //int userRelationId = GetIdByMail(email);
-
-            int userId = GetIdByMail(); // Use to recup the email of local user
-            
             _contactGateway.Create(userId, relationType, GetIdByMail(email));
             Contact contact = _contactGateway.FindByMail(email);
             return Result.Success(Status.Created, contact);

@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace ITI.MANA.WebApp
 {
@@ -61,8 +62,6 @@ namespace ITI.MANA.WebApp
             string secretKey = Configuration["JwtBearer:SigningKey"];
             SymmetricSecurityKey signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(secretKey));
 
-            app.UseMiddleware<TokenProviderMiddleware>();
-
             app.UseJwtBearerAuthentication(new JwtBearerOptions
             {
                 AuthenticationScheme = JwtBearerAuthentication.AuthenticationScheme,
@@ -75,7 +74,7 @@ namespace ITI.MANA.WebApp
                     ValidIssuer = Configuration["JwtBearer:Issuer"],
 
                     ValidateAudience = true,
-                    ValidAudience = Configuration["JwtBearer:Audience"]
+                    ValidAudience = Configuration["JwtBearer:Audience"],
                 }
             });
 
