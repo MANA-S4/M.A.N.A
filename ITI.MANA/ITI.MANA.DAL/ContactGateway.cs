@@ -23,8 +23,7 @@ namespace ITI.MANA.DAL
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 return con.Query<Contact>(
-                    @"select c.ContactId,
-                        c.UserRelationId, 
+                    @"select c.ContactId, 
                         u.Email, 
                         c.RelationType
                         from iti.Contacts c 
@@ -90,34 +89,13 @@ namespace ITI.MANA.DAL
             }
         }
 
-        /// <summary>
-        /// To find contact Id
-        /// </summary>
-        /// <param name="userId"></param>
-        /// <param name="userRelationId"></param>
-        public int FindContactId(int userId, int userRelationId)
-        {
-            using (SqlConnection con = new SqlConnection(_connectionString))
-            {
-                return
-                con.Query<int>(
-                    @"select c.ContactId 
-                    from iti.Contacts c 
-                    where c.UserId = @UserId 
-                    and c.UserRelationId = @UserRelationId",
-                    new { UserId = userId, UserRelationId = userRelationId }
-                    )
-                    .FirstOrDefault();    
-            }
-        }
-
-        public void Delete(int userId, int userRelationId)
+        public void Delete(int contactId)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 con.Execute(
                     "iti.sContactDelete",
-                    new { UserId = userId, UserRelationId = userRelationId },
+                    new { ContactId = contactId },
                     commandType: CommandType.StoredProcedure);
             }
         }

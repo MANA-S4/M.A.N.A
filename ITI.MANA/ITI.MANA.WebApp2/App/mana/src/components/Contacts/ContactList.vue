@@ -19,7 +19,7 @@
         <table class="table table-striped table-hover table-bordered">
             <thead>
                 <tr>
-                    <th>UserRelationId</th>
+                    <th>ContactId</th>
                     <th>Email</th>
                     <th>RelationType</th>
                     <th>Options</th>       
@@ -37,7 +37,7 @@
                     <td>{{ i.relationType }}</td>
                     <td>
                         <router-link :to="`contacts/edit/${i.contactId}`"><i class="glyphicon glyphicon-pencil"></i></router-link>
-                        <a href="#" @click="deleteContact(i.userRelationId)"><i class="glyphicon glyphicon-remove"></i></a>          
+                        <a href="#" @click="deleteContact(i.contactId)"><i class="glyphicon glyphicon-remove"></i></a>          
                     </td>
                 </tr>
 

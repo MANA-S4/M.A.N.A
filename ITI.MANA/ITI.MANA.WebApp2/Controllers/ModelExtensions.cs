@@ -13,6 +13,7 @@ namespace ITI.MANA.WebApp.Controllers
         {
             return new ContactViewModel
             {
+                ContactId = @this.ContactId,
                 Email = @this.Email,
                 RelationType = @this.RelationType
             };

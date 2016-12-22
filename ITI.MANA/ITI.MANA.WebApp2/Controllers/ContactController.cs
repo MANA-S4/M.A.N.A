@@ -57,20 +57,20 @@ namespace ITI.MANA.WebApp.Controllers
             });
         }
 
-        [HttpPut("{id}")]
-        public IActionResult UpdateContact(int id, [FromBody] ContactViewModel model)
+        [HttpPut("{contactId}")]
+        public IActionResult UpdateContact(int contactId, [FromBody] ContactViewModel model)
         {
-            Result<Contact> result = _contactService.UpdateContact(id, model.RelationType);
+            Result<Contact> result = _contactService.UpdateContact(contactId, model.RelationType);
             return this.CreateResult<Contact, ContactViewModel>(result, o =>
             {
                 o.ToViewModel = s => s.ToContactViewModel();
             });
         }
 
-        [HttpDelete("{id}")]
-        public IActionResult DeleteContact(int userId, int userRelationId)
+        [HttpDelete("{contactId}")]
+        public IActionResult DeleteContact(int contactId)
         {
-            Result<int> result = _contactService.DeleteContact(userId, userRelationId);
+            Result<int> result = _contactService.DeleteContact(contactId);
             return this.CreateResult(result);
         }
     }
