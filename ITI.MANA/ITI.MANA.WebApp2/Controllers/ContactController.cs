@@ -68,9 +68,9 @@ namespace ITI.MANA.WebApp.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteContact(int id)
+        public IActionResult DeleteContact(int userId, int userRelationId)
         {
-            Result<int> result = _contactService.DeleteContact(id);
+            Result<int> result = _contactService.DeleteContact(userId, userRelationId);
             return this.CreateResult(result);
         }
     }

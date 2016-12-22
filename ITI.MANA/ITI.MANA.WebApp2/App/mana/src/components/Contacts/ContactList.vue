@@ -32,12 +32,12 @@
                 </tr>
 
                 <tr v-for="i of list"> <!-- modification de contactList en list pour afficher les contacts en fonction de ma recherche -->
-                    <td>{{ i.userRelationId }}</td>
+                    <td>{{ i.contactId }}</td>
                     <td>{{ i.email }}</td>
                     <td>{{ i.relationType }}</td>
                     <td>
                         <router-link :to="`contacts/edit/${i.contactId}`"><i class="glyphicon glyphicon-pencil"></i></router-link>
-                        <a href="#" @click="deleteContact(i.contactId)"><i class="glyphicon glyphicon-remove"></i></a>          
+                        <a href="#" @click="deleteContact(i.userRelationId)"><i class="glyphicon glyphicon-remove"></i></a>          
                     </td>
                 </tr>
 

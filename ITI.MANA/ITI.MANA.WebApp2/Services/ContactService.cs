@@ -82,11 +82,11 @@ namespace ITI.MANA.WebApp.Services
         /// </summary>
         /// <param name="contactId"></param>
         /// <returns></returns>
-        public Result<int> DeleteContact(int contactId)
+        public Result<int> DeleteContact(int userId, int userRelationId)
         {
-            if (_contactGateway.FindById(contactId) == null) return Result.Failure<int>(Status.NotFound, "Contact not found.");
-            _contactGateway.Delete(contactId);
-            return Result.Success(Status.Ok, contactId);
+            if (_contactGateway.FindContactId(userId, userRelationId) == 0) return Result.Failure<int>(Status.NotFound, "Contact not found");
+            _contactGateway.Delete(userId, userRelationId);
+            return Result.Success(Status.Ok, userId);
         }
 
         bool IsMailValid(string email) => !string.IsNullOrWhiteSpace(email);
