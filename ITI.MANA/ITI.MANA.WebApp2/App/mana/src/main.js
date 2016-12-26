@@ -9,6 +9,7 @@ import App from './components/App.vue'
 import Home from './components/Home.vue'
 import Login from './components/Login.vue'
 import Logout from './components/Logout.vue'
+import Calendars from './components/Calendars.vue'
 
 import AuthService from './services/AuthService'
 
@@ -39,9 +40,10 @@ const router = new VueRouter({
   routes: [
     { path: '/login', component: Login },
     { path: '/logout', component: Logout, beforeEnter: requireAuth },
-
-    { path: '', component: Home, beforeEnter: requireAuth }
-
+    
+    { path: '', component: Home, beforeEnter: requireAuth },
+    
+    { path: '/calendars', component: Calendars, beforeEnter: requireAuth }
   ]
 })
 
