@@ -21,7 +21,38 @@ namespace ITI.MANA.DAL
         /// <value>
         /// The events.
         /// </value>
-        public Events Events { get; }
+        public Events Events { get; set; }
 
+        /// <summary>
+        /// Gets or sets the date.
+        /// </summary>
+        /// <value>
+        /// The date.
+        /// </value>
+        public DateTime Date { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this instance is finish.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if this instance is finish; otherwise, <c>false</c>.
+        /// </value>
+        public bool IsFinish { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="GoogleCalendar"/> is private.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if private; otherwise, <c>false</c>.
+        /// </value>
+        public bool Private { get; set; }
+
+        /// <summary>
+        /// Gets or sets the event members.
+        /// </summary>
+        /// <value>
+        /// The event members.
+        /// </value>
+        public string Members { get; set; }
     }
 }

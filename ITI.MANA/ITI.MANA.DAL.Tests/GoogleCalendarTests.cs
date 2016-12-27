@@ -5,7 +5,13 @@ using System.Threading.Tasks;
 
 namespace ITI.MANA.DAL.Tests
 {
+    [TestFixture]
     public class GoogleCalendarTests
     {
+        [Test]
+        public void GetTokenResponseReturnValue()
+        {
+            
+        }
     }
 }

@@ -7,6 +7,10 @@ using Google.Apis.Calendar.v3;
 using Google.Apis.Calendar.v3.Data;
 using Google.Apis.Services;
 using Google.Apis.Util.Store;
+using Google.Apis.Auth.OAuth2.Responses;
+using System.Data;
+using System.Data.SqlClient;
+using Dapper;
 
 namespace ITI.MANA.DAL
 {
@@ -46,6 +50,17 @@ namespace ITI.MANA.DAL
         public Events GetListEvents()
         {
             return events = request.Execute();
+        }
+
+        public TokenResponse GetResponseToken(int userId)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                return con.Query<TokenResponse>(
+                        "select g.AccessToken, g.RefreshToken, g.TokenType from iti.GoogleUser g where g.UserId = @UserId",
+                        new { UserId = userId })
+                    .FirstOrDefault();
+            }
         }
     }
 }
