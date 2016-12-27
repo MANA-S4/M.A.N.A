@@ -17,7 +17,7 @@ namespace ITI.MANA.DAL
     public class GoogleCalendarGateway
     {
         static string[] Scopes = { CalendarService.Scope.CalendarReadonly };
-        static string ApplicationName = "Google Calendar API .NET Quickstart";
+        static string ApplicationName = "M.A.N.A";
         static EventsResource.ListRequest request = service.Events.List("primary");
         readonly string _connectionString;
         static UserCredential credential;
@@ -60,6 +60,14 @@ namespace ITI.MANA.DAL
                         "select g.AccessToken, g.RefreshToken, g.TokenType from iti.GoogleUser g where g.UserId = @UserId",
                         new { UserId = userId })
                     .FirstOrDefault();
+            }
+        }
+
+        public void ExportEventsFromGoogle(Events events)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+
             }
         }
     }

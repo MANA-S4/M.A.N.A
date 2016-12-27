@@ -150,13 +150,16 @@ create table iti.Relationships
 create table iti.Events
 (
 	EventId  int identity(1, 1),
+	UserId int,
 	EventName nvarchar(32),
 	EventDate  datetime2,
 	IsFinish bit,
 	IsPrivate bit,
 	Members varchar(32),
+	[Service] varchar(32),
 
-	constraint PK_Events primary key(EventId)
+	constraint PK_Events primary key(EventId),
+	constraint FK_Events_UserId foreign key(UserId) references iti.Users(UserId)
 );
 
 create table iti.Notifications
