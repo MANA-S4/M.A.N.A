@@ -2,12 +2,14 @@
 using ITI.MANA.WebApp.Services;
 using Microsoft.AspNetCore.Authentication.OAuth;
 using ITI.MANA.WebApp.Authentication;
+using ITI.MANA.WebApp.Server;
 
 namespace ITI.MANA.WebApp.Authentification
 {
     public class GoogleExternalAuthenticationManager : IExternalAuthenticationManager
     {
         readonly UserService _userService;
+        string email;
 
         public GoogleExternalAuthenticationManager (UserService userService)
         {
@@ -16,9 +18,18 @@ namespace ITI.MANA.WebApp.Authentification
 
         public void CreateOrUpdateUser(OAuthCreatingTicketContext context)
         {
-            if (context.AccessToken != null)
+            if (_userService.FindUser(context.GetEmail()) != null)
             {
-                _userService.CreateOrUpdateGoogleUser(context.GetEmail(), context.AccessToken, context.RefreshToken,context.TokenType, context.ExpiresIn);
+                if (context.AccessToken != null)
+                {
+                    _userService.CreateOrUpdateGoogleUser(context.GetEmail(), context.AccessToken, context.RefreshToken, context.TokenType, context.ExpiresIn);
+                }
+            }
+            else
+            {
+                _userService.CreateOrUpdateGoogleUser(context.GetEmail(), context.AccessToken, context.RefreshToken, context.TokenType, context.ExpiresIn);
+                MailService mail = new MailService(context.GetEmail());
+                mail.SendConfirmationMail(context.GetEmail());
             }
         }
 
