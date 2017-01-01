@@ -47,9 +47,14 @@ namespace ITI.MANA.DAL
         /// Gets the list events.
         /// </summary>
         /// <returns></returns>
-        public Events GetListEvents()
+        public IEnumerable<Events> GetListEvents(int userId)
         {
-            return events = request.Execute();
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                return con.Query<Events>(
+                        "select e.EventName, e.EventDate, e.IsFinish, e.IsPrivate, E.Members from iti.Events e where e.UserId = @UserId",
+                        new { UserId = userId });
+            }
         }
 
         public TokenResponse GetResponseToken(int userId)
