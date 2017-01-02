@@ -32,21 +32,14 @@ namespace ITI.MANA.DAL.Tests
         public void EventsCanBeSavedInDatabase()
         {
             UserCredential credential;
-            //TokenResponse token = sut.GetResponseToken(13);
-
-            var token = new TokenResponse()
-            {
-                AccessToken = "ya29.Ci_BA7Zow8HvrWyuo_vApqYuTh_3iJTnzwZlUGYz73yJc33KTsn78PvpSDONZjOXDA",
-                RefreshToken = "1/okxG33eetRNmIYFBBBqLD7plCza9DC1xai2NxzYC6ac3Vq2FX4Rbjgru9j8WOhWG",
-                TokenType = "Bearer"
-            };
-
+            TokenResponse token = sut.GetResponseToken(13);
+            
             var initializer = new GoogleAuthorizationCodeFlow.Initializer
             {
                 ClientSecrets = new ClientSecrets
                 {
-                    ClientId = "847663728233-9a1fjnu2dui4o9drhc8dtjgnvkck51kc.apps.googleusercontent.com",
-                    ClientSecret = "G3mSLUh3l4u9lO1IqC8NBiBx",
+                    ClientId = "847663728233-mgjdj8ej4t8obpcmad2aoea9qfok65in.apps.googleusercontent.com",
+                    ClientSecret = "VQbak4VjBRvTU2H_yaZLs7US",
                 },
                 Scopes = Scopes
             };
@@ -69,6 +62,7 @@ namespace ITI.MANA.DAL.Tests
             request.OrderBy = EventsResource.ListRequest.OrderByEnum.StartTime;
 
             Events events = request.Execute();
+            Assert.That(events != null);
         }
     }
 }
