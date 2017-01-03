@@ -27,12 +27,14 @@ namespace ITI.MANA.WebApp.Services
             User user = _userGateway.FindByEmail(email);
             if (user == null)
             {
-                _userGateway.CreateGoogleUser(email,accessToken, refreshToken, tokenType, expireIn);
+                _userGateway.CreateGoogleUser(email, accessToken, refreshToken, tokenType, expireIn);
+                MailService mail = new MailService(email);
+                mail.SendConfirmationMail(email);
                 return true;
             }
             else
             {
-                _userGateway.UpdateGoogleToken(user.UserId,accessToken, refreshToken, tokenType, expireIn);
+                _userGateway.UpdateGoogleToken(user.UserId, accessToken, refreshToken, tokenType, expireIn);
             }
             return false;
         }
@@ -49,6 +51,8 @@ namespace ITI.MANA.WebApp.Services
             if(user == null)
             {
                 _userGateway.CreateMicrosoftUser(email, accessToken);
+                MailService mail = new MailService(email);
+                mail.SendConfirmationMail(email);
                 return true;
             } 
             else

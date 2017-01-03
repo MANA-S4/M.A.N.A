@@ -24,18 +24,9 @@ namespace ITI.MANA.WebApp.Authentification
         /// <param name="context"></param>
         public void CreateOrUpdateUser(OAuthCreatingTicketContext context)
         {
-            if (_userService.FindUser(context.GetEmail()) != null)
-            {
-                if (context.AccessToken != null)
-                {
-                    _userService.CreateOrUpdateMicrosoftUser(context.GetEmail(), context.AccessToken);
-                }
-            }
-            else
+            if (context.AccessToken != null)
             {
                 _userService.CreateOrUpdateMicrosoftUser(context.GetEmail(), context.AccessToken);
-                MailService mail = new MailService(context.GetEmail());
-                mail.SendConfirmationMail(context.GetEmail());
             }
         }
 

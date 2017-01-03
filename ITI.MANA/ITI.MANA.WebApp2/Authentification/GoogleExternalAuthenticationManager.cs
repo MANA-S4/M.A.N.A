@@ -11,26 +11,18 @@ namespace ITI.MANA.WebApp.Authentification
         readonly UserService _userService;
         string email;
 
-        public GoogleExternalAuthenticationManager (UserService userService)
+        public GoogleExternalAuthenticationManager(UserService userService)
         {
             _userService = userService;
         }
 
         public void CreateOrUpdateUser(OAuthCreatingTicketContext context)
         {
-            if (_userService.FindUser(context.GetEmail()) != null)
-            {
-                if (context.AccessToken != null)
-                {
-                    _userService.CreateOrUpdateGoogleUser(context.GetEmail(), context.AccessToken, context.RefreshToken, context.TokenType, context.ExpiresIn);
-                }
-            }
-            else
+            if (context.AccessToken != null)
             {
                 _userService.CreateOrUpdateGoogleUser(context.GetEmail(), context.AccessToken, context.RefreshToken, context.TokenType, context.ExpiresIn);
-                MailService mail = new MailService(context.GetEmail());
-                mail.SendConfirmationMail(context.GetEmail());
             }
+
         }
 
         public User FindUser(OAuthCreatingTicketContext context)
