@@ -13,6 +13,8 @@ import Logout from './components/Logout.vue'
 import ContactEdit from './components/Contacts/ContactEdit.vue'
 import ContactList from './components/Contacts/ContactList.vue'
 
+import TaskList from './components/Tasks/TaskList.vue' 
+
 import AuthService from './services/AuthService'
 
 Vue.use(VueRouter)
@@ -46,7 +48,9 @@ const router = new VueRouter({
     { path: '', component: Home, beforeEnter: requireAuth },
 
     { path: '/contacts', component: ContactList, beforeEnter: requireAuth },
-    { path: '/contacts/:mode([create|edit]+)/:id?', component: ContactEdit, beforeEnter: requireAuth }
+    { path: '/contacts/:mode([create|edit]+)/:id?', component: ContactEdit, beforeEnter: requireAuth },
+
+    { path: '/tasks', component: TaskList, beforeEnter: requireAuth }
   ]
 })
 
