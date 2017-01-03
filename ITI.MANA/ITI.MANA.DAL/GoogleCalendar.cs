@@ -16,11 +16,6 @@ namespace ITI.MANA.DAL
     public class GoogleCalendar
     {
         /// <summary>
-        /// The scopes of the application
-        /// </summary>
-        static string[] Scopes = { CalendarService.Scope.CalendarReadonly };
-
-        /// <summary>
         /// Gets the events list.
         /// </summary>
         /// <value>

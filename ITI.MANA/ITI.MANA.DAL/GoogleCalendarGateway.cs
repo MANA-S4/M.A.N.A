@@ -68,11 +68,14 @@ namespace ITI.MANA.DAL
             }
         }
 
-        public void ExportEventsFromGoogle(Events events)
+        public void ExportEventsFromGoogle(int userId,string eventsJson)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
-
+                con.Execute(
+                    "iti.sExportEventsFromGoogle",
+                    new { UserId = userId,Json = eventsJson },
+                    commandType: CommandType.StoredProcedure);
             }
         }
     }

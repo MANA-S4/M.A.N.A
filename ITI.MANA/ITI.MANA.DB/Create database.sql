@@ -151,7 +151,8 @@ create table iti.Events
 (
 	EventId  int identity(1, 1),
 	UserId int,
-	EventName nvarchar(32),
+	Etag nvarchar(max),
+	EventName nvarchar(max),
 	EventDate  datetime2,
 	IsFinish bit,
 	IsPrivate bit,

@@ -5,7 +5,10 @@
     "Dapper": "1.50.2",
     "Google.Apis.Calendar.v3": "1.19.0.689",
     "NETStandard.Library": "1.6.0",
-    "System.Data.SqlClient": "4.1.0",
+    "Newtonsoft.Json": "9.0.1",
+    "System.ComponentModel": "4.3.0",
+    "system.componentmodel.typeconverter": "4.3.0",
+    "System.Data.SqlClient": "4.3.0",
     "System.IO.FileSystem": "4.3.0"
   },
 

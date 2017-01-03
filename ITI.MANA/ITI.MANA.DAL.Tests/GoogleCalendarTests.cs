@@ -9,6 +9,8 @@ using Google.Apis.Auth.OAuth2.Flows;
 using Google.Apis.Calendar.v3;
 using Google.Apis.Services;
 using Google.Apis.Calendar.v3.Data;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace ITI.MANA.DAL.Tests
 {
@@ -16,7 +18,7 @@ namespace ITI.MANA.DAL.Tests
     public class GoogleCalendarTests
     {
         GoogleCalendarGateway sut = new GoogleCalendarGateway(TestHelpers.ConnectionString);
-              
+
         string[] Scopes = { CalendarService.Scope.CalendarReadonly };
         string ApplicationName = "M.A.N.A";
 
@@ -33,15 +35,14 @@ namespace ITI.MANA.DAL.Tests
         {
             UserCredential credential;
             TokenResponse token = sut.GetResponseToken(13);
-            
+
             var initializer = new GoogleAuthorizationCodeFlow.Initializer
             {
                 ClientSecrets = new ClientSecrets
                 {
                     ClientId = "847663728233-mgjdj8ej4t8obpcmad2aoea9qfok65in.apps.googleusercontent.com",
                     ClientSecret = "VQbak4VjBRvTU2H_yaZLs7US",
-                },
-                Scopes = Scopes
+                }
             };
 
             var flow = new GoogleAuthorizationCodeFlow(initializer);
@@ -62,7 +63,19 @@ namespace ITI.MANA.DAL.Tests
             request.OrderBy = EventsResource.ListRequest.OrderByEnum.StartTime;
 
             Events events = request.Execute();
+
+            string test = JsonConvert.SerializeObject(events.Items);
+
+            string jEvents = new JArray(events.Items.Select(e => new JObject(
+               new JProperty("Etag", e.ETag),
+               new JProperty("Date", e.Start.Date ?? e.Start.DateTime.Value.ToString("yyyy-MM-dd HH:mm:ss")),
+               new JProperty("Summary", e.Summary)))).ToString();
+
             Assert.That(events != null);
+            Assert.That(test != null);
+
+            sut.ExportEventsFromGoogle(1, jEvents);
+
         }
     }
 }
