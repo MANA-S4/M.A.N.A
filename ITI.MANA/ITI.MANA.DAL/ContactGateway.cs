@@ -18,16 +18,19 @@ namespace ITI.MANA.DAL
             _connectionString = connectionString;
         }
 
-        public IEnumerable<Contact> GetAll()
+        public IEnumerable<Contact> GetAll(int userId)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 return con.Query<Contact>(
-                    @"celect c.ContactId,
-                             c.FirstName,
-                             c.LastName,
-                             c.BirthDate,
-                      from iti.vContact c;");
+                    @"select c.ContactId, 
+                        u.Email, 
+                        c.RelationType
+                        from iti.Contacts c 
+                        join iti.Users u 
+                        on c.UserRelationId = u.UserId 
+                        where c.UserId = @UserId;",
+                    new { UserId = userId });
             }
         }
 
@@ -36,40 +39,52 @@ namespace ITI.MANA.DAL
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 return con.Query<Contact>(
-                        @"celect c.ContactId,
-                                 c.FirstName,
-                                 c.LastName,
-                                 c.BirthDate,
-                          from iti.vContact c
+                        @"select c.ContactId
+                          from iti.Contacts c
                           where c.ContactId = @ContactId;",
-                        new { StudentId = contactId })
+                        new { ContactId = contactId })
                     .FirstOrDefault();
             }
         }
 
-        public Contact FindByName(string firctName, string lactName)
+        public Contact FindByMail(string email)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
-                return con.Query<Contact>(
-                        @"celect c.ContactId,
-                                 c.FirstName,
-                                 c.LastName,
-                                 c.BirthDate,
-                          from iti.vStudent c
-                          where c.firctName = @FirctName and c.lactName = @LactName;",
-                        new { FirctName = firctName, LactName = lactName })
+                return con.Query<Contact>( //Changer la commande
+                        @"select u.UserId
+                          from iti.Users u
+                          where u.email = @Email",
+                        new { Email = email })
                     .FirstOrDefault();
             }
         }
 
-        public void Create(string firstName, string lastName, DateTime birthDate)
+        /// <summary>
+        /// Allow to find a id by mail
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        public int FindIdByMail(string email)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                return con.Query<int>( //Changer la commande
+                        @"select u.UserId
+                          from iti.Users u
+                          where u.email = @Email",
+                        new { Email = email })
+                    .FirstOrDefault();
+            }
+        }
+
+        public void Create(int userId, string relationType, int userRelationId)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 con.Execute(
-                    "iti.cContactCreate",
-                    new { FirstName = firstName, LastName = lastName, BirthDate = birthDate },
+                    "iti.sContactCreate",
+                    new { UserId = userId, RelationType = relationType, UserRelationId = userRelationId },
                     commandType: CommandType.StoredProcedure);
             }
         }
@@ -79,19 +94,19 @@ namespace ITI.MANA.DAL
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 con.Execute(
-                    "iti.cContactDelete",
-                    new { StudentId = contactId },
+                    "iti.sContactDelete",
+                    new { ContactId = contactId },
                     commandType: CommandType.StoredProcedure);
             }
         }
 
-        public void Update(int contactId, string firstName, string lastName, DateTime birthDate)
+        public void Update(int contactId, string relationType)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 con.Execute(
-                    "iti.cContactUpdate",
-                    new { ContactId = contactId, FirstName = firstName, LastName = lastName, BirthDate = birthDate },
+                    "iti.sContactUpdate",
+                    new { ContactId = contactId, RelationType = relationType },
                     commandType: CommandType.StoredProcedure);
             }
         }
@@ -101,8 +116,8 @@ namespace ITI.MANA.DAL
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 con.Execute(
-                    "iti.cAccignClacc",
-                    new { StudentId = contactId, UserId = userId },
+                    "iti.sAssignPerson",
+                    new { ContactId = contactId, UserId = userId },
                     commandType: CommandType.StoredProcedure);
             }
         }

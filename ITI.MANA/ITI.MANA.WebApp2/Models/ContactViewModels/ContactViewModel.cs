@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ITI.MANA.DAL
+namespace ITI.MANA.WebApp.Models.ContactViewModels
 {
-    public class Contact
+    public class ContactViewModel
     {
         public int ContactId { get; set; }
 
-        public string Email { get; }
-
         public string RelationType { get; set; }
+        
+        public string Email { get; set; }
     }
 }

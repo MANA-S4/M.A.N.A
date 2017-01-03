@@ -10,19 +10,18 @@
             </div>
         </div>
 
-        <!-- Pour la recherche, prend en compte un v-model -->
+        <!-- For the search, take a v-model -->
         <div class="panel panel-default">
             <input type="text" name="search" v-model="search" id="search" placeholder="Rechercher"/>
         </div>
-        <!-- Fin de la div -->
+        <!-- End of search div -->
 
         <table class="table table-striped table-hover table-bordered">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Nom</th>
-                    <th>Prénom</th>
-                    <th>Date de naissance</th>
+                    <th>ContactId</th>
+                    <th>Email</th>
+                    <th>RelationType</th>
                     <th>Options</th>       
                 </tr>
             </thead>
@@ -34,12 +33,10 @@
 
                 <tr v-for="i of list"> <!-- modification de contactList en list pour afficher les contacts en fonction de ma recherche -->
                     <td>{{ i.contactId }}</td>
-                    <td>{{ i.lastName }}</td>
-                    <td>{{ i.firstName }}</td>
-                    <td>{{ i.birthDate }}</td>
+                    <td>{{ i.email }}</td>
+                    <td>{{ i.relationType }}</td>
                     <td>
                         <router-link :to="`contacts/edit/${i.contactId}`"><i class="glyphicon glyphicon-pencil"></i></router-link>
-                        <a href="#" @click="followContact(i.contactId)"><i class="glyphicon glyphicon-plus"></i></a> <!-- rajouter followContact et je pense que ça va être un nouveau routeur-->
                         <a href="#" @click="deleteContact(i.contactId)"><i class="glyphicon glyphicon-remove"></i></a>          
                     </td>
                 </tr>
@@ -71,7 +68,7 @@
         },
 
         computed: {
-            ...mapGetters(['ContactList']),
+            ...mapGetters(['contactList']),
 
             /// ---------------------- Question 4 -------------------------------------
             list: function() {
@@ -79,7 +76,7 @@
                 let i = 0;
                 
                 for(i = 0; i < this.contactList.length; i++) {
-                    if (this.contactList[i].firstName.includes(this.search) || this.contactList[i].lastName.includes(this.search)) {
+                    if (this.contactList[i].email.includes(this.search)) {
                         contact.push(this.contactList[i]);
                     }
                 }

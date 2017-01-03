@@ -15,18 +15,19 @@
             </div>
 
             <div class="form-group">
-                <label class="required">Nom</label>
-                <input type="text" v-model="item.lastName" class="form-control" required>
+                <label class="required">Email</label>
+                <input type="text" v-model="item.email" class="form-control" required>
             </div>
 
             <div class="form-group">
-                <label class="required">Prénom</label>
-                <input type="text" v-model="item.firstName" class="form-control" required>
-            </div>
-
-            <div class="form-group">
-                <label class="required">Date de naissance</label>
-                <input type="date" v-model="item.birthDate" class="form-control" required>
+                <label class="required">Lien</label>
+                <select v-model="item.relationType" class="form-control" required>
+                    <option>Père</option>
+                    <option>Mère</option>
+                    <option>Frère</option>
+                    <option>Soeur</option>
+                    <option>Colocataire</option>
+                </select>
             </div>
 
             <button type="submit" class="btn btn-primary">Sauvegarder</button>
@@ -48,7 +49,7 @@
         },
 
         computed: {
-            ...mapGetters(['ContactList'])
+            ...mapGetters(['contactList'])
         },
 
         created() {
@@ -73,10 +74,8 @@
 
                 var errors = [];
 
-                if(!this.item.lastName) errors.push("Nom")
-                if(!this.item.firstName) errors.push("Prénom")
-                if(!this.item.birthDate) errors.push("Date de naissance")
-                //if(!this.item.classId) errors.push("Classe")
+                if(!this.item.email) errors.push("Email")
+                if(!this.item.relationType) errors.push("RelationType")
 
                 this.errors = errors;
 
