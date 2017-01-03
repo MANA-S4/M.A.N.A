@@ -22,17 +22,19 @@ namespace ITI.MANA.WebApp.Services
             return true;
         }
 
-        public bool CreateOrUpdateGoogleUser(string email, string refreshToken)
+        public bool CreateOrUpdateGoogleUser(string email,string accessToken, string refreshToken, string tokenType, TimeSpan? expireIn)
         {
             User user = _userGateway.FindByEmail(email);
             if (user == null)
             {
-                _userGateway.CreateGoogleUser(email, refreshToken);
+                _userGateway.CreateGoogleUser(email, accessToken, refreshToken, tokenType, expireIn);
+                MailService mail = new MailService(email);
+                mail.SendConfirmationMail(email);
                 return true;
             }
             else
             {
-                _userGateway.UpdateGoogleToken(user.UserId, refreshToken);
+                _userGateway.UpdateGoogleToken(user.UserId, accessToken, refreshToken, tokenType, expireIn);
             }
             return false;
         }
@@ -49,6 +51,8 @@ namespace ITI.MANA.WebApp.Services
             if(user == null)
             {
                 _userGateway.CreateMicrosoftUser(email, accessToken);
+                MailService mail = new MailService(email);
+                mail.SendConfirmationMail(email);
                 return true;
             } 
             else

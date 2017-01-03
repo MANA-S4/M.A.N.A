@@ -5,30 +5,42 @@ using System.Threading.Tasks;
 using MailKit.Net.Smtp;
 using MailKit;
 using MimeKit;
+using ITI.MANA.DAL;
 
 namespace ITI.MANA.WebApp.Server
 {
     public class MailServer
     {
-        public static void MailServerTest(string[] args)
+        /// <summary>
+        /// MailServer constructor
+        /// </summary>
+        public MailServer()
+        {          
+        }
+
+        /// <summary>
+        /// Allow to send confirmation inscription email
+        /// </summary>
+        /// <param name="email"></param>
+        public void SendMail(string email)
         {
             var message = new MimeMessage();
-            message.From.Add(new MailboxAddress("Marie Dupond", "marie.dupond@test.com"));
-            message.To.Add(new MailboxAddress("Mrs. Chanandler Bong", "chandler@friends.com"));
-            message.Subject = "How you doin'?";
+            message.From.Add(new MailboxAddress("Julie Laco", "cookit2015m@gmail.com"));
+            message.To.Add(new MailboxAddress(email, email));
+            message.Subject = "Confirmation d'inscription";
             message.Body = new TextPart("plain")
             {
-                Text = @"Hey Chandler, I just wanted to let you know that Monica and I were goint to go play some paintball, you in ? --Juju"
+                Text = @"Félicitation pour votre inscription ! M.A.N.A vous remercie pour votre attention à son égard."
             };
 
             using(var client = new SmtpClient())
             {
                 client.ServerCertificateValidationCallback = (s, c, h, e) => true;
-                client.Connect("smtp.friends.com", 587, false);
-
+                client.Connect("smtp.gmail.com", 465, true);
+                
                 client.AuthenticationMechanisms.Remove("XOAUTH2");
 
-                client.Authenticate("juju", "password");
+                client.Authenticate("cookit2015m@gmail.com", "intechinfo");
 
                 client.Send(message);
                 client.Disconnect(true);

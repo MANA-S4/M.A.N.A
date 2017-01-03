@@ -13,8 +13,7 @@ namespace ITI.MANA.DAL.Tests
 
         [Test]
         public void can_create_find_update_and_delete_user()
-        {
-            
+        {        
             string email = string.Format("user{0}@test.com", Guid.NewGuid());
             byte[] password = Guid.NewGuid().ToByteArray();
 
@@ -53,39 +52,38 @@ namespace ITI.MANA.DAL.Tests
         public void can_create_google_user()
         {
             string email = string.Format("user{0}@test.com", Guid.NewGuid());
-            string refreshToken = Guid.NewGuid().ToString().Replace("-", string.Empty);
+            string accessToken = Guid.NewGuid().ToString().Replace("-", string.Empty);
 
-            sut.CreateGoogleUser(email, refreshToken);
+            sut.CreateGoogleUser(email, accessToken);
             User user = sut.FindByEmail(email);
 
-            Assert.That(user.GoogleRefreshToken, Is.EqualTo(refreshToken));
+            Assert.That(user.GoogleRefreshToken, Is.EqualTo(accessToken));
 
-            refreshToken = Guid.NewGuid().ToString().Replace("-", string.Empty);
-            sut.UpdateGoogleToken(user.UserId, refreshToken);
+            accessToken = Guid.NewGuid().ToString().Replace("-", string.Empty);
+            sut.UpdateGoogleToken(user.UserId, accessToken);
 
             user = sut.FindById(user.UserId);
-            Assert.That(user.GoogleRefreshToken, Is.EqualTo(refreshToken));
+            Assert.That(user.GoogleRefreshToken, Is.EqualTo(accessToken));
 
             sut.Delete(user.UserId);
         }
 
         [Test]
         public void can_create_microsoft_user()
-        {
-            
+        {        
             string email = string.Format("user{0}@test.com", Guid.NewGuid());
-            string refreshToken = Guid.NewGuid().ToString().Replace("-", string.Empty);
+            string accessToken = Guid.NewGuid().ToString().Replace("-", string.Empty);
 
-            sut.CreateMicrosoftUser(email, refreshToken);
+            sut.CreateMicrosoftUser(email, accessToken);
             User user = sut.FindByEmail(email);
 
-            Assert.That(user.MicrosoftRefreshToken, Is.EqualTo(refreshToken));
+            Assert.That(user.MicrosoftAccessToken, Is.EqualTo(accessToken));
 
-            refreshToken = Guid.NewGuid().ToString().Replace("-", string.Empty);
-            sut.UpdateMicrosoftToken(user.UserId, refreshToken);
+            accessToken = Guid.NewGuid().ToString().Replace("-", string.Empty);
+            sut.UpdateMicrosoftToken(user.UserId, accessToken);
 
             user = sut.FindById(user.UserId);
-            Assert.That(user.MicrosoftRefreshToken, Is.EqualTo(refreshToken));
+            Assert.That(user.MicrosoftAccessToken, Is.EqualTo(accessToken));
 
             sut.Delete(user.UserId);
         }

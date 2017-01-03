@@ -10,6 +10,9 @@ import Home from './components/Home.vue'
 import Login from './components/Login.vue'
 import Logout from './components/Logout.vue'
 
+import ContactEdit from './components/contacts/ContactEdit.vue'
+import ContactList from './components/contacts/ContactList.vue'
+
 import AuthService from './services/AuthService'
 
 Vue.use(VueRouter)
@@ -40,8 +43,10 @@ const router = new VueRouter({
     { path: '/login', component: Login },
     { path: '/logout', component: Logout, beforeEnter: requireAuth },
 
-    { path: '', component: Home, beforeEnter: requireAuth }
+    { path: '', component: Home, beforeEnter: requireAuth },
 
+    { path: '/contacts', component: ContactList, beforeEnter: requireAuth },
+    { path: '/contacts/:mode([create|edit]+)/:id?', component: ContactEdit, beforeEnter: requireAuth }
   ]
 })
 

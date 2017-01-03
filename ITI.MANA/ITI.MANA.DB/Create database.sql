@@ -1,4 +1,5 @@
 create database [ITI.S4.MANA];
+GO
 
 use [ITI.S4.MANA];
 GO
@@ -173,7 +174,10 @@ create table iti.Notifications
 create table iti.GoogleUser
 (
 	UserId int identity(1,1),
-	RefreshToken varchar(64) not null,
+	AccessToken varchar(64) not null,
+	RefreshToken varchar(64),
+	TokenType varchar(64),
+	ExpireIn datetime2
 	
 	constraint PK_GoogleUserId primary key(UserId),
 	constraint FK_GoogleUser_UserId foreign key(UserId) references iti.Users(UserId)
@@ -186,4 +190,13 @@ create table iti.MicrosoftUser
 
 	constraint PK_MicrosoftUserId primary key(UserId),
 	constraint FK_MicrosoftUser_UserId foreign key(UserId) references iti.Users(UserId)
+);
+
+create table iti.PasswordUser
+(
+	UserId int identity(1,1),
+	[Password] varbinary(128) not null,
+
+	constraint PK_PasswordUserId primary key(UserId),
+	constraint FK_PasswordUser_UserId foreign key(UserId) references iti.Users(UserId)
 );
