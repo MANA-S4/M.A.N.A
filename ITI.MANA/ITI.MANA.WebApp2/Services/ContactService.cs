@@ -9,12 +9,10 @@ namespace ITI.MANA.WebApp.Services
     public class ContactService
     {
         readonly ContactGateway _contactGateway;
-        readonly PasswordHasher _passwordHasher;
         
-        public ContactService(ContactGateway contactGateway, PasswordHasher passwordHasher)
+        public ContactService(ContactGateway contactGateway)
         {
             _contactGateway = contactGateway;
-            _passwordHasher = passwordHasher;
         }
 
         public Result<Contact> GetById(int id)

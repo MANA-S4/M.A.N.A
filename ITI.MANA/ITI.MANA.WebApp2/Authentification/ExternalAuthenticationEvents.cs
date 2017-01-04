@@ -16,13 +16,13 @@ namespace ITI.MANA.WebApp.Authentification
             _userManager = userManager;
         }
 
-        public Task OnCreatingTicket(OAuthCreatingTicketContext context)
+        public System.Threading.Tasks.Task OnCreatingTicket(OAuthCreatingTicketContext context)
         {
             _userManager.CreateOrUpdateUser(context);
             User user = _userManager.FindUser(context);
             ClaimsPrincipal principal = CreatePrincipal(user);
             context.Ticket = new AuthenticationTicket(principal, context.Ticket.Properties, CookieAuthentication.AuthenticationScheme);
-            return Task.CompletedTask;
+            return System.Threading.Tasks.Task.CompletedTask;
         }
 
         ClaimsPrincipal CreatePrincipal(User user)
