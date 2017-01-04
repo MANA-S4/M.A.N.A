@@ -51,3 +51,28 @@ export async function refreshContactList({ commit }) {
     return result;
 }
 
+// Tasks
+export async function createTask({ commit }, model) {
+    var result = await wrapAsyncApiCall(commit, () => TaskApi.createTaskAsync(model));
+    if(result) commit(types.ADD_TASK, result);
+    return result;
+}
+
+export async function updateTask({ commit }, model) {
+    var result = await wrapAsyncApiCall(commit, () => TaskApi.updateTaskAsync(model));
+    if(result) commit(types.EDIT_TASK, result);
+    return result;
+}
+
+export async function deleteTask({ commit }, taskId) {
+    var result = await wrapAsyncApiCall(commit, () => TaskApi.deleteTaskAsync(taskId));
+    if(result) commit(types.REMOVE_TASK, result)
+    return result;
+}
+
+export async function refreshTaskList({ commit }) {
+    var result = await wrapAsyncApiCall(commit, () => TaskApi.getTaskListAsync());
+    if(result) commit(types.REFRESH_TASK_LIST, result);
+    return result;
+}
+
