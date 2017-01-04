@@ -39,7 +39,6 @@ namespace ITI.MANA.DAL
             }
         }
 
-        ////
         public void Create(int taskId)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
@@ -69,17 +68,6 @@ namespace ITI.MANA.DAL
                 con.Execute(
                     "iti.sTaskUpdate",
                     new { TaskId = taskId },
-                    commandType: CommandType.StoredProcedure);
-            }
-        }
-
-        public void AssignPerson(int taskId, int userId)
-        {
-            using (SqlConnection con = new SqlConnection(_connectionString))
-            {
-                con.Execute(
-                    "iti.sAssignPersonTask",
-                    new { TaskId = taskId, UserId = userId },
                     commandType: CommandType.StoredProcedure);
             }
         }

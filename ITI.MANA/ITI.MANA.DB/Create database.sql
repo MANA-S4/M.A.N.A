@@ -129,7 +129,6 @@ create table iti.Tasks
 	TaskName nvarchar(32),
 	TaskDate datetime2,
 	IsFinish bit,
-	IsPrivate bit,
 	UserId int,
 
 	constraint PK_Tasks primary key(TaskID),
