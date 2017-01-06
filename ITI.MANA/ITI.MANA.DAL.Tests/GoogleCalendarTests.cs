@@ -74,7 +74,7 @@ namespace ITI.MANA.DAL.Tests
             Assert.That(events != null);
             Assert.That(test != null);
 
-            sut.ExportEventsFromGoogle(1, jEvents);
+            sut.ExportEventsFromGoogle(13, jEvents);
 
         }
     }
