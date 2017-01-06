@@ -57,9 +57,9 @@ namespace ITI.MANA.WebApp.Controllers
         }
 
         [HttpPut("{taskId}")]
-        public IActionResult UpdateTask(int taskId, [FromBody] TaskViewModel model)
+        public IActionResult UpdateTask(int taskId, string taskName, DateTime taskDate, [FromBody] TaskViewModel model)
         {
-            Result<Task> result = _taskService.UpdateTask(taskId);
+            Result<Task> result = _taskService.UpdateTask(taskId, taskName, taskDate);
             return this.CreateResult<Task, TaskViewModel>(result, o =>
             {
                 o.ToViewModel = s => s.ToTaskViewModel();

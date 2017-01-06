@@ -33,7 +33,7 @@ namespace ITI.MANA.WebApp.Services
             return Result.Success(Status.Created, task);
         }
 
-        public Result<Task> UpdateTask(int taskId)
+        public Result<Task> UpdateTask(int taskId, string taskName, DateTime taskDate)
         {
             Task task;
             if ((task = _taskGateway.FindById(taskId)) == null)
@@ -46,7 +46,7 @@ namespace ITI.MANA.WebApp.Services
                 if (c != null && c.TaskId != task.TaskId) return Result.Failure<Task>(Status.BadRequest, "A task with this name already exists.");
             }
 
-            _taskGateway.Update(taskId);
+            _taskGateway.Update(taskId, taskName, taskDate);
             task = _taskGateway.FindById(taskId);
             return Result.Success(Status.Ok, task);
         }

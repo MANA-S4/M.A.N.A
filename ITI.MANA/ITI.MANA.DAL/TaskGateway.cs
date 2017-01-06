@@ -73,13 +73,13 @@ namespace ITI.MANA.DAL
             }
         }
 
-        public void Update(int taskId)
+        public void Update(int taskId, string taskName, DateTime taskDate)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 con.Execute(
                     "iti.sTaskUpdate",
-                    new { TaskId = taskId },
+                    new { TaskId = taskId, TaskName = taskName, TaskDate = taskDate },
                     commandType: CommandType.StoredProcedure);
             }
         }
