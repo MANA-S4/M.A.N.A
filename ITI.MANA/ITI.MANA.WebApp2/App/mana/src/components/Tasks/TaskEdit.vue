@@ -21,7 +21,7 @@
 
             <div class="form-group">
                 <label>Date</label>
-                <input type="datetime" v-model="item.taskDate" class="form-control">
+                <input type="date" v-model="item.taskDate" class="form-control">
             </div>
 
             <!--<div class="form-group">
