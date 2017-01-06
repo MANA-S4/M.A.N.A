@@ -15,20 +15,19 @@
             </div>
 
             <div class="form-group">
-                <label class="required">Objet</label>
-                <input type="text" v-model="item.object" class="form-control" required>
+                <label class="required">Name</label>
+                <input type="text" v-model="item.taskName" class="form-control" required>
             </div>
 
             <div class="form-group">
-                <label class="required">Qui</label>
-                <select v-model="item.attribute" class="form-control" required>
-                    <option>Père</option>
-                    <option>Mère</option>
-                    <option>Frère</option>
-                    <option>Soeur</option>
-                    <option>Colocataire</option>
-                </select>
+                <label>Date</label>
+                <input type="datetime" v-model="item.taskDate" class="form-control">
             </div>
+
+            <!--<div class="form-group">
+                <label>IsFinish</label>
+                <input type="checkbox" v-model="item.isFinish" class="form-control">
+            </div>-->
 
             <button type="submit" class="btn btn-primary">Sauvegarder</button>
         </form>
@@ -74,8 +73,7 @@
 
                 var errors = [];
 
-                if(!this.item.object) errors.push("Objet")
-                if(!this.item.attribute) errors.push("Qui")
+                if(!this.item.taskName) errors.push("TaskName")
 
                 this.errors = errors;
 

@@ -12,18 +12,22 @@
         <table class="table table-striped table-hover table-bordered">
             <thead>
                 <tr>
-                    <th>TaskId</th>
-                    <th>ToDo</th>
-                    <th>User</th>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Terminée</th>
                     <th>Options</th>       
                 </tr>
             </thead>
 
             <tbody>
+                <tr v-if="taskList.length == 0">
+                    <td colspan="6" class="text-center">Il n'y a actuellement aucune tâche.</td>
+                </tr>
+
                 <tr v-for="i of list">
-                    <td>{{ i.taskId }}</td>
-                    <td>{{ i.toDo }}</td>
-                    <td>{{ i.user }}</td>
+                    <td>{{ i.taskName }}</td>
+                    <td>{{ i.taskDate }}</td>
+                    <td>{{ i.isFinish }}</td>
                     <td>
                         <router-link :to="`tasks/edit/${i.taskId}`"><i class="glyphicon glyphicon-pencil"></i></router-link>
                         <a href="#" @click="deleteTask(i.taskId)"><i class="glyphicon glyphicon-remove"></i></a>          
@@ -56,17 +60,17 @@
             ...mapGetters(['taskList']),
 
             /// ---------------------- Question 4 -------------------------------------
-            /*list: function() {
+            list: function() {
                 let task =  [];
                 let i = 0;
                 
                 for(i = 0; i < this.taskList.length; i++) {
-                    if (this.taskList[i].toDo.includes(this.search)) {
+                    if (this.taskList[i].taskName.includes(this.search)) {
                         task.push(this.taskList[i]);
                     }
                 }
                 return task;
-            }*/
+            }
             /// ------------------------------------------------------------------------   
         },
 

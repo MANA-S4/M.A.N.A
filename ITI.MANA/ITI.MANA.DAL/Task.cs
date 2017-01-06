@@ -9,10 +9,9 @@ namespace ITI.MANA.DAL
     {
         public int TaskId { get; set; }
 
-        public string Name { get; set; }
+        public string TaskName { get; set; }
 
-        public DateTime Date { get; set; }
-
-        public bool IsFinish { get; set; }
+        public DateTime TaskDate { get; set; }
+        
     }
 }

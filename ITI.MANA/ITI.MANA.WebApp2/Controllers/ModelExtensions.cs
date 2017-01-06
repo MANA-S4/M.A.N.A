@@ -25,9 +25,8 @@ namespace ITI.MANA.WebApp.Controllers
             return new TaskViewModel
             {
                 TaskId = @this.TaskId,
-                Name = @this.Name,
-                Date = @this.Date,
-                IsFinish = @this.IsFinish
+                TaskName = @this.TaskName,
+                TaskDate = @this.TaskDate
             };
         }
 

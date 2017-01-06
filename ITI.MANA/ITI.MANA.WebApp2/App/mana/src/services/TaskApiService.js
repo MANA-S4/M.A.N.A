@@ -12,7 +12,7 @@ class TaskApiService {
         return await getAsync(endpoint, '', AuthService.accessToken);
     }
 
-    async getTaskAsync(contactId) {
+    async getTaskAsync(taskId) {
         return await getAsync(endpoint, taskId, AuthService.accessToken);
     }
 
@@ -24,7 +24,7 @@ class TaskApiService {
         return await putAsync(endpoint, model.taskId, AuthService.accessToken, model);
     }
 
-    async deleteTaskAsync(contactId) {
+    async deleteTaskAsync(taskId) {
         return await deleteAsync(endpoint, taskId, AuthService.accessToken);
     }
 }

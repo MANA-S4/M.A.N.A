@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace ITI.MANA.WebApp.Services
 {
@@ -15,36 +14,36 @@ namespace ITI.MANA.WebApp.Services
             _taskGateway = taskGateway;
         }
 
-        public Result<DAL.Task> GetById(int taskId)
+        public Result<Task> GetById(int taskId)
         {
-            DAL.Task task;
-            if ((task = _taskGateway.FindById(taskId)) == null) return Result.Failure<DAL.Task>(Status.NotFound, "Task not found.");
+            Task task;
+            if ((task = _taskGateway.FindById(taskId)) == null) return Result.Failure<Task>(Status.NotFound, "Task not found.");
             return Result.Success(Status.Ok, task);
         }
 
-        public Result<IEnumerable<DAL.Task>> GetAll(int taskId)
+        public Result<IEnumerable<Task>> GetAll(int taskId)
         {
             return Result.Success(Status.Ok, _taskGateway.GetAll(taskId));
         }
 
-        public Result<DAL.Task> CreateContact(int taskId)
+        public Result<Task> CreateTask(string taskName, int userId)
         {
-            _taskGateway.Create(taskId);
-            DAL.Task task = _taskGateway.FindById(taskId);
+            _taskGateway.Create(taskName, userId);
+            Task task = _taskGateway.FindTask(userId, taskName);
             return Result.Success(Status.Created, task);
         }
 
-        public Result<DAL.Task> UpdateTask(int taskId)
+        public Result<Task> UpdateTask(int taskId)
         {
-            DAL.Task task;
+            Task task;
             if ((task = _taskGateway.FindById(taskId)) == null)
             {
-                return Result.Failure<DAL.Task>(Status.NotFound, "Task not found.");
+                return Result.Failure<Task>(Status.NotFound, "Task not found.");
             }
 
             {
-                DAL.Task c = _taskGateway.FindById(taskId);
-                if (c != null && c.TaskId != task.TaskId) return Result.Failure<DAL.Task>(Status.BadRequest, "A task with this name already exists.");
+                Task c = _taskGateway.FindById(taskId);
+                if (c != null && c.TaskId != task.TaskId) return Result.Failure<Task>(Status.BadRequest, "A task with this name already exists.");
             }
 
             _taskGateway.Update(taskId);

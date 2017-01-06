@@ -43,6 +43,7 @@ namespace ITI.MANA.WebApp
             services.AddMvc();
             services.AddSingleton(_ => new UserGateway(Configuration["ConnectionStrings:MANADB"]));
             services.AddSingleton(_ => new ContactGateway(Configuration["ConnectionStrings:MANADB"]));
+            services.AddSingleton(_ => new TaskGateway(Configuration["ConnectionStrings:MANADB"]));
             services.AddSingleton<PasswordHasher>();
             services.AddSingleton<UserService>();
             services.AddSingleton<TokenService>();

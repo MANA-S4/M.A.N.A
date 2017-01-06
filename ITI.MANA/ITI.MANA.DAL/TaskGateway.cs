@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace ITI.MANA.DAL
 {
@@ -22,7 +21,7 @@ namespace ITI.MANA.DAL
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 return con.Query<Task>(
-                    @"select t.TaskId, t.Name, t.Date, t.IsFinish from iti.Tasks t;");
+                    @"select t.TaskId, t.TaskName, t.TaskDate, t.IsFinish, t.UserId from iti.Tasks t;");
             }
         }
 
@@ -31,21 +30,34 @@ namespace ITI.MANA.DAL
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 return con.Query<Task>(
-                        @"select c.TaskId
+                        @"select t.TaskId
                           from iti.Tasks t
-                          where c.Taskid = @TaskId;",
+                          where t.Taskid = @TaskId;",
                         new { TaskId = taskId })
                     .FirstOrDefault();
             }
         }
 
-        public void Create(int taskId)
+        public Task FindTask(int userId, string taskName)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                return con.Query<Task>(
+                        @"select t.TaskName, t.UserId
+                          from iti.Tasks t
+                          where t.UserId = @UserId and t.TaskName = @TaskName;",
+                        new { UserId = userId, TaskName = taskName })
+                    .FirstOrDefault();
+            }
+        }
+
+        public void Create(string taskName, int userId)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 con.Execute(
                     "iti.sTaskCreate",
-                    new { TaskId = taskId },
+                    new { TaskName = taskName, UserId = userId },
                     commandType: CommandType.StoredProcedure);
             }
         }

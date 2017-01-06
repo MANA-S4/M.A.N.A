@@ -6,8 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
-using System.Threading.Tasks;
 using ITI.MANA.WebApp.Authentification;
+using ITI.MANA.DAL;
 
 namespace ITI.MANA.WebApp.Controllers
 {
@@ -26,8 +26,8 @@ namespace ITI.MANA.WebApp.Controllers
         public IActionResult GetTaskList()
         {
             int taskId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
-            Result<IEnumerable<DAL.Task>> result = _taskService.GetAll(taskId);
-            return this.CreateResult<IEnumerable<DAL.Task>, IEnumerable<TaskViewModel>>(result, o =>
+            Result<IEnumerable<Task>> result = _taskService.GetAll(taskId);
+            return this.CreateResult<IEnumerable<Task>, IEnumerable<TaskViewModel>>(result, o =>
             {
                 o.ToViewModel = x => x.Select(s => s.ToTaskViewModel());
             });
@@ -36,8 +36,8 @@ namespace ITI.MANA.WebApp.Controllers
         [HttpGet("{taskId}", Name = "GetTask")]
         public IActionResult GetTaskById(int taskId)
         {
-            Result<DAL.Task> result = _taskService.GetById(taskId);
-            return this.CreateResult<DAL.Task, TaskViewModel>(result, o =>
+            Result<Task> result = _taskService.GetById(taskId);
+            return this.CreateResult<Task, TaskViewModel>(result, o =>
             {
                 o.ToViewModel = s => s.ToTaskViewModel();
             });
@@ -46,9 +46,9 @@ namespace ITI.MANA.WebApp.Controllers
         [HttpPost]
         public IActionResult CreateTask([FromBody] TaskViewModel model)
         {
-            int taskId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
-            Result<DAL.Task> result = _taskService.CreateContact(taskId);
-            return this.CreateResult<DAL.Task, TaskViewModel>(result, o =>
+            int userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            Result<Task> result = _taskService.CreateTask(model.TaskName, userId);
+            return this.CreateResult<Task, TaskViewModel>(result, o =>
             {
                 o.ToViewModel = s => s.ToTaskViewModel();
                 o.RouteName = "GetTask";
@@ -59,8 +59,8 @@ namespace ITI.MANA.WebApp.Controllers
         [HttpPut("{taskId}")]
         public IActionResult UpdateTask(int taskId, [FromBody] TaskViewModel model)
         {
-            Result<DAL.Task> result = _taskService.UpdateTask(taskId);
-            return this.CreateResult<DAL.Task, TaskViewModel>(result, o =>
+            Result<Task> result = _taskService.UpdateTask(taskId);
+            return this.CreateResult<Task, TaskViewModel>(result, o =>
             {
                 o.ToViewModel = s => s.ToTaskViewModel();
             });

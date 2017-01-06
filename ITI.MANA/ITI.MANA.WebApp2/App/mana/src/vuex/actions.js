@@ -1,6 +1,7 @@
 import * as types from './mutation-types'
 
 import ContactApi from '../services/ContactApiService'
+import TaskApi from '../services/TaskApiService'
 
 // Wraps the async call to an api service in order to handle loading, and errors.
 async function wrapAsyncApiCall(commit, apiCall, rethrowError) {
