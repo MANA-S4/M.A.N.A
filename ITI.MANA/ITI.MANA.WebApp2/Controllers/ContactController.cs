@@ -17,10 +17,12 @@ namespace ITI.MANA.WebApp.Controllers
     public class ContactController : Controller
     {
         readonly ContactService _contactService;
+        readonly UserService _userService;
 
-        public ContactController(ContactService contactService)
+        public ContactController(ContactService contactService, UserService userService)
         {
             _contactService = contactService;
+            _userService = userService;
         }
 
         [HttpGet]
@@ -44,18 +46,17 @@ namespace ITI.MANA.WebApp.Controllers
             });
         }
 
-        // Le build passe dans les deux conditions et renvoie une nullreference exception
         [HttpPost]
         public IActionResult CreateContact([FromBody] ContactViewModel model)
         {
-            //if (model.Email == null)
-            //{
-            //    MailService mail = new MailService(model.Email);
-            //    mail.SendInvitation(model.Email);
-            //    return this.Ok();
-            //}
-            //else
-            //{
+            if (_userService.FindUser(model.Email) == null)
+            {
+                MailService mail = new MailService(model.Email);
+                mail.SendInvitation(model.Email);
+                return this.Ok();
+            }
+            else
+            {
                 int userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
                 Result<Contact> result = _contactService.CreateContact(model.RelationType, userId, model.Email);
                 return this.CreateResult<Contact, ContactViewModel>(result, o =>
@@ -64,7 +65,7 @@ namespace ITI.MANA.WebApp.Controllers
                     o.RouteName = "GetContact";
                     o.RouteValues = s => new { id = s.ContactId };
                 });
-            //}
+            }
         }
 
         [HttpPut("{contactId}")]
