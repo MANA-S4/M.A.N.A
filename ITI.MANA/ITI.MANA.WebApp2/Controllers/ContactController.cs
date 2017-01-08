@@ -44,17 +44,27 @@ namespace ITI.MANA.WebApp.Controllers
             });
         }
 
+        // Le build passe dans les deux conditions et renvoie une nullreference exception
         [HttpPost]
         public IActionResult CreateContact([FromBody] ContactViewModel model)
         {
-            int userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
-            Result<Contact> result = _contactService.CreateContact(model.RelationType, userId, model.Email);
-            return this.CreateResult<Contact, ContactViewModel>(result, o =>
-            {
-                o.ToViewModel = s => s.ToContactViewModel();
-                o.RouteName = "GetContact";
-                o.RouteValues = s => new { id = s.ContactId };
-            });
+            //if (model.Email == null)
+            //{
+            //    MailService mail = new MailService(model.Email);
+            //    mail.SendInvitation(model.Email);
+            //    return this.Ok();
+            //}
+            //else
+            //{
+                int userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+                Result<Contact> result = _contactService.CreateContact(model.RelationType, userId, model.Email);
+                return this.CreateResult<Contact, ContactViewModel>(result, o =>
+                {
+                    o.ToViewModel = s => s.ToContactViewModel();
+                    o.RouteName = "GetContact";
+                    o.RouteValues = s => new { id = s.ContactId };
+                });
+            //}
         }
 
         [HttpPut("{contactId}")]
