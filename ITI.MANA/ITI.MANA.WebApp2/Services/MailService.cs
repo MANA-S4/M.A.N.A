@@ -28,5 +28,11 @@ namespace ITI.MANA.WebApp.Services
             MailServer mail = new MailServer();
             mail.SendMail(email);
         }
+
+        public void SendInvitation(string email)
+        {
+            MailServer mail = new MailServer();
+            mail.SendInvitationMail(email);
+        }
     }
 }

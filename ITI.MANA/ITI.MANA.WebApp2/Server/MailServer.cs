@@ -46,5 +46,31 @@ namespace ITI.MANA.WebApp.Server
                 client.Disconnect(true);
             }
         }
+   
+        public void SendInvitationMail(string email)
+        {
+            var message = new MimeMessage();
+            message.From.Add(new MailboxAddress("Julie Laco", "cookit2015m@gmail.com"));
+            message.To.Add(new MailboxAddress(email, email));
+            message.Subject = "Confirmation d'inscription";
+            message.Body = new TextPart("plain")
+            {
+                Text = @"Vous avez été invité sur le site de M.A.N.A par {0}"
+            };
+
+            using (var client = new SmtpClient())
+            {
+                client.ServerCertificateValidationCallback = (s, c, h, e) => true;
+                client.Connect("smtp.gmail.com", 465, true);
+
+                client.AuthenticationMechanisms.Remove("XOAUTH2");
+
+                client.Authenticate("cookit2015m@gmail.com", "intechinfo");
+
+                client.Send(message);
+                client.Disconnect(true);
+            }
+        }
+
     }
 }
