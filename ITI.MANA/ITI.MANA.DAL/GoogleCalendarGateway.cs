@@ -16,43 +16,23 @@ namespace ITI.MANA.DAL
 {
     public class GoogleCalendarGateway
     {
-        static string[] Scopes = { CalendarService.Scope.CalendarReadonly };
-        static string ApplicationName = "M.A.N.A";
-        static EventsResource.ListRequest request = service.Events.List("primary");
         readonly string _connectionString;
-        static UserCredential credential;
-        Events events;
 
         public GoogleCalendarGateway(string connectionString)
         {
             _connectionString = connectionString;
         }
-
-        static CalendarService service = new CalendarService(new BaseClientService.Initializer()
-        {
-            HttpClientInitializer = credential,
-            ApplicationName = ApplicationName,
-        });
-
-        /// <summary>
-        /// Defines the google request parameters.
-        /// </summary>
-        public void DefineGoogleRequestParameters()
-        {
-            request.SingleEvents = true;
-            request.OrderBy = EventsResource.ListRequest.OrderByEnum.StartTime;
-        }
-
+        
         /// <summary>
         /// Gets the list events.
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<Events> GetListEvents(int userId)
+        public IEnumerable<GoogleCalendarEvents> GetListEvents(int userId)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
-                return con.Query<Events>(
-                        "select e.EventName, e.EventDate, e.IsFinish, e.IsPrivate, E.Members from iti.Events e where e.UserId = @UserId",
+                return con.Query<GoogleCalendarEvents>(
+                        "select e.EventName as EventName, e.EventDate as Date, e.IsPrivate as Private, e.Members as Members from iti.Events e where e.UserId = @UserId",
                         new { UserId = userId });
             }
         }

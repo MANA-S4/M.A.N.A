@@ -75,7 +75,10 @@ namespace ITI.MANA.DAL.Tests
             Assert.That(test != null);
 
             sut.ExportEventsFromGoogle(13, jEvents);
+            
+            IEnumerable<GoogleCalendarEvents> eventsFromBdd = sut.GetListEvents(13);
 
+            Assert.That(eventsFromBdd != null);
         }
     }
 }

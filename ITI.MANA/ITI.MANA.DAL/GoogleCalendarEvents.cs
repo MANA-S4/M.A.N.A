@@ -13,7 +13,7 @@ using System.IO;
 
 namespace ITI.MANA.DAL
 {
-    public class GoogleCalendar
+    public class GoogleCalendarEvents
     {
         /// <summary>
         /// Gets the events list.
@@ -21,7 +21,7 @@ namespace ITI.MANA.DAL
         /// <value>
         /// The events.
         /// </value>
-        public Events Events { get; set; }
+        public string EventName { get; set; }
 
         /// <summary>
         /// Gets or sets the date.
@@ -29,18 +29,10 @@ namespace ITI.MANA.DAL
         /// <value>
         /// The date.
         /// </value>
-        public DateTime Date { get; set; }
+        public string Date { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether this instance is finish.
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if this instance is finish; otherwise, <c>false</c>.
-        /// </value>
-        public bool IsFinish { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="GoogleCalendar"/> is private.
+        /// Gets or sets a value indicating whether this <see cref="GoogleCalendarEvents"/> is private.
         /// </summary>
         /// <value>
         ///   <c>true</c> if private; otherwise, <c>false</c>.

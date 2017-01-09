@@ -45,7 +45,7 @@ namespace ITI.MANA.WebApp
             services.AddSingleton<PasswordHasher>();
             services.AddSingleton<UserService>();
             services.AddSingleton<TokenService>();
-            services.AddSingleton<GoogleService>();
+            services.AddSingleton<GoogleCalendarService>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)

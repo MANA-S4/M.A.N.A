@@ -12,7 +12,7 @@ class CalendarApiService {
         return await getAsync(endpoint, '', AuthService.accessToken);
     }
 
-    async ExportFromGoogleAsync(contactId) {
+    async ExportFromGoogleAsync(userId) {
         return await getAsync(endpoint, '', AuthService.accessToken);
     }
 
@@ -24,7 +24,7 @@ class CalendarApiService {
         return await putAsync(endpoint, model.eventId, AuthService.accessToken, model);
     }
 
-    async deleteEventsAsync(contactId) {
+    async deleteEventsAsync(userId) {
         return await deleteAsync(endpoint, eventId, AuthService.accessToken);
     }
 }
