@@ -141,7 +141,7 @@ namespace ITI.MANA.WebApp.Controllers
             return View();
         }
 
-        async Task SignIn(string email, string userId)
+        async System.Threading.Tasks.Task SignIn(string email, string userId)
         {
             List<Claim> claims = new List<Claim>
             {

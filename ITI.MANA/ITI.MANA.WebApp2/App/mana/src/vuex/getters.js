@@ -3,3 +3,6 @@ export const isLoading = ({ app }) => app.isLoading // eq. export const isLoadin
 
 // Contacts
 export const contactList = ({ contacts }) => contacts.contactList
+
+// Tasks
+export const taskList = ({ tasks }) => tasks.taskList

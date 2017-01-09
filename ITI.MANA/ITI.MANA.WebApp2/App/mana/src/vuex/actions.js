@@ -1,6 +1,7 @@
 import * as types from './mutation-types'
 
 import ContactApi from '../services/ContactApiService'
+import TaskApi from '../services/TaskApiService'
 
 // Wraps the async call to an api service in order to handle loading, and errors.
 async function wrapAsyncApiCall(commit, apiCall, rethrowError) {
@@ -48,6 +49,31 @@ export async function deleteContact({ commit }, contactId) {
 export async function refreshContactList({ commit }) {
     var result = await wrapAsyncApiCall(commit, () => ContactApi.getContactListAsync());
     if(result) commit(types.REFRESH_CONTACT_LIST, result);
+    return result;
+}
+
+// Tasks
+export async function createTask({ commit }, model) {
+    var result = await wrapAsyncApiCall(commit, () => TaskApi.createTaskAsync(model));
+    if(result) commit(types.ADD_TASK, result);
+    return result;
+}
+
+export async function updateTask({ commit }, model) {
+    var result = await wrapAsyncApiCall(commit, () => TaskApi.updateTaskAsync(model));
+    if(result) commit(types.EDIT_TASK, result);
+    return result;
+}
+
+export async function deleteTask({ commit }, taskId) {
+    var result = await wrapAsyncApiCall(commit, () => TaskApi.deleteTaskAsync(taskId));
+    if(result) commit(types.REMOVE_TASK, result)
+    return result;
+}
+
+export async function refreshTaskList({ commit }) {
+    var result = await wrapAsyncApiCall(commit, () => TaskApi.getTaskListAsync());
+    if(result) commit(types.REFRESH_TASK_LIST, result);
     return result;
 }
 
