@@ -30,7 +30,7 @@
                 </select>
             </div>
 
-            <button type="submit" class="btn btn-primary">Sauvegarder</button>
+            <button type="submit" class="btn btn-warning">Sauvegarder</button>
         </form>
     </div>
 </template>

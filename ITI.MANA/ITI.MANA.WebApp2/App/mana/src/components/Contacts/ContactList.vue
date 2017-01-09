@@ -6,7 +6,7 @@
 
         <div class="panel panel-default">
             <div class="panel-body text-right">
-                <router-link class="btn btn-primary" :to="`contacts/create`"><i class="glyphicon glyphicon-plus"></i> Ajouter un contact</router-link>
+                <router-link class="btn btn-warning" :to="`contacts/create`"><i class="glyphicon glyphicon-plus"></i> Ajouter un contact</router-link>
             </div>
         </div>
 
@@ -92,5 +92,17 @@
 </script>
 
 <style lang="less">
-
+tr {
+    text-align: left;
+}
+.panel {
+    text-align: left;
+    background-color: #00b050;
+}
+.panel-body {
+    background-color: #00b050;
+}
+.table {
+    background-color: rgba(17,42,13,.5);
+}
 </style>
