@@ -14,7 +14,6 @@
                 <tr>
                     <th>Name</th>
                     <th>Date</th>
-                    <th>Terminée</th>
                     <th>Options</th>       
                 </tr>
             </thead>
@@ -27,7 +26,6 @@
                 <tr v-for="i of list">
                     <td>{{ i.taskName }}</td>
                     <td>{{ i.taskDate }}</td>
-                    <td>{{ i.isFinish }}</td>
                     <td>
                         <router-link :to="`tasks/edit/${i.taskId}`"><i class="glyphicon glyphicon-pencil"></i></router-link>
                         <a href="#" @click="deleteTask(i.taskId)"><i class="glyphicon glyphicon-remove"></i></a>          
