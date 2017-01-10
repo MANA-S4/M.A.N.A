@@ -105,4 +105,10 @@ tr {
 .table {
     background-color: rgba(17,42,13,.5);
 }
+.glyphicon-remove {
+    color: black;
+}
+.glyphicon-pencil {
+    color: black;
+}
 </style>
