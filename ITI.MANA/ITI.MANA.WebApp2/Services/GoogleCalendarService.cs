@@ -35,9 +35,10 @@ namespace ITI.MANA.WebApp.Services
             _options = options;
         }
 
-        public void CreateTokenResponse(int userId)
+        public Events CreateTokenResponseAndCallRequest(int userId)
         {
             _token = _googleCalendarGateway.GetResponseToken(userId);
+            return CreateAndExecuteGoogleCalendarRequest(_options);
         }
 
         public Events CreateAndExecuteGoogleCalendarRequest(IOptions<GoogleCalendarServiceOptions> googleOptions)
