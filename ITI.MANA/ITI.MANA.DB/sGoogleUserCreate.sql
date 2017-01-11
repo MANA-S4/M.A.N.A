@@ -18,4 +18,3 @@ set identity_insert iti.GoogleUser on;
 end;
 
 drop procedure iti.sGoogleUserCreate
-

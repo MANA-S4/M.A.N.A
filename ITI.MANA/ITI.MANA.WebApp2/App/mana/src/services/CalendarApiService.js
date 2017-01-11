@@ -24,7 +24,7 @@ class CalendarApiService {
         return await putAsync(endpoint, model.eventId, AuthService.accessToken, model);
     }
 
-    async deleteEventsAsync(userId) {
+    async deleteEventsAsync(eventId) {
         return await deleteAsync(endpoint, eventId, AuthService.accessToken);
     }
 }

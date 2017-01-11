@@ -9,7 +9,8 @@ import App from './components/App.vue'
 import Home from './components/Home.vue'
 import Login from './components/Login.vue'
 import Logout from './components/Logout.vue'
-import Calendars from './components/Calendars.vue'
+
+import Calendars from './components/Calendars/CalendarsList.vue'
 
 import AuthService from './services/AuthService'
 

@@ -13,6 +13,7 @@ using System.Security.Claims;
 
 namespace ITI.MANA.WebApp.Controllers
 {
+    [Route("api/calendar")]
     public class GoogleCalendarController : Controller
     {
         readonly GoogleCalendarService _googleCalendarService;

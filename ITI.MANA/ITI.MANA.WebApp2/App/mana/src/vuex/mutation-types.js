@@ -1,3 +1,8 @@
 // App
 export const SET_IS_LOADING = 'SET_IS_LOADING'
 export const ERROR_HAPPENED = 'ERROR_HAPPENED'
+
+export const ADD_EVENT = 'ADD_EVENT'
+export const EDIT_EVENT = 'EDIT_EVENT'
+export const REMOVE_EVENT = 'REMOVE_EVENT'
+export const REFRESH_EVENT_LIST = 'REFRESH_EVENT_LIST'

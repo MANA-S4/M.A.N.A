@@ -8,11 +8,8 @@
 )
 as
 begin
-	update iti.GoogleUser set AccessToken = @AccessToken,RefreshToken = @RefreshToken,TokenType = @TokenType,ExpireIn=@ExpireIn   where UserId = @UserId;
+	update iti.GoogleUser set AccessToken = @AccessToken,TokenType = @TokenType,ExpireIn=@ExpireIn   where UserId = @UserId;
 	return 0;
 end;
 
-drop proc iti.sGoogleUserUpdate
-
-select * from iti.Users;
-select * from iti.GoogleUser;
+drop proc iti.sGoogleUserUpdate;
