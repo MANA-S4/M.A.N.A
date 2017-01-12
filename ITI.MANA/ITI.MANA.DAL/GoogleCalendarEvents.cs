@@ -16,6 +16,14 @@ namespace ITI.MANA.DAL
     public class GoogleCalendarEvents
     {
         /// <summary>
+        /// Gets or sets the event identifier.
+        /// </summary>
+        /// <value>
+        /// The event identifier.
+        /// </value>
+        public int EventId { get; set; }
+
+        /// <summary>
         /// Gets the events list.
         /// </summary>
         /// <value>
@@ -29,7 +37,7 @@ namespace ITI.MANA.DAL
         /// <value>
         /// The date.
         /// </value>
-        public string Date { get; set; }
+        public DateTime Date { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether this <see cref="GoogleCalendarEvents"/> is private.
@@ -46,5 +54,13 @@ namespace ITI.MANA.DAL
         /// The event members.
         /// </value>
         public string Members { get; set; }
+
+        /// <summary>
+        /// Gets or sets the user identifier.
+        /// </summary>
+        /// <value>
+        /// The user identifier.
+        /// </value>
+        public int UserId { get; set; }
     }
 }

@@ -12,6 +12,8 @@ using Microsoft.Extensions.Options;
 using static Google.Apis.Auth.OAuth2.Flows.GoogleAuthorizationCodeFlow;
 using Google.Apis.Services;
 using Google.Apis.Calendar.v3.Data;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -34,14 +36,18 @@ namespace ITI.MANA.WebApp.Services
             _googleCalendarGateway = googleCalendarGateway;
             _options = options;
         }
-
-        public Events CreateTokenResponseAndCallRequest(int userId)
+        public Result<IEnumerable<GoogleCalendarEvents>> GetListEvents(int userId)
         {
-            _token = _googleCalendarGateway.GetResponseToken(userId);
-            return CreateAndExecuteGoogleCalendarRequest(_options);
+            return Result.Success(Status.Ok, _googleCalendarGateway.GetListEvents(userId));
         }
 
-        public Events CreateAndExecuteGoogleCalendarRequest(IOptions<GoogleCalendarServiceOptions> googleOptions)
+        public void CreateTokenResponseAndCallRequest(int userId)
+        {
+            _token = _googleCalendarGateway.GetResponseToken(userId);
+            CreateAndExecuteGoogleCalendarRequest(_options, userId);
+        }
+
+        public void CreateAndExecuteGoogleCalendarRequest(IOptions<GoogleCalendarServiceOptions> googleOptions, int userId)
         {
             _initializer = new Initializer
             {
@@ -68,7 +74,16 @@ namespace ITI.MANA.WebApp.Services
             request.SingleEvents = true;
             request.OrderBy = EventsResource.ListRequest.OrderByEnum.StartTime;
 
-            return request.Execute();
+            Events listEvents = request.Execute();
+
+            string listEventsJson = JsonConvert.SerializeObject(listEvents.Items);
+
+            string jEvents = new JArray(listEvents.Items.Select(e => new JObject(
+               new JProperty("Etag", e.ETag),
+               new JProperty("Date", e.Start.Date ?? e.Start.DateTime.Value.ToString("yyyy-MM-dd HH:mm:ss")),
+               new JProperty("Summary", e.Summary)))).ToString();
+            
+            _googleCalendarGateway.ExportEventsFromGoogle(userId, jEvents);
         }
     }
 

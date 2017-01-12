@@ -11,6 +11,7 @@ import Login from './components/Login.vue'
 import Logout from './components/Logout.vue'
 
 import Calendars from './components/Calendars/CalendarsList.vue'
+import CalendarsEdit from './components/Calendars/CalendarsEdit.vue'
 
 import AuthService from './services/AuthService'
 
@@ -44,7 +45,8 @@ const router = new VueRouter({
     
     { path: '', component: Home, beforeEnter: requireAuth },
     
-    { path: '/calendars', component: Calendars, beforeEnter: requireAuth }
+    { path: '/calendars', component: Calendars, beforeEnter: requireAuth },
+    { path: '/calendars/:mode([create|edit]+)/:id?', component: CalendarsEdit, beforeEnter: requireAuth },
   ]
 })
 

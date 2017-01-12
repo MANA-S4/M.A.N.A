@@ -1,5 +1,5 @@
 <template>
-    <div>   
+    <div>
         <div class="page-header">
             <h1>Gestion des évènements</h1>
         </div>
@@ -29,8 +29,8 @@
                 </tr>
 
                 <tr v-for="i of List">
-                    <td>{{ i.Name }}</td>
-                    <td>{{ i.Date }}</td>
+                    <td>{{ i.eventName }}</td>
+                    <td>{{ i.eventDate }}</td>
                     <td>
                         <router-link :to="``"><i class="glyphicon glyphicon-pencil"></i></router-link>
                         <a href="#" @click=""><i class="glyphicon glyphicon-remove"></i></a>
@@ -38,21 +38,20 @@
                 </tr>
             </tbody>
         </table>
-    </div>    
+    </div>
 </template>
 
 <script>
     import { mapGetters, mapActions } from 'vuex'
 
     export default {
-        //-------------------------------
+
         data() {
             return {
                 search: '',
                 List: []
             }
         },
-        //-------------------------------
 
         created() {
             this.refreshEventsList();
@@ -61,23 +60,21 @@
         computed: {
             ...mapGetters(['eventsList']),
 
-            /// ---------------------- Question 4 -------------------------------------
-            list: function() {
-                let calendars =  [];
+            List: function () {
+                let calendars = [];
                 let i = 0;
-                
-                for(i = 0; i < this.eventsList.length; i++) {
-                    if (this.eventsList[i].name.includes(this.search)) {
+
+                for (i = 0; i < this.eventsList.length; i++) {
+                    if (this.eventsList[i].eventName.includes(this.search)) {
                         calendars.push(this.eventsList[i]);
                     }
                 }
                 return calendars;
             }
-            /// ------------------------------------------------------------------------   
         },
 
         methods: {
-            updateResource(data){
+            updateResource(data) {
                 this.List = data
             },
 

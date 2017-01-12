@@ -1,7 +1,7 @@
 import { getAsync, postAsync, putAsync, deleteAsync } from '../helpers/apiHelper'
 import AuthService from './AuthService'
 
-const endpoint = "/api/calendar";
+const endpoint = "/api/calendars";
 
 class CalendarApiService {
     constructor() {
