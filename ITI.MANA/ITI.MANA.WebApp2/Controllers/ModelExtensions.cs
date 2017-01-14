@@ -5,7 +5,7 @@ namespace ITI.PrimarySchool.WebApp.Controllers
 {
     public static class ModelExtensions
     {
-        public static EventsViewModel ToEventsViewModel(this GoogleCalendarEvents @this)
+        public static EventsViewModel ToEventsViewModel(this CalendarEvent @this)
         {
             return new EventsViewModel
             {

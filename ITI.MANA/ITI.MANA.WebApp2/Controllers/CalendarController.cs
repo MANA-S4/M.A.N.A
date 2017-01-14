@@ -10,25 +10,25 @@ using ITI.MANA.DAL;
 using ITI.MANA.WebApp.Models.CalendarViewModel;
 using ITI.PrimarySchool.WebApp.Controllers;
 
-// For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace ITI.MANA.WebApp.Controllers
 {
     [Route("api/calendars")]
-    public class GoogleCalendarController : Controller
+    public class CalendarController : Controller
     {
         readonly GoogleCalendarService _googleCalendarService;
+        readonly ManaCalendarService _manaCalendarService;
 
-        public GoogleCalendarController(GoogleCalendarService googleCalendarService)
+        public CalendarController(ManaCalendarService manaCalendarService,GoogleCalendarService googleCalendarService)
         {
+            _manaCalendarService = manaCalendarService;
             _googleCalendarService = googleCalendarService;
         }
 
         [HttpGet]
         public IActionResult GetEventsList()
         {
-            Result<IEnumerable<GoogleCalendarEvents>> result = _googleCalendarService.GetListEvents(int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value));
-            return this.CreateResult<IEnumerable<GoogleCalendarEvents>, IEnumerable<EventsViewModel>>(result, o =>
+            Result<IEnumerable<CalendarEvent>> result = _manaCalendarService.GetListEvents(int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value));
+            return this.CreateResult<IEnumerable<CalendarEvent>, IEnumerable<EventsViewModel>>(result, o =>
             {
                 o.ToViewModel = x => x.Select(s => s.ToEventsViewModel());
             });

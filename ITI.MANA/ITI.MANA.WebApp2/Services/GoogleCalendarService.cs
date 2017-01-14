@@ -21,7 +21,7 @@ namespace ITI.MANA.WebApp.Services
 {
     public class GoogleCalendarService
     {
-        readonly GoogleCalendarGateway _googleCalendarGateway;
+        readonly ManaCalendarGateway _googleCalendarGateway;
         readonly IOptions<GoogleCalendarServiceOptions> _options;
         TokenResponse _token;
         Initializer _initializer;
@@ -31,16 +31,12 @@ namespace ITI.MANA.WebApp.Services
         string _applicationName = "M.A.N.A";
 
 
-        public GoogleCalendarService(GoogleCalendarGateway googleCalendarGateway, IOptions<GoogleCalendarServiceOptions> options)
+        public GoogleCalendarService(ManaCalendarGateway googleCalendarGateway, IOptions<GoogleCalendarServiceOptions> options)
         {
             _googleCalendarGateway = googleCalendarGateway;
             _options = options;
         }
-        public Result<IEnumerable<GoogleCalendarEvents>> GetListEvents(int userId)
-        {
-            return Result.Success(Status.Ok, _googleCalendarGateway.GetListEvents(userId));
-        }
-
+        
         public void CreateTokenResponseAndCallRequest(int userId)
         {
             _token = _googleCalendarGateway.GetResponseToken(userId);

@@ -14,11 +14,11 @@ using Dapper;
 
 namespace ITI.MANA.DAL
 {
-    public class GoogleCalendarGateway
+    public class ManaCalendarGateway
     {
         readonly string _connectionString;
 
-        public GoogleCalendarGateway(string connectionString)
+        public ManaCalendarGateway(string connectionString)
         {
             _connectionString = connectionString;
         }
@@ -27,11 +27,11 @@ namespace ITI.MANA.DAL
         /// Gets the list events.
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<GoogleCalendarEvents> GetListEvents(int userId)
+        public IEnumerable<CalendarEvent> GetListEvents(int userId)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
-                return con.Query<GoogleCalendarEvents>(
+                return con.Query<CalendarEvent>(
                         "select e.EventId as EventId,e.UserId as UserId,e.EventName as EventName, e.EventDate as Date, e.IsPrivate as Private, e.Members as Members from iti.Events e where e.UserId = @UserId",
                         new { UserId = userId });
             }

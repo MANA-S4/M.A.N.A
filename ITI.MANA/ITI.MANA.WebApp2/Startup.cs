@@ -47,11 +47,12 @@ namespace ITI.MANA.WebApp
 
             services.AddMvc();
             services.AddSingleton(_ => new UserGateway(Configuration["ConnectionStrings:MANADB"]));
-            services.AddSingleton(_ => new GoogleCalendarGateway(Configuration["ConnectionStrings:MANADB"]));
+            services.AddSingleton(_ => new ManaCalendarGateway(Configuration["ConnectionStrings:MANADB"]));
             services.AddSingleton<PasswordHasher>();
             services.AddSingleton<UserService>();
             services.AddSingleton<TokenService>();
             services.AddSingleton<GoogleCalendarService>();
+            services.AddSingleton<ManaCalendarService>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)

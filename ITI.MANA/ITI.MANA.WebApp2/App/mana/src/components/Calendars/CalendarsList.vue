@@ -6,7 +6,8 @@
 
         <div class="panel panel-default">
             <div class="panel-body text-right">
-                <router-link class="btn btn-primary" :to="`events/create`"><i class="glyphicon glyphicon-plus"></i> Ajouter un évènements</router-link>
+                <!--<router-link class="btn btn-primary" :to="`calendars/exportFromGoogle`"><i class="glyphicon glyphicon-plus"></i> Exporter votre calendrier Google</router-link>-->
+                <router-link class="btn btn-primary" :to="`calendars/create`"><i class="glyphicon glyphicon-plus"></i> Ajouter un évènements</router-link>
             </div>
         </div>
 

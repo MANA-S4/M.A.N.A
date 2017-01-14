@@ -17,7 +17,7 @@ namespace ITI.MANA.DAL.Tests
     [TestFixture]
     public class GoogleCalendarTests
     {
-        GoogleCalendarGateway sut = new GoogleCalendarGateway(TestHelpers.ConnectionString);
+        ManaCalendarGateway sut = new ManaCalendarGateway(TestHelpers.ConnectionString);
 
         string[] Scopes = { CalendarService.Scope.CalendarReadonly };
         string ApplicationName = "M.A.N.A";
@@ -76,7 +76,7 @@ namespace ITI.MANA.DAL.Tests
 
             sut.ExportEventsFromGoogle(13, jEvents);
             
-            IEnumerable<GoogleCalendarEvents> eventsFromBdd = sut.GetListEvents(13);
+            IEnumerable<CalendarEvent> eventsFromBdd = sut.GetListEvents(13);
 
             Assert.That(eventsFromBdd != null);
         }
