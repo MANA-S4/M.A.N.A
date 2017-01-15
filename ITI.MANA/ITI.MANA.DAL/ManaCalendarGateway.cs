@@ -58,5 +58,38 @@ namespace ITI.MANA.DAL
                     commandType: CommandType.StoredProcedure);
             }
         }
+        
+        public void CreateEvent(string eventName, DateTime eventDate, string members, bool isPrivate, int userId)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                con.Execute(
+                    "iti.sEventCreate",
+                    new { EventName = eventName, EventDate = eventDate, Members = members, IsPrivate = isPrivate, UserId = userId },
+                    commandType: CommandType.StoredProcedure);
+            }
+        }
+        /*
+        public void DeleteEvent(int studentId)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                con.Execute(
+                    "iti.sStudentDelete",
+                    new { StudentId = studentId },
+                    commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void UpdateEvent(int studentId, string firstName, string lastName, DateTime birthDate, string gitHubLogin, int classId)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                con.Execute(
+                    "iti.sStudentUpdate",
+                    new { StudentId = studentId, FirstName = firstName, LastName = lastName, BirthDate = birthDate, GitHubLogin = gitHubLogin ?? string.Empty, ClassId = classId },
+                    commandType: CommandType.StoredProcedure);
+            }
+        }*/
     }
 }

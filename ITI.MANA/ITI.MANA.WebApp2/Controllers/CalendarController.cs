@@ -34,6 +34,12 @@ namespace ITI.MANA.WebApp.Controllers
             });
         }
 
+        [HttpPost]
+        public void CreateStudent([FromBody] EventsViewModel model)
+        {
+             _manaCalendarService.CreateEvent(model.EventName, model.EventDate, model.Members, model.IsPrivate, int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value));
+        }
+
         /*[HttpGet(Name = "ExportEvents")]
         [Authorize(ActiveAuthenticationSchemes = CookieAuthentication.AuthenticationScheme)]
         public void ExportEventsList()

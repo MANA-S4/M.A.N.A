@@ -23,7 +23,6 @@ namespace ITI.MANA.WebApp.Services
     {
         readonly ManaCalendarGateway _manaCalendarGateway;
 
-
         public ManaCalendarService(ManaCalendarGateway manaCalendarGateway)
         {
             _manaCalendarGateway = manaCalendarGateway;
@@ -32,6 +31,11 @@ namespace ITI.MANA.WebApp.Services
         public Result<IEnumerable<CalendarEvent>> GetListEvents(int userId)
         {
             return Result.Success(Status.Ok, _manaCalendarGateway.GetListEvents(userId));
+        }
+
+        public void CreateEvent(string eventName, DateTime eventDate, string members, bool isPrivate, int userId)
+        {
+            _manaCalendarGateway.CreateEvent(eventName, eventDate, members, isPrivate, userId);
         }
     }
 }
