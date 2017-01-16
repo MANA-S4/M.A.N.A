@@ -41,9 +41,9 @@
         </table>
 
          <!-- If user click on "Non" popup close -->
-        <delete-event-prompt v-if="showModal" @close="showModal = false" v-bind:eventId="deletingEventId">
+        <delete-calendar-prompt v-if="showModal" @close="showModal = false" v-bind:eventId="deletingEventId">
             <h3 slot="header">Suppression</h3>
-        </delete-event-prompt>
+        </delete-calendar-prompt>
         <!-- End -->
 
     </div>
