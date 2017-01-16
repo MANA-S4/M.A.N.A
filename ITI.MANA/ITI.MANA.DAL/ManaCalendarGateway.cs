@@ -48,6 +48,17 @@ namespace ITI.MANA.DAL
             }
         }
 
+        public CalendarEvent FindEvent(string eventName, DateTime eventDate, int userId)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                return con.Query<CalendarEvent>(
+                        "select e.eventId,e.eventName, e.eventDate, e.userId from iti.Events e where e.eventName = @EventName and e.eventDate = @EventDate and e.userId = @UserId",
+                        new { EventName = eventName, EventDate = eventDate ,UserId = userId })
+                    .FirstOrDefault();
+            }
+        }
+
         public void ExportEventsFromGoogle(int userId,string eventsJson)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))

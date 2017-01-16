@@ -33,9 +33,11 @@ namespace ITI.MANA.WebApp.Services
             return Result.Success(Status.Ok, _manaCalendarGateway.GetListEvents(userId));
         }
 
-        public void CreateEvent(string eventName, DateTime eventDate, string members, bool isPrivate, int userId)
+        public Result<CalendarEvent> CreateEvent(string eventName, DateTime eventDate, string members, bool isPrivate, int userId)
         {
             _manaCalendarGateway.CreateEvent(eventName, eventDate, members, isPrivate, userId);
+            CalendarEvent calendarEvent = _manaCalendarGateway.FindEvent(eventName, eventDate, userId);
+            return Result.Success(Status.Created, calendarEvent);
         }
     }
 }

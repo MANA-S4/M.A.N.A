@@ -35,9 +35,15 @@ namespace ITI.MANA.WebApp.Controllers
         }
 
         [HttpPost]
-        public void CreateStudent([FromBody] EventsViewModel model)
+        public IActionResult CreateEvent([FromBody] EventsViewModel model)
         {
-             _manaCalendarService.CreateEvent(model.EventName, model.EventDate, model.Members, model.IsPrivate, int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value));
+            Result<CalendarEvent> result = _manaCalendarService.CreateEvent(model.EventName, model.EventDate, model.Members, model.IsPrivate, int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value));
+            return this.CreateResult<CalendarEvent, EventsViewModel>( result, o =>
+            {
+                o.ToViewModel = s => s.ToEventsViewModel();
+                o.RouteName = "";
+                o.RouteValues = s => new { id = s.EventId };
+            } );
         }
 
         /*[HttpGet(Name = "ExportEvents")]

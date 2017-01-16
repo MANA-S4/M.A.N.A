@@ -64,7 +64,7 @@
             if(this.mode == 'edit') {
                 let item = this.eventsList.find(x => x.eventId == this.id);
 
-                if(!item) this.$router.replace('/event');
+                if(!item) this.$router.replace('/calendars');
 
                 this.item = { ...item }
             }
@@ -93,7 +93,7 @@
                         result = await this.updateEvent(this.item);
                     }
 
-                    if(result != null) this.$router.replace('/event');
+                    if(result != null) this.$router.replace('/calendars');
                 }
             }
         }
