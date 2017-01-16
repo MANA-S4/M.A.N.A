@@ -34,25 +34,44 @@
                     <td>{{ i.eventDate }}</td>
                     <td>
                         <router-link :to="`calendars/edit/${i.eventId}`"><i class="glyphicon glyphicon-pencil"></i></router-link>
-                        <a href="#" @click="deleteEvent(i.eventId)"><i class="glyphicon glyphicon-remove"></i></a>
+                        <a href="#"><i class="glyphicon glyphicon-remove" id="show-modal" @click="openDeleteEventPrompt(i.eventId)"></i></a> <!-- To open the popup--> 
                     </td>
                 </tr>
             </tbody>
         </table>
+
+         <!-- If user click on "Non" popup close -->
+        <delete-event-prompt v-if="showModal" @close="showModal = false" v-bind:eventId="deletingEventId">
+            <h3 slot="header">Suppression</h3>
+        </delete-event-prompt>
+        <!-- End -->
+
     </div>
 </template>
 
 <script>
     import { mapGetters, mapActions } from 'vuex'
+    import DeleteCalendarPrompt from './DeleteCalendarPrompt.vue'
 
     export default {
 
         data() {
             return {
+                // Define popup false to default
+                template: '#modal-template',
+                showModal: false,
+                deletingEventId: 0,
+                // End popup
                 search: '',
                 List: []
             }
         },
+
+         // Call vue DeleteCalendarPrompt
+        components: {
+            DeleteCalendarPrompt
+        },
+        // End
 
         created() {
             this.refreshEventsList();
@@ -79,7 +98,12 @@
                 this.List = data
             },
 
-            ...mapActions(['refreshEventsList' ,'deleteEvent'])
+            ...mapActions(['refreshEventsList' ,'deleteEvent']),
+
+             openDeleteEventPrompt(eventId) {
+                this.deletingEventId = eventId;
+                this.showModal = true;
+            }
         }
     }
 </script>
