@@ -39,5 +39,29 @@ namespace ITI.MANA.WebApp.Services
             CalendarEvent calendarEvent = _manaCalendarGateway.FindEvent(eventName, eventDate, userId);
             return Result.Success(Status.Created, calendarEvent);
         }
+
+        internal Result<CalendarEvent> UpdateEvent(int eventId, string eventName, DateTime eventDate, string members, bool isPrivate)
+        {
+            if (!IsNameValid(eventName)) return Result.Failure<CalendarEvent>(Status.BadRequest, "The event name is not valid.");
+            if (!IsNameValid(eventDate.ToString())) return Result.Failure<CalendarEvent>(Status.BadRequest, "The event date is not valid.");
+            CalendarEvent manaEvent;
+            if ((manaEvent = _manaCalendarGateway.FindById(eventId)) == null)
+            {
+                return Result.Failure<CalendarEvent>(Status.NotFound, "Event not found.");
+            }
+
+            _manaCalendarGateway.UpdateEvent(eventId, eventName, eventDate, members, isPrivate);
+            manaEvent = _manaCalendarGateway.FindById(eventId);
+            return Result.Success(Status.Ok, manaEvent);
+        }
+
+        internal Result<int> DeleteEvent(int id)
+        {
+            if (_manaCalendarGateway.FindById(id) == null) return Result.Failure<int>(Status.NotFound, "Event not found.");
+            _manaCalendarGateway.Delete(id);
+            return Result.Success(Status.Ok, id);
+        }
+
+        bool IsNameValid(string name) => !string.IsNullOrWhiteSpace(name);
     }
 }

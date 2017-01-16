@@ -33,8 +33,8 @@
                     <td>{{ i.eventName }}</td>
                     <td>{{ i.eventDate }}</td>
                     <td>
-                        <router-link :to="``"><i class="glyphicon glyphicon-pencil"></i></router-link>
-                        <a href="#" @click=""><i class="glyphicon glyphicon-remove"></i></a>
+                        <router-link :to="`calendars/edit/${i.eventId}`"><i class="glyphicon glyphicon-pencil"></i></router-link>
+                        <a href="#" @click="deleteEvent(i.eventId)"><i class="glyphicon glyphicon-remove"></i></a>
                     </td>
                 </tr>
             </tbody>
@@ -79,7 +79,7 @@
                 this.List = data
             },
 
-            ...mapActions(['refreshEventsList' ,'deleteEvents'])
+            ...mapActions(['refreshEventsList' ,'deleteEvent'])
         }
     }
 </script>

@@ -22,7 +22,7 @@ namespace ITI.MANA.DAL
         {
             _connectionString = connectionString;
         }
-        
+
         /// <summary>
         /// Gets the list events.
         /// </summary>
@@ -54,22 +54,63 @@ namespace ITI.MANA.DAL
             {
                 return con.Query<CalendarEvent>(
                         "select e.eventId,e.eventName, e.eventDate, e.userId from iti.Events e where e.eventName = @EventName and e.eventDate = @EventDate and e.userId = @UserId",
-                        new { EventName = eventName, EventDate = eventDate ,UserId = userId })
+                        new { EventName = eventName, EventDate = eventDate, UserId = userId })
                     .FirstOrDefault();
             }
         }
 
-        public void ExportEventsFromGoogle(int userId,string eventsJson)
+        public void UpdateEvent(int eventId, string eventName, DateTime eventDate, string members, bool isPrivate)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                con.Execute(
+                    "iti.sEventUpdate",
+                    new { EventId = eventId, EventName = eventName, EventDate = eventDate, Members = members, IsPrivate = isPrivate },
+                    commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void Delete(int id)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                if (con.Query<GoogleCalendarEvents>("select * from iti.GoogleEvents where EventId = @EventId", new { EventId = id }).FirstOrDefault() != null)
+                {
+                    con.Query(
+                        "delete from iti.GoogleEvents where EventId = @EventId",
+                        new { EventId = id }
+                        );
+                }
+
+                con.Execute(
+                    "iti.sDeleteEvent",
+                    new { EventId = id },
+                    commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public CalendarEvent FindById(object eventId)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                return con.Query<CalendarEvent>(
+                        "select * from iti.Events where EventId = @EventId",
+                        new { EventId = eventId })
+                    .FirstOrDefault();
+            }
+        }
+
+        public void ExportEventsFromGoogle(int userId, string eventsJson)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 con.Execute(
                     "iti.sExportEventsFromGoogle",
-                    new { UserId = userId,Json = eventsJson },
+                    new { UserId = userId, Json = eventsJson },
                     commandType: CommandType.StoredProcedure);
             }
         }
-        
+
         public void CreateEvent(string eventName, DateTime eventDate, string members, bool isPrivate, int userId)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))

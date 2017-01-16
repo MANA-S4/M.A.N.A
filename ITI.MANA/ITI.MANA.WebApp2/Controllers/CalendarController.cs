@@ -46,6 +46,23 @@ namespace ITI.MANA.WebApp.Controllers
             } );
         }
 
+        [HttpPut("{id}")]
+        public IActionResult UpdateEvent(int id, [FromBody] EventsViewModel model)
+        {
+            Result<CalendarEvent> result = _manaCalendarService.UpdateEvent(id, model.EventName, model.EventDate, model.Members, model.IsPrivate);
+            return this.CreateResult<CalendarEvent, EventsViewModel>(result, o =>
+            {
+                o.ToViewModel = s => s.ToEventsViewModel();
+            });
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteStudent(int id)
+        {
+            Result<int> result = _manaCalendarService.DeleteEvent(id);
+            return this.CreateResult(result);
+        }
+
         /*[HttpGet(Name = "ExportEvents")]
         [Authorize(ActiveAuthenticationSchemes = CookieAuthentication.AuthenticationScheme)]
         public void ExportEventsList()

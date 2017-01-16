@@ -39,8 +39,8 @@ export async function updateEvent({ commit }, model) {
    return result;
 }
 
-export async function deleteEvent({ commit }, classId) {
-    var result = await wrapAsyncApiCall(commit, () => EventApi.deleteEventsAsync(classId));
+export async function deleteEvent({ commit }, eventId) {
+    var result = await wrapAsyncApiCall(commit, () => EventApi.deleteEventsAsync(eventId));
     if(result) commit(types.REMOVE_EVENT, result);
     return result;
 }
