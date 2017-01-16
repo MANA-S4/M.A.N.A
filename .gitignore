@@ -35,3 +35,4 @@ ITI.MANA/.vs/restore.dg
 *.lock.json
 ITI.MANA/.vs/
 *.dg
+ITI.MANA/packages/
