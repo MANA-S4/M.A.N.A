@@ -6,7 +6,7 @@
 
         <div class="panel panel-default">
             <div class="panel-body text-right">
-                <router-link class="btn btn-primary" :to="`tasks/create`"><i class="glyphicon glyphicon-plus"></i> Ajouter une tâche</router-link>
+                <router-link class="btn btn-warning" :to="`tasks/create`"><i class="glyphicon glyphicon-plus"></i> Ajouter une tâche</router-link>
             </div>
 
         <table class="table table-striped table-hover table-bordered">
@@ -28,27 +28,44 @@
                     <td>{{ i.taskDate }}</td>
                     <td>
                         <router-link :to="`tasks/edit/${i.taskId}`"><i class="glyphicon glyphicon-pencil"></i></router-link>
-                        <a href="#" @click="deleteTask(i.taskId)"><i class="glyphicon glyphicon-remove"></i></a>          
+                        <a href="#"><i class="glyphicon glyphicon-remove" id="show-modal" @click="openDeleteTaskPrompt(i.taskId)"></i></a> <!-- To open the popup-->        
                     </td>
                 </tr>
 
             </tbody>
         </table>
+
+         <!-- If user click on "Non" popup close -->
+        <delete-task-prompt v-if="showModal" @close="showModal = false" v-bind:taskId="deletingTaskId">
+            <h3 slot="header">Suppression</h3>
+        </delete-task-prompt>
+        <!-- End -->
+
     </div>
 </template>
 
 <script>
     import { mapGetters, mapActions } from 'vuex'
+    import DeleteTaskPrompt from './DeleteTaskPrompt.vue' // Import the vue DeleteTaskPrompt
 
     export default {
-        //-------------------------------
         data() {
             return {
+                // Define popup false to default
+                template: '#modal-template',
+                showModal: false,
+                deletingTaskId: 0,
+                // End popup
                 search: '',
                 list: []
             }
         },
-        //-------------------------------
+
+        // Call vue DeletePrompt
+        components: {
+            DeleteTaskPrompt
+        },
+        // End
 
         created() {
             this.refreshTaskList();
@@ -57,7 +74,6 @@
         computed: {
             ...mapGetters(['taskList']),
 
-            /// ---------------------- Question 4 -------------------------------------
             list: function() {
                 let task =  [];
                 let i = 0;
@@ -69,15 +85,30 @@
                 }
                 return task;
             }
-            /// ------------------------------------------------------------------------   
         },
 
         methods: {
-            ...mapActions(['refreshTaskList' ,'deleteTask'])
+            ...mapActions(['refreshTaskList' ,'deleteTask']),
+
+            openDeleteTaskPrompt(taskId) {
+                this.deletingTaskId = taskId;
+                this.showModal = true;
+            }
         }
     }
 </script>
 
 <style lang="less">
-
+.panel-body text-right {
+    text-align: left;
+    background-color: #00b050; 
+    }
+.table table-striped table-hover table-bordered { background-color: #00b050;}
+th {
+    color: black;
+}
+td {
+    color: black;
+    text-align: left;
+}
 </style>

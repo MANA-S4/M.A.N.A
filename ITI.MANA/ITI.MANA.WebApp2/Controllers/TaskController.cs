@@ -51,7 +51,7 @@ namespace ITI.MANA.WebApp.Controllers
             return this.CreateResult<Task, TaskViewModel>(result, o =>
             {
                 o.ToViewModel = s => s.ToTaskViewModel();
-                o.RouteName = "GetTask";
+                o.RouteName = "";
                 o.RouteValues = s => new { id = s.TaskId };
             });
         }

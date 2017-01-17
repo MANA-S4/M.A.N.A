@@ -24,12 +24,7 @@
                 <input type="date" v-model="item.taskDate" class="form-control">
             </div>
 
-            <!--<div class="form-group">
-                <label>IsFinish</label>
-                <input type="checkbox" v-model="item.isFinish" class="form-control">
-            </div>-->
-
-            <button type="submit" class="btn btn-primary">Sauvegarder</button>
+            <button type="submit" class="btn btn-warning">Sauvegarder</button>
         </form>
     </div>
 </template>
@@ -95,5 +90,8 @@
 </script>
 
 <style lang="less">
-
+.form-group {
+    text-align: left;
+    color: black;
+}
 </style>

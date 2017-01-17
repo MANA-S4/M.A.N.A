@@ -46,6 +46,7 @@
 import AuthService from '../services/AuthService'
 import {mapGetters, mapActions } from 'vuex'
 import '../directives/requiredProviders'
+import $ from 'jquery'
 
 export default {
     computed: {
@@ -69,5 +70,6 @@ export default {
 </style>
 
 <style lang="less">
-    @import "../styles/global.less";
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "../styles/cover.css";
 </style>

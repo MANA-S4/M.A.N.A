@@ -14,10 +14,12 @@
                 </ul>
             </div>
 
-            <div class="form-group">
+            <div class="form-group" v-if="mode == 'create'">
                 <label class="required">Email</label>
                 <input type="text" v-model="item.email" class="form-control" required>
             </div>
+            
+            <div class="form-group" v-else><p>{{ item.email }}</p></div>
 
             <div class="form-group">
                 <label class="required">Lien</label>
@@ -30,7 +32,7 @@
                 </select>
             </div>
 
-            <button type="submit" class="btn btn-primary">Sauvegarder</button>
+            <button type="submit" class="btn btn-warning">Sauvegarder</button>
         </form>
     </div>
 </template>
