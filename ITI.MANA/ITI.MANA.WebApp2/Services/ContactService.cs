@@ -43,6 +43,11 @@ namespace ITI.MANA.WebApp.Services
         /// <returns></returns>
         public Result<Contact> CreateContact(string relationType, int userId, string email)
         {
+            /*string contactRelationType;
+            if(relationType == "Père" || relationType == "Mère")
+            {
+                contactRelationType = "Enfant";
+            }*/
             _contactGateway.Create(userId, relationType, GetIdByMail(email));
             Contact contact = _contactGateway.FindByMail(email);
             return Result.Success(Status.Created, contact);
