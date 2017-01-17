@@ -15,6 +15,9 @@
       "type": "platform",
       "version": "1.0.1"
     },
+    "Newtonsoft.Json": "9.0.1",
+    "NUnit": "3.5.0",
+    "NUnit.Runners": "3.5.0",
     "NUnitLite": "3.5.0"
   },
 

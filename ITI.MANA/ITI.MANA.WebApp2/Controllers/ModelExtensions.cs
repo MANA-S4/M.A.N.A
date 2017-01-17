@@ -1,4 +1,5 @@
 ﻿using ITI.MANA.DAL;
+using ITI.MANA.WebApp.Models.CalendarViewModel;
 using ITI.MANA.WebApp.Models.ContactViewModels;
 using ITI.MANA.WebApp.Models.TaskViewModels;
 using System;
@@ -21,12 +22,20 @@ namespace ITI.MANA.WebApp.Controllers
         }
 
         public static TaskViewModel ToTaskViewModel(this DAL.Task @this)
+        public static EventsViewModel ToEventsViewModel(this CalendarEvent @this)
         {
             return new TaskViewModel
+            return new EventsViewModel
             {
                 TaskId = @this.TaskId,
                 TaskName = @this.TaskName,
                 TaskDate = @this.TaskDate
+                EventId = @this.EventId,
+                EventName = @this.EventName,
+                EventDate = @this.Date,
+                UserId = @this.UserId,
+                IsPrivate = @this.Private,
+                Members = @this.Members
             };
         }
 

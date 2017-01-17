@@ -58,7 +58,7 @@ namespace ITI.MANA.DAL
             }
         }
 
-        public void CreateGoogleUser(string email,string accessToken , string refreshToken, string tokenType, TimeSpan? expireIn)
+        public void CreateGoogleUser(string email,string accessToken , string refreshToken, string tokenType, long expireIn)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
@@ -125,7 +125,7 @@ namespace ITI.MANA.DAL
             }
         }
 
-        public void UpdateGoogleToken(int userId, string accessToken , string refreshToken, string tokenType, TimeSpan? expireIn)
+        public void UpdateGoogleToken(int userId, string accessToken , string refreshToken, string tokenType, long expireIn)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {

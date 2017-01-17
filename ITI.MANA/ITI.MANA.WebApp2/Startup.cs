@@ -40,15 +40,24 @@ namespace ITI.MANA.WebApp
                 o.SigningCredentials = new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256);
             });
 
+            services.Configure<GoogleCalendarServiceOptions>(o =>
+            {
+                o.ClientId = Configuration["Authentication:Google:ClientId"];
+                o.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
+            });
+
             services.AddMvc();
             services.AddSingleton(_ => new UserGateway(Configuration["ConnectionStrings:MANADB"]));
             services.AddSingleton(_ => new ContactGateway(Configuration["ConnectionStrings:MANADB"]));
+            services.AddSingleton(_ => new ManaCalendarGateway(Configuration["ConnectionStrings:MANADB"]));
             services.AddSingleton(_ => new TaskGateway(Configuration["ConnectionStrings:MANADB"]));
             services.AddSingleton<PasswordHasher>();
             services.AddSingleton<UserService>();
             services.AddSingleton<TokenService>();
             services.AddSingleton<MailService>();
             services.AddSingleton<ContactService>();
+            services.AddSingleton<GoogleCalendarService>();
+            services.AddSingleton<ManaCalendarService>();
             services.AddSingleton<TaskService>();
         }
 

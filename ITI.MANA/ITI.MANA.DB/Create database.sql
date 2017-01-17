@@ -149,13 +149,22 @@ create table iti.Contacts
 create table iti.Events
 (
 	EventId  int identity(1, 1),
-	EventName nvarchar(32),
+	UserId int,
+	EventName nvarchar(max),
 	EventDate  datetime2,
-	IsFinish bit,
 	IsPrivate bit,
 	Members varchar(32),
 
-	constraint PK_Events primary key(EventId)
+	constraint PK_Events primary key(EventId),
+	constraint FK_Events_UserId foreign key(UserId) references iti.Users(UserId)
+);
+
+create table iti.GoogleEvents
+(
+	EventId  int,
+	Etag nvarchar(max),
+
+	constraint FK_GoogleEvents_EventId foreign key(EventId) references iti.[Events](EventId)
 );
 
 create table iti.Notifications
@@ -173,10 +182,10 @@ create table iti.Notifications
 create table iti.GoogleUser
 (
 	UserId int identity(1,1),
-	AccessToken varchar(64) not null,
-	RefreshToken varchar(64),
+	AccessToken nvarchar(72) not null,
+	RefreshToken nvarchar(72),
 	TokenType varchar(64),
-	ExpireIn datetime2
+	ExpireIn bigint
 	
 	constraint PK_GoogleUserId primary key(UserId),
 	constraint FK_GoogleUser_UserId foreign key(UserId) references iti.Users(UserId)
@@ -185,8 +194,8 @@ create table iti.GoogleUser
 create table iti.MicrosoftUser
 (
 	UserId int identity(1,1),
-	AccessToken varchar(64) not null,
-
+	AccessToken varchar(72) not null,
+	RefreshToken varchar(72),
 	constraint PK_MicrosoftUserId primary key(UserId),
 	constraint FK_MicrosoftUser_UserId foreign key(UserId) references iti.Users(UserId)
 );

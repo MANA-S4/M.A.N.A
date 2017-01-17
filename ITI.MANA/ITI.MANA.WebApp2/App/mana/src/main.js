@@ -12,6 +12,8 @@ import Logout from './components/Logout.vue'
 
 import ContactEdit from './components/Contacts/ContactEdit.vue'
 import ContactList from './components/Contacts/ContactList.vue'
+import Calendars from './components/Calendars/CalendarsList.vue'
+import CalendarsEdit from './components/Calendars/CalendarsEdit.vue'
 
 import TaskEdit from './components/Tasks/TaskEdit.vue'
 import TaskList from './components/Tasks/TaskList.vue' 
@@ -45,14 +47,17 @@ const router = new VueRouter({
   routes: [
     { path: '/login', component: Login },
     { path: '/logout', component: Logout, beforeEnter: requireAuth },
-
+    
     { path: '', component: Home, beforeEnter: requireAuth },
 
     { path: '/contacts', component: ContactList, beforeEnter: requireAuth },
     { path: '/contacts/:mode([create|edit]+)/:id?', component: ContactEdit, beforeEnter: requireAuth },
-
+    
+    { path: '/calendars', component: Calendars, beforeEnter: requireAuth },
+    { path: '/calendars/:mode([create|edit]+)/:id?', component: CalendarsEdit, beforeEnter: requireAuth },
     { path: '/tasks', component: TaskList, beforeEnter: requireAuth },
     { path: '/tasks/:mode([create|edit]+)/:id?', component: TaskEdit, beforeEnter : requireAuth }   
+    //{ path: '/calendars/:mode([export]+)/:id?', component: CalendarsEdit, beforeEnter: requireAuth },
   ]
 })
 

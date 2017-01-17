@@ -13,15 +13,14 @@ using System.IO;
 
 namespace ITI.MANA.DAL
 {
-    public class GoogleCalendar
+    public class GoogleCalendarEvents : CalendarEvent
     {
         /// <summary>
-        /// Gets the events list.
+        /// Gets or sets the etag.
         /// </summary>
         /// <value>
-        /// The events.
+        /// The etag.
         /// </value>
-        public Events Events { get; }
-
+        public string Etag { get; set; }
     }
 }

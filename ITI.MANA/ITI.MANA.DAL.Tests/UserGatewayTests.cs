@@ -48,7 +48,7 @@ namespace ITI.MANA.DAL.Tests
             }
         }
 
-        [Test]
+        /*[Test]
         public void can_create_google_user()
         {
             string email = string.Format("user{0}@test.com", Guid.NewGuid());
@@ -66,7 +66,7 @@ namespace ITI.MANA.DAL.Tests
             Assert.That(user.GoogleRefreshToken, Is.EqualTo(accessToken));
 
             sut.Delete(user.UserId);
-        }
+        }*/
 
         [Test]
         public void can_create_microsoft_user()

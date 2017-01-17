@@ -6,6 +6,7 @@ import * as getters from './getters'
 
 import app from './modules/app'
 import contacts from './modules/contacts'
+import calendars from './modules/calendars'
 import tasks from './modules/tasks'
 
 Vue.use(Vuex)
@@ -18,6 +19,7 @@ export default new Vuex.Store({
   modules: {
       app,
       contacts,
+      calendars,
       tasks
   },
   strict: debug

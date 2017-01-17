@@ -20,7 +20,7 @@ namespace ITI.MANA.WebApp.Authentification
         {
             if (context.AccessToken != null)
             {
-                _userService.CreateOrUpdateGoogleUser(context.GetEmail(), context.AccessToken, context.RefreshToken, context.TokenType, context.ExpiresIn);
+                _userService.CreateOrUpdateGoogleUser(context.GetEmail(), context.AccessToken, context.RefreshToken,context.TokenType, context.ExpiresIn.Value.Ticks);
             }
 
         }

@@ -31,8 +31,8 @@ _ReSharper*/
 /ITI.MANA/ITI.MANA.DB/ITI.MANA.DB.jfm
 ITI.MANA/ITI.MANA.WebApp2/App/mana/node_modules/
 ITI.MANA/ITI.MANA.WebApp2/appsettings.json
+*/*/project.lock.json
 ITI.MANA/.vs/restore.dg
-*.lock.json
 ITI.MANA/.vs/
 *.dg
 ITI.MANA/packages/
