@@ -8,7 +8,6 @@ using Google.Apis.Calendar.v3.Data;
 using System.Security.Claims;
 using ITI.MANA.DAL;
 using ITI.MANA.WebApp.Models.CalendarViewModel;
-using ITI.PrimarySchool.WebApp.Controllers;
 
 namespace ITI.MANA.WebApp.Controllers
 {
