@@ -17,10 +17,17 @@ namespace ITI.MANA.WebApp.Controllers
         readonly GoogleCalendarService _googleCalendarService;
         readonly ManaCalendarService _manaCalendarService;
 
-        public CalendarController(ManaCalendarService manaCalendarService,GoogleCalendarService googleCalendarService)
+        public CalendarController(ManaCalendarService manaCalendarService, GoogleCalendarService googleCalendarService)
         {
             _manaCalendarService = manaCalendarService;
             _googleCalendarService = googleCalendarService;
+        }
+
+        [HttpGet("export")]
+        public IActionResult ExportEventsList()
+        {
+            Result result = _googleCalendarService.CreateTokenResponseAndCallRequest(int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value));
+            return this.CreateResult(result);
         }
 
         [HttpGet]
@@ -56,17 +63,11 @@ namespace ITI.MANA.WebApp.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteStudent(int id)
+        public IActionResult DeleteEvent(int id)
         {
             Result<int> result = _manaCalendarService.DeleteEvent(id);
             return this.CreateResult(result);
         }
-
-        /*[HttpGet(Name = "ExportEvents")]
-        [Authorize(ActiveAuthenticationSchemes = CookieAuthentication.AuthenticationScheme)]
-        public void ExportEventsList()
-        {
-            _googleCalendarService.CreateTokenResponseAndCallRequest(int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value));
-        }*/
+        
     }
 }

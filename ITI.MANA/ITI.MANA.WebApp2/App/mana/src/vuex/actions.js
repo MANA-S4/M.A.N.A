@@ -103,3 +103,9 @@ export async function refreshEventsList({ commit }) {
     if(result) commit(types.REFRESH_EVENT_LIST, result);
     return result;
 }
+
+export async function exportFromGoogle({ commit }) {
+    var result = await wrapAsyncApiCall(commit, () => EventApi.exportFromGoogleAsync());
+    if(result) commit(types.EXPORT_FROM_GOOGLE, result);
+    return result;
+}

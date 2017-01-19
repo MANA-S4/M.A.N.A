@@ -55,9 +55,11 @@ const router = new VueRouter({
     
     { path: '/calendars', component: Calendars, beforeEnter: requireAuth },
     { path: '/calendars/:mode([create|edit]+)/:id?', component: CalendarsEdit, beforeEnter: requireAuth },
+    
+
     { path: '/tasks', component: TaskList, beforeEnter: requireAuth },
     { path: '/tasks/:mode([create|edit]+)/:id?', component: TaskEdit, beforeEnter : requireAuth }   
-    //{ path: '/calendars/:mode([export]+)/:id?', component: CalendarsEdit, beforeEnter: requireAuth },
+    
   ]
 })
 
