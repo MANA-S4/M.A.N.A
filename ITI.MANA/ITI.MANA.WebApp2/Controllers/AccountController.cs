@@ -13,6 +13,7 @@ using Mvc.Client.Extensions;
 
 namespace ITI.MANA.WebApp.Controllers
 {
+    [Route("api/users")]
     public class AccountController : Controller
     {
         readonly UserService _userService;
@@ -171,6 +172,18 @@ namespace ITI.MANA.WebApp.Controllers
             {
                 _userService.UpdateUserComplete(int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value), email, lastName, firstName, birthDate,password);
             }
+        }
+
+        [HttpGet("get")]
+        public IActionResult FindUser()
+        {
+            Result<User> result = _userService.FindUserById(int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value));
+            return this.CreateResult<User, UserAccountViewModel>(result, o =>
+            {
+                o.ToViewModel = s => s.ToUserAccountViewModel();
+                o.RouteName = "";
+                o.RouteValues = s => new { id = s.UserId };
+            });
         }
     }
 }

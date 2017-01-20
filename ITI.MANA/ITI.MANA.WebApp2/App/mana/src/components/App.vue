@@ -73,4 +73,8 @@ export default {
 <style lang="less">
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "../styles/cover.css";
+
+li {
+    text-align: center;
+}
 </style>

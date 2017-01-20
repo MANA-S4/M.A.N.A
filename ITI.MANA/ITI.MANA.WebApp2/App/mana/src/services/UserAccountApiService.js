@@ -1,7 +1,7 @@
 import { getAsync, postAsync, putAsync, deleteAsync } from '../helpers/apiHelper'
 import AuthService from './AuthService'
 
-const endpoint = "/api/user";
+const endpoint = "/api/users";
 
 class UserAccountApiService {
     constructor() {
@@ -9,11 +9,7 @@ class UserAccountApiService {
         }
 
     async getUserAccountListAsync() {
-        return await getAsync(endpoint, '', AuthService.accessToken);
-    }
-
-    async getUserAccountListAsync(userId) {
-        return await getAsync(endpoint, userId, AuthService.accessToken);
+        return await getAsync(endpoint, 'get', AuthService.accessToken);
     }
 
     async updateUserAccountAsync(model) {

@@ -71,7 +71,7 @@
         },
 
         methods: {
-            ...mapActions(['createUserAccount', 'updateUserAccount']),
+            ...mapActions(['updateUser']),
 
             onSubmit: async function(e) {
                 e.preventDefault();

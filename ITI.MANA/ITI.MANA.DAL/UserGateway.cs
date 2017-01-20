@@ -30,7 +30,7 @@ namespace ITI.MANA.DAL
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 return con.Query<User>(
-                        "select u.UserId, u.Email, u.FirstName, u.LastName from iti.Users u where u.UserId = @UserId",
+                        "select u.UserId, u.Email, u.FirstName, u.LastName, u.BirthDate from iti.Users u where u.UserId = @UserId",
                         new { UserId = userId })
                     .FirstOrDefault();
             }

@@ -5,10 +5,6 @@
         </div>
 
         <div class="panel panel-default">
-            <div class="panel-body text-right">
-                <router-link class="btn btn-warning" :to="`users/create`"><i class="glyphicon glyphicon-plus"></i> Ajouter une tâche</router-link>
-            </div>
-
         <table class="table table-striped table-hover table-bordered">
             <thead>
                 <tr>
@@ -24,14 +20,14 @@
                 <tr v-if="userAccountList.length == 0">
                     <td colspan="6" class="text-center">Il n'y a actuellement aucune tâche.</td>
                 </tr>
-
-                <tr v-for="i of list">
-                    <td>{{ i.lastName }}</td>
-                    <td>{{ i.firstName }}</td>
-                    <td>{{ i.email }}</td>
-                    <td>{{ i.birthDate }}</td>
+                
+                <tr >
+                    <td>{{userAccountList.firstName}}</td>
+                    <td>{{userAccountList.lastName}}</td>
+                    <td>{{userAccountList.email}}</td>
+                    <td>{{userAccountList.birthDate}}</td>
                     <td>
-                        <router-link :to="`users/edit/${i.userId}`"><i class="glyphicon glyphicon-pencil"></i></router-link>    
+                        <router-link :to="`users/edit/${userAccountList.userId}`"><i class="glyphicon glyphicon-pencil"></i></router-link>    
                     </td>
                 </tr>
 
@@ -63,7 +59,7 @@
                 let i = 0;
                 
                 for(i = 0; i < this.userAccountList.length; i++) {
-                    if (this.userAccountList[i].userName.includes(this.search)) {
+                    if (this.userAccountList[i].lastName.includes(this.search)) {
                         user.push(this.userAccountList[i]);
                     }
                 }

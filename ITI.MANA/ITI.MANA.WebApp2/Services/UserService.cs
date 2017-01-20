@@ -109,5 +109,10 @@ namespace ITI.MANA.WebApp.Services
         {
             _userGateway.UpdateUser(userId, email, lastName, firstName, birthDate, password);
         }
+
+        public Result<User> FindUserById(int userId)
+        {
+            return Result.Success(Status.Ok,_userGateway.FindById(userId));
+        }
     }
 }

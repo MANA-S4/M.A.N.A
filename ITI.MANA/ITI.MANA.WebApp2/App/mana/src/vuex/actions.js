@@ -113,7 +113,7 @@ export async function updateUser({ commit }, model) {
 }
 
 export async function refreshUserAccountList({ commit }) {
-    var result = await wrapAsyncApiCall(commit, () => UserAccountApi.getEventsListAsync());
+    var result = await wrapAsyncApiCall(commit, () => UserAccountApi.getUserAccountListAsync());
     if(result) commit(types.REFRESH_USER_LIST, result);
     return result;
 }
