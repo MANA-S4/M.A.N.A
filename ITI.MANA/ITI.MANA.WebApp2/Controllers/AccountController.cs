@@ -159,5 +159,18 @@ namespace ITI.MANA.WebApp.Controllers
             _random.NextBytes(data);
             return Convert.ToBase64String(data);
         }
+
+        [HttpPost]
+        public void UpdateUser(string email, string lastName, string firstName, DateTime birthDate, byte[] password)
+        {
+            if (password == null)
+            {
+                _userService.UpdateUserInfo(int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value), email, lastName, firstName, birthDate);
+            }
+            else
+            {
+                _userService.UpdateUserComplete(int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value), email, lastName, firstName, birthDate,password);
+            }
+        }
     }
 }

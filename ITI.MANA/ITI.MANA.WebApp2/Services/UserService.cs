@@ -82,5 +82,32 @@ namespace ITI.MANA.WebApp.Services
         {
             return _userGateway.GetAuthenticationProviders(userId);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="email"></param>
+        /// <param name="lastName"></param>
+        /// <param name="firstName"></param>
+        /// <param name="birthDate"></param>
+        internal void UpdateUserInfo(int userId, string email, string lastName, string firstName, DateTime birthDate)
+        {
+            _userGateway.UpdateUser(userId, email, lastName, firstName, birthDate);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="email"></param>
+        /// <param name="lastName"></param>
+        /// <param name="firstName"></param>
+        /// <param name="birthDate"></param>
+        /// <param name="password"></param>
+        internal void UpdateUserComplete(int userId, string email, string lastName, string firstName, DateTime birthDate, byte[] password)
+        {
+            _userGateway.UpdateUser(userId, email, lastName, firstName, birthDate, password);
+        }
     }
 }

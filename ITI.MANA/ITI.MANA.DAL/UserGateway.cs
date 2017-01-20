@@ -21,7 +21,7 @@ namespace ITI.MANA.DAL
         {
             using(SqlConnection con = new SqlConnection(_connectionString))
             {
-                return con.Query<User>("select u.UserId, u.Email, u.[Password], u.GoogleRefreshToken, u.MicrosoftRefreshToken from iti.vUser u;");
+                return con.Query<User>("select u.UserId, u.Email, u.FirstName, u.LastName from iti.Users u;");
             }
         }
 
@@ -30,7 +30,7 @@ namespace ITI.MANA.DAL
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 return con.Query<User>(
-                        "select u.UserId, u.Email, u.[Password], u.MicrosoftAccessToken, u.GoogleRefreshToken from iti.vUser u where u.UserId = @UserId",
+                        "select u.UserId, u.Email, u.FirstName, u.LastName from iti.Users u where u.UserId = @UserId",
                         new { UserId = userId })
                     .FirstOrDefault();
             }
@@ -41,7 +41,7 @@ namespace ITI.MANA.DAL
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 return con.Query<User>(
-                        "select u.UserId, u.Email, u.[Password], u.MicrosoftAccessToken, u.GoogleRefreshToken from iti.vUser u where u.Email = @Email",
+                        "select u.UserId, u.Email, u.FirstName, u.LastName from iti.Users u where u.Email = @Email",
                         new { Email = email })
                     .FirstOrDefault();
             }
@@ -103,24 +103,24 @@ namespace ITI.MANA.DAL
             }
         }
 
-        public void UpdateEmail(int userId, string email)
+        public void UpdateUser(int userId, string email,string lastName,string firstName, DateTime birthDate, byte[] password)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 con.Execute(
-                    "iti.sUserUpdate",
-                    new { UserId = userId, Email = email },
+                    "iti.sCompleteUserUpdate",
+                    new { UserId = userId, Email = email, LastName = lastName, FirstName = firstName, BirthDate = birthDate, Password = password },
                     commandType: CommandType.StoredProcedure);
             }
         }
 
-        public void UpdatePassword(int userId, byte[] password)
+        public void UpdateUser(int userId, string email, string lastName, string firstName, DateTime birthDate)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 con.Execute(
-                    "iti.sPasswordUserUpdate",
-                    new { UserId = userId, Password = password },
+                    "iti.sUserInfoUpdate",
+                    new { UserId = userId, Email = email, LastName = lastName, FirstName = firstName, BirthDate = birthDate },
                     commandType: CommandType.StoredProcedure);
             }
         }
@@ -148,44 +148,6 @@ namespace ITI.MANA.DAL
                 con.Execute(
                     "iti.sMicrosoftUserUpdate",
                     new { UserId = userId, accessToken = accessToken },
-                    commandType: CommandType.StoredProcedure);
-            }
-        }
-
-        public void AddPassword(int userId, byte[] password)
-        {
-            using (SqlConnection con = new SqlConnection(_connectionString))
-            {
-                con.Execute(
-                    "iti.sUserAddPassword",
-                    new { UserId = userId, Password = password },
-                    commandType: CommandType.StoredProcedure);
-            }
-        }
-
-        public void AddGoogleToken(int userId, string refreshToken)
-        {
-            using (SqlConnection con = new SqlConnection(_connectionString))
-            {
-                con.Execute(
-                    "iti.sUserAddGoogleToken",
-                    new { UserId = userId, RefreshToken = refreshToken },
-                    commandType: CommandType.StoredProcedure);
-            }
-        }
-
-        /// <summary>
-        /// To Add Microsoft Token
-        /// </summary>
-        /// <param name="userId"></param>
-        /// <param name="refreshToken"></param>
-        public void AddMicrosoftToken(int userId, string refreshToken)
-        {
-            using (SqlConnection con = new SqlConnection(_connectionString))
-            {
-                con.Execute(
-                    "iti.sUserAddMicrosoftToken",
-                    new { UserId = userId, RefreshToken = refreshToken },
                     commandType: CommandType.StoredProcedure);
             }
         }

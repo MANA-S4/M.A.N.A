@@ -31,20 +31,11 @@ namespace ITI.MANA.DAL
         /// </value>
         public byte[] Password { get; set; }
 
-        /// <summary>
-        /// Gets or sets the google refresh token.
-        /// </summary>
-        /// <value>
-        /// The google refresh token.
-        /// </value>
-        public string GoogleRefreshToken { get; set; }
+        public string LastName { get; set; }
 
-        /// <summary>
-        /// Gets or sets the microsoft access token.
-        /// </summary>
-        /// <value>
-        /// The microsoft access token.
-        /// </value>
-        public string MicrosoftAccessToken { get; set; }
+        public string FirstName { get; set; }
+
+        public DateTime BirthDate { get; set; }
+
     }
 }

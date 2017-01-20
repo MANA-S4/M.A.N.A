@@ -17,3 +17,7 @@ export const ADD_TASK = 'ADD_TASK'
 export const EDIT_TASK = 'EDIT_TASK'
 export const REMOVE_TASK = 'REMOVE_TASK'
 export const REFRESH_TASK_LIST = 'REFRESH_TASK_LIST'
+
+// Users
+export const EDIT_USER = 'EDIT_USER'
+export const REFRESH_USER_LIST = 'REFRESH_USER_LIST'

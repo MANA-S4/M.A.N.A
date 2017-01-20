@@ -8,6 +8,7 @@ import app from './modules/app'
 import contacts from './modules/contacts'
 import calendars from './modules/calendars'
 import tasks from './modules/tasks'
+import users from './modules/users'
 
 Vue.use(Vuex)
 
@@ -20,7 +21,8 @@ export default new Vuex.Store({
       app,
       contacts,
       calendars,
-      tasks
+      tasks,
+      users
   },
   strict: debug
 })

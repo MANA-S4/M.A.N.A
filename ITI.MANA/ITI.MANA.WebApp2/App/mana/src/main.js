@@ -10,8 +10,12 @@ import Home from './components/Home.vue'
 import Login from './components/Login.vue'
 import Logout from './components/Logout.vue'
 
+import UserAccountEdit from './components/Users/UserAccountEdit.vue'
+import UserAccountList from './components/Users/UserAccountList.vue'
+
 import ContactEdit from './components/Contacts/ContactEdit.vue'
 import ContactList from './components/Contacts/ContactList.vue'
+
 import Calendars from './components/Calendars/CalendarsList.vue'
 import CalendarsEdit from './components/Calendars/CalendarsEdit.vue'
 
@@ -50,14 +54,17 @@ const router = new VueRouter({
     
     { path: '', component: Home, beforeEnter: requireAuth },
 
+    { path: '/users', component: UserAccountList, beforeEnter: requireAuth },
+    { path: '/users/:mode([create|edit]+)/:id?', component: UserAccountEdit, beforeEnter: requireAuth },
+
     { path: '/contacts', component: ContactList, beforeEnter: requireAuth },
     { path: '/contacts/:mode([create|edit]+)/:id?', component: ContactEdit, beforeEnter: requireAuth },
     
     { path: '/calendars', component: Calendars, beforeEnter: requireAuth },
     { path: '/calendars/:mode([create|edit]+)/:id?', component: CalendarsEdit, beforeEnter: requireAuth },
+
     { path: '/tasks', component: TaskList, beforeEnter: requireAuth },
     { path: '/tasks/:mode([create|edit]+)/:id?', component: TaskEdit, beforeEnter : requireAuth }   
-    //{ path: '/calendars/:mode([export]+)/:id?', component: CalendarsEdit, beforeEnter: requireAuth },
   ]
 })
 

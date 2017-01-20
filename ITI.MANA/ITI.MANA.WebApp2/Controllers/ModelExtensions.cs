@@ -1,4 +1,5 @@
 ﻿using ITI.MANA.DAL;
+using ITI.MANA.WebApp.Models.AccountViewModels;
 using ITI.MANA.WebApp.Models.CalendarViewModel;
 using ITI.MANA.WebApp.Models.ContactViewModels;
 using ITI.MANA.WebApp.Models.TaskViewModels;
@@ -41,6 +42,19 @@ namespace ITI.MANA.WebApp.Controllers
                 UserId = @this.UserId,
                 IsPrivate = @this.Private,
                 Members = @this.Members
+            };
+        }
+
+        public static UserAccountViewModel ToUserAccountViewModel(this User @this)
+        {
+            return new UserAccountViewModel
+            {
+                UserId = @this.UserId,
+                Email = @this.Email,
+                LastName = @this.LastName,
+                FirstName = @this.FirstName,
+                BirthDate = @this.BirthDate,
+                Password = @this.Password
             };
         }
 

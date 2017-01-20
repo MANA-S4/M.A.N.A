@@ -3,6 +3,7 @@ import * as types from './mutation-types'
 import ContactApi from '../services/ContactApiService'
 import TaskApi from '../services/TaskApiService'
 import EventApi from '../services/CalendarApiService'
+import UserAccountApi from '../services/UserAccountApiService'
 
 
 // Wraps the async call to an api service in order to handle loading, and errors.
@@ -101,5 +102,18 @@ export async function deleteEvent({ commit }, eventId) {
 export async function refreshEventsList({ commit }) {
     var result = await wrapAsyncApiCall(commit, () => EventApi.getEventsListAsync());
     if(result) commit(types.REFRESH_EVENT_LIST, result);
+    return result;
+}
+
+// UserAccountApi
+export async function updateUser({ commit }, model) {
+   var result = await wrapAsyncApiCall(commit, () => UserAccountApi.updateUsersAsync(model));
+   if(result) commit(types.EDIT_USER, result);
+   return result;
+}
+
+export async function refreshUserAccountList({ commit }) {
+    var result = await wrapAsyncApiCall(commit, () => UserAccountApi.getEventsListAsync());
+    if(result) commit(types.REFRESH_USER_LIST, result);
     return result;
 }

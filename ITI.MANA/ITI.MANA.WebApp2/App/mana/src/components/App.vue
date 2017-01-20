@@ -22,6 +22,7 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ auth.email }} <span class="caret"></span></a>
                             <ul class="dropdown-menu">
+                                <li><router-link to="/users">Mon compte</router-link></li>
                                 <li><router-link to="/logout">Se déconnecter</router-link></li>
                             </ul>
                         </li>
