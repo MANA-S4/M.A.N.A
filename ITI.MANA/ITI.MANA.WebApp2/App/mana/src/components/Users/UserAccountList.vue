@@ -18,7 +18,7 @@
 
             <tbody>
                 <tr v-if="userAccountList.length == 0">
-                    <td colspan="6" class="text-center">Il n'y a actuellement aucune tâche.</td>
+                    <td colspan="6" class="text-center">Il n'y a actuellement aucune information.</td>
                 </tr>
                 
                 <tr >

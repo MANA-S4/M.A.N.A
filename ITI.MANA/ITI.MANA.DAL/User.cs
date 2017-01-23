@@ -31,10 +31,19 @@ namespace ITI.MANA.DAL
         /// </value>
         public byte[] Password { get; set; }
 
+        /// <summary>
+        /// Last Name
+        /// </summary>
         public string LastName { get; set; }
 
+        /// <summary>
+        /// First Name
+        /// </summary>
         public string FirstName { get; set; }
 
+        /// <summary>
+        /// Birth Date
+        /// </summary>
         public DateTime BirthDate { get; set; }
 
     }

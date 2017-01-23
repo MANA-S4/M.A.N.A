@@ -13,7 +13,6 @@ using Mvc.Client.Extensions;
 
 namespace ITI.MANA.WebApp.Controllers
 {
-    [Route("api/users")]
     public class AccountController : Controller
     {
         readonly UserService _userService;
