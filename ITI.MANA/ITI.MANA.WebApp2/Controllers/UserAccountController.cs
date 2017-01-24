@@ -27,16 +27,16 @@ namespace ITI.MANA.WebApp.Controllers
             _tokenService = tokenService;
         }
 
-        [HttpPost]
-        public void UpdateUser(string email, string lastName, string firstName, DateTime birthDate, byte[] password)
+        [HttpPut]
+        public void UpdateUser([FromBody] UserAccountViewModel model)
         {
-            if (password == null)
+            if (model.Password == null)
             {
-                _userService.UpdateUserInfo(int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value), email, lastName, firstName, birthDate);
+                _userService.UpdateUserInfo(int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value), model.Email, model.LastName, model.FirstName, model.BirthDate);
             }
             else
             {
-                _userService.UpdateUserComplete(int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value), email, lastName, firstName, birthDate, password);
+                _userService.UpdateUserComplete(int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value), model.Email, model.LastName, model.FirstName, model.BirthDate, model.Password);
             }
         }
 

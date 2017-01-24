@@ -12,8 +12,8 @@ class UserAccountApiService {
         return await getAsync(endpoint, 'get', AuthService.accessToken);
     }
 
-    async updateUserAccountAsync(model) {
-        return await putAsync(endpoint, model.userId, AuthService.accessToken, model);
+    async updateUsersAsync(model) {
+        return await putAsync(endpoint,'', AuthService.accessToken, model);
     }
 }
 

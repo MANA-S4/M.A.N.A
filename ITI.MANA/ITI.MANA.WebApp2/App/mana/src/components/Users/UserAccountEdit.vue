@@ -62,7 +62,7 @@
             this.id = this.$route.params.id;
 
             if(this.mode == 'edit') {
-                let item = this.userAccountList.find(x => x.userId == this.id);
+                let item = this.userAccountList;
 
                 if(!item) this.$router.replace('/users');
 
@@ -92,7 +92,7 @@
                         result = await this.createTask(this.item);
                     }
                     else {
-                        result = await this.updateTask(this.item);
+                        result = await this.updateUser(this.item);
                     }
 
                     if(result != null) this.$router.replace('/users');

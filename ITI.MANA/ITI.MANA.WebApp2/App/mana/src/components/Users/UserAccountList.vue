@@ -21,7 +21,7 @@
                     <td colspan="6" class="text-center">Il n'y a actuellement aucune information.</td>
                 </tr>
                 
-                <tr >
+                <tr>
                     <td>{{userAccountList.firstName}}</td>
                     <td>{{userAccountList.lastName}}</td>
                     <td>{{userAccountList.email}}</td>
