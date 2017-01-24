@@ -21,9 +21,9 @@ namespace ITI.MANA.WebApp.Services
             return Result.Success(Status.Ok, task);
         }
 
-        public Result<IEnumerable<Task>> GetAll(int taskId)
+        public Result<IEnumerable<Task>> GetAll(int userId)
         {
-            return Result.Success(Status.Ok, _taskGateway.GetAll(taskId));
+            return Result.Success(Status.Ok, _taskGateway.GetAll(userId));
         }
 
         public Result<Task> CreateTask(string taskName, int userId, DateTime taskDate, int attributeTo)

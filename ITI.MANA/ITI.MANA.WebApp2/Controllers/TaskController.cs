@@ -27,8 +27,8 @@ namespace ITI.MANA.WebApp.Controllers
         [HttpGet]
         public IActionResult GetTaskList()
         {
-            int taskId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
-            Result<IEnumerable<Task>> result = _taskService.GetAll(taskId);
+            int userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            Result<IEnumerable<Task>> result = _taskService.GetAll(userId);
             return this.CreateResult<IEnumerable<Task>, IEnumerable<TaskViewModel>>(result, o =>
             {
                 o.ToViewModel = x => x.Select(s => s.ToTaskViewModel());

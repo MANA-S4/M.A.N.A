@@ -16,12 +16,13 @@ namespace ITI.MANA.DAL
             _connectionString = connectionString;
         }
 
-        public IEnumerable<Task> GetAll(int taskId)
+        public IEnumerable<Task> GetAll(int userId)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 return con.Query<Task>(
-                    @"select t.TaskId, t.TaskName, t.TaskDate, t.IsFinish, t.UserId from iti.Tasks t;");
+                    @"select t.TaskId, t.TaskName, t.TaskDate, t.IsFinish, t.UserId from iti.Tasks t where t.UserId = @UserId or t.AttributeTo = @UserId;",
+                    new { UserId = userId });
             }
         }
 
