@@ -6,7 +6,7 @@
 
                     <div class="modal-body">
                         <slot name="body">
-                            default footer
+                            Voulez-vous supprimer cet évènement ?
                         </slot>
                         <button class="modal-default-button" @click="deleteEvent(eventId) & $emit('close')">Oui</button>
                         <button class="modal-default-button" @click="$emit('close')">Non</button>

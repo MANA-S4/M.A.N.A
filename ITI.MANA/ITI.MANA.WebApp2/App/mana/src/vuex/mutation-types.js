@@ -6,11 +6,14 @@ export const ERROR_HAPPENED = 'ERROR_HAPPENED'
 export const ADD_CONTACT = 'ADD_CONTACT'
 export const EDIT_CONTACT = 'EDIT_CONTACT'
 export const REMOVE_CONTACT = 'REMOVE_CONTACT'
+export const REFRESH_CONTACT_LIST = 'REFRESH_CONTACT_LIST'
+
+// Calendar
+export const EXPORT_FROM_GOOGLE = 'EXPORT_FROM_GOOGLE'
 export const ADD_EVENT = 'ADD_EVENT'
 export const EDIT_EVENT = 'EDIT_EVENT'
 export const REMOVE_EVENT = 'REMOVE_EVENT'
 export const REFRESH_EVENT_LIST = 'REFRESH_EVENT_LIST'
-export const REFRESH_CONTACT_LIST = 'REFRESH_CONTACT_LIST'
 
 // Tasks
 export const ADD_TASK = 'ADD_TASK'

@@ -6,7 +6,7 @@
 
         <div class="panel panel-default">
             <div class="panel-body text-right">
-                <!--<router-link class="btn btn-primary" :to="`calendars/exportFromGoogle`"><i class="glyphicon glyphicon-plus"></i> Exporter votre calendrier Google</router-link>-->
+                <button type="button" @click="exportFromGoogleAsync" class="btn btn-primary"><i class="fa fa-google" aria-hidden="true"></i> Exporter votre calendrier Google</button>
                 <router-link class="btn btn-primary" :to="`calendars/create`"><i class="glyphicon glyphicon-plus"></i> Ajouter un évènements</router-link>
             </div>
         </div>
@@ -26,7 +26,7 @@
 
             <tbody>
                 <tr v-if="List.length == 0">
-                    <td colspan="7" class="text-center">Il n'y a actuellement aucun évènements à afficher.</td>
+                    <td colspan="7" class="text-center">Il n'y a actuellement aucun évènement à afficher.</td>
                 </tr>
 
                 <tr v-for="i of List">
@@ -50,6 +50,7 @@
 </template>
 
 <script>
+    import CalendarApiService from "../../services/CalendarApiService"
     import { mapGetters, mapActions } from 'vuex'
     import DeleteCalendarPrompt from './DeleteCalendarPrompt.vue'
 
@@ -96,6 +97,11 @@
         methods: {
             updateResource(data) {
                 this.List = data
+            },
+
+            exportFromGoogleAsync() {
+                CalendarApiService.exportFromGoogleAsync();
+                location.reload();
             },
 
             ...mapActions(['refreshEventsList' ,'deleteEvent']),

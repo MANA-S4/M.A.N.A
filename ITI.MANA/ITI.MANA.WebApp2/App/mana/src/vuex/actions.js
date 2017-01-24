@@ -117,3 +117,9 @@ export async function refreshUserAccountList({ commit }) {
     if(result) commit(types.REFRESH_USER_LIST, result);
     return result;
 }
+
+export async function exportFromGoogle({ commit }) {
+    var result = await wrapAsyncApiCall(commit, () => EventApi.exportFromGoogleAsync());
+    if(result) commit(types.EXPORT_FROM_GOOGLE, result);
+    return result;
+}

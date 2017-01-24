@@ -2,7 +2,6 @@
 (
 	@UserId       int,
 	@AccessToken  varchar(72),
-	@RefreshToken varchar(72),
 	@TokenType    varchar(64),
 	@ExpireIn     bigint
 )

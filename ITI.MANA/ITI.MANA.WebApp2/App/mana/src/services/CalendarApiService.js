@@ -12,8 +12,8 @@ class CalendarApiService {
         return await getAsync(endpoint, '', AuthService.accessToken);
     }
 
-    async ExportFromGoogleAsync(userId) {
-        return await getAsync(endpoint, '', AuthService.accessToken);
+    async exportFromGoogleAsync() {
+        return await getAsync(endpoint,'export', AuthService.accessToken);
     }
 
     async createEventsAsync(model) {
