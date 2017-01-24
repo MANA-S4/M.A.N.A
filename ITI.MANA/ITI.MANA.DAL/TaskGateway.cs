@@ -51,13 +51,13 @@ namespace ITI.MANA.DAL
             }
         }
 
-        public void Create(string taskName, int userId)
+        public void Create(string taskName, int userId, DateTime taskDate, int attributeTo)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 con.Execute(
                     "iti.sTaskCreate",
-                    new { TaskName = taskName, UserId = userId },
+                    new { TaskName = taskName, UserId = userId, TaskDate = taskDate, AttributeTo = attributeTo },
                     commandType: CommandType.StoredProcedure);
             }
         }

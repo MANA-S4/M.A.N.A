@@ -26,8 +26,7 @@
 
             <div class="form-group">
                 <label>Attribuer a : </label>
-                <select>
-                    <option selected></option>
+                <select v-model="item.attributeTo">
                     <option v-for="i of contactList">{{i.email}}</option>
                 </select>
             </div>

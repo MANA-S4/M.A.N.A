@@ -16,10 +16,12 @@ namespace ITI.MANA.WebApp.Controllers
     public class TaskController : Controller
     {
         readonly TaskService _taskService;
+        readonly UserService _userService;
 
-        public TaskController(TaskService taskService)
+        public TaskController(TaskService taskService, UserService userService)
         {
             _taskService = taskService;
+            _userService = userService;
         }
 
         [HttpGet]
@@ -47,7 +49,8 @@ namespace ITI.MANA.WebApp.Controllers
         public IActionResult CreateTask([FromBody] TaskViewModel model)
         {
             int userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
-            Result<Task> result = _taskService.CreateTask(model.TaskName, userId);
+            User attributeToUserId = _userService.FindUser(model.AttributeTo);
+            Result<Task> result = _taskService.CreateTask(model.TaskName, userId, model.TaskDate, attributeToUserId.UserId);
             return this.CreateResult<Task, TaskViewModel>(result, o =>
             {
                 o.ToViewModel = s => s.ToTaskViewModel();
