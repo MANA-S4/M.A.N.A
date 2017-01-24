@@ -160,29 +160,29 @@ namespace ITI.MANA.WebApp.Controllers
             return Convert.ToBase64String(data);
         }
 
-        [HttpPost]
-        public void UpdateUser(string email, string lastName, string firstName, DateTime birthDate, byte[] password)
-        {
-            if (password == null)
-            {
-                _userService.UpdateUserInfo(int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value), email, lastName, firstName, birthDate);
-            }
-            else
-            {
-                _userService.UpdateUserComplete(int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value), email, lastName, firstName, birthDate,password);
-            }
-        }
+        //[HttpPost]
+        //public void UpdateUser(string email, string lastName, string firstName, DateTime birthDate, byte[] password)
+        //{
+        //    if (password == null)
+        //    {
+        //        _userService.UpdateUserInfo(int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value), email, lastName, firstName, birthDate);
+        //    }
+        //    else
+        //    {
+        //        _userService.UpdateUserComplete(int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value), email, lastName, firstName, birthDate,password);
+        //    }
+        //}
 
-        [HttpGet("get")]
-        public IActionResult FindUser()
-        {
-            Result<User> result = _userService.FindUserById(int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value));
-            return this.CreateResult<User, UserAccountViewModel>(result, o =>
-            {
-                o.ToViewModel = s => s.ToUserAccountViewModel();
-                o.RouteName = "";
-                o.RouteValues = s => new { id = s.UserId };
-            });
-        }
+        //[HttpGet("get")]
+        //public IActionResult FindUser()
+        //{
+        //    Result<User> result = _userService.FindUserById(int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value));
+        //    return this.CreateResult<User, UserAccountViewModel>(result, o =>
+        //    {
+        //        o.ToViewModel = s => s.ToUserAccountViewModel();
+        //        o.RouteName = "";
+        //        o.RouteValues = s => new { id = s.UserId };
+        //    });
+        //}
     }
 }
