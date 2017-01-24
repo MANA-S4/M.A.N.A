@@ -10,8 +10,5 @@ export const eventsList = ({ calendars }) => calendars.eventsList
 // Tasks
 export const taskList = ({ tasks }) => tasks.taskList
 
-// Event 
-export const eventsList = ({ calendars }) => calendars.eventsList
-
 // User
 export const userAccountList = ({ users }) => users.userAccountList
