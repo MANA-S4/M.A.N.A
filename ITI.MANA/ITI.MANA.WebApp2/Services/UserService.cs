@@ -78,6 +78,11 @@ namespace ITI.MANA.WebApp.Services
             return _userGateway.FindByEmail(email);
         }
 
+        public User FindUser(int id)
+        {
+            return _userGateway.FindById(id);
+        }
+
         public IEnumerable<string> GetAuthenticationProviders(string userId)
         {
             return _userGateway.GetAuthenticationProviders(userId);

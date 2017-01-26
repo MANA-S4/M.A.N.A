@@ -16,5 +16,3 @@ return 0;
 end;
 
 drop proc iti.sTaskCreate;
-
-select * from iti.Tasks
