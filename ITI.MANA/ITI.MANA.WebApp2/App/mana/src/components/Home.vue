@@ -5,17 +5,6 @@
           gérer vos calendriers (et inviter votre famille ou vos coloc' à des évènements). De plus vous pourrez ajouter des
           tâches pour savoir ce qu'il vous reste à faire.</h2>
       
-  <!--<div class="site-wrapper">
-    <div class="site-wrapper-inner">
-      <div class="inner cover">
-        <h1 class="cover-heading">M.A.N.A
-          <p class="lead">Notre application vous aidera à organiser votre vie familiale ou entre colocataire. Vous pourrez ajouter des contacts,
-            gérer vos calendriers (et inviter votre famille ou vos coloc' à des évènements). De plus vous pourrez ajouter
-            des tâches pour savoir ce qu'il vous reste à faire.</p>
-        </h1>
-      </div>-->
-
-
       <div class="container">
 
         <hr class="featurette-divider">
