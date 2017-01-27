@@ -6,13 +6,13 @@
 
         <div class="panel panel-default">
             <div class="panel-body text-right">
-                <button type="button" @click="exportFromGoogleAsync" class="btn btn-primary"><i class="fa fa-google" aria-hidden="true"></i> Importer votre calendrier Google</button>
+                <button type="button" @click="exportFromGoogleAsync" class="btn btn-primary"><i class="fa fa-google" aria-hidden="true"></i><i class="glyphicon glyphicon-download-alt"></i> Importer votre calendrier Google</button>
                 <router-link class="btn btn-primary" :to="`calendars/create`"><i class="glyphicon glyphicon-plus"></i> Ajouter un évènements</router-link>
             </div>
         </div>
 
         <div class="panel panel-default">
-            <input type="text" name="search" v-model="search">
+            <input type="text" name="search" v-model="search" placeholder="Rechercher"> <i class="glyphicon glyphicon-search"></i> 
         </div>
 
         <table class="table table-striped table-hover table-bordered">
@@ -20,6 +20,7 @@
                 <tr>
                     <th>Évènements</th>
                     <th>Date</th>
+                    <th>Privé</th>
                     <th>Options</th>
                 </tr>
             </thead>
@@ -32,6 +33,7 @@
                 <tr v-for="i of List">
                     <td>{{ i.eventName }}</td>
                     <td>{{ i.eventDate }}</td>
+                    <td>{{ i.isPrivate }}</td>
                     <td>
                         <router-link :to="`calendars/edit/${i.eventId}`"><i class="glyphicon glyphicon-pencil"></i></router-link>
                         <a href="#"><i class="glyphicon glyphicon-remove" id="show-modal" @click="openDeleteEventPrompt(i.eventId)"></i></a> <!-- To open the popup--> 

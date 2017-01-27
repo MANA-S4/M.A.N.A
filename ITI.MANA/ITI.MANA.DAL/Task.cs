@@ -14,5 +14,7 @@ namespace ITI.MANA.DAL
         public DateTime TaskDate { get; set; }
 
         public string AttributeTo { get; set; }
+
+        public string Email { get; set; }
     }
 }

@@ -21,7 +21,7 @@ namespace ITI.MANA.DAL
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 return con.Query<Task>(
-                    @"select t.TaskId, t.TaskName, t.TaskDate, t.IsFinish, t.UserId from iti.Tasks t where t.UserId = @UserId or t.AttributeTo = @UserId;",
+                    @"select t.TaskId, t.TaskName, t.TaskDate, t.IsFinish, t.UserId, u.email from iti.Tasks t join iti.users u on u.userId = t.attributeTo where t.UserId = @UserId or t.AttributeTo = @UserId;",
                     new { UserId = userId });
             }
         }

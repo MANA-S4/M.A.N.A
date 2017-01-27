@@ -41,7 +41,7 @@ namespace ITI.MANA.DAL
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 return con.Query<User>(
-                        "select u.UserId, u.Email, u.FirstName, u.LastName from iti.Users u where u.Email = @Email",
+                        "select u.UserId, u.Email, u.[Password], u.MicrosoftAccessToken, u.GoogleRefreshToken from iti.vUser u where u.Email = @Email",
                         new { Email = email })
                     .FirstOrDefault();
             }

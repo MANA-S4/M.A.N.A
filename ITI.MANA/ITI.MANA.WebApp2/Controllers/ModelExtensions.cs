@@ -29,7 +29,8 @@ namespace ITI.MANA.WebApp.Controllers
                 TaskId = @this.TaskId,
                 TaskName = @this.TaskName,
                 TaskDate = @this.TaskDate,
-                AttributeTo = @this.AttributeTo
+                AttributeTo = @this.AttributeTo,
+                Email = @this.Email
             };
         }
 

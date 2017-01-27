@@ -14,9 +14,9 @@
 
                 <div class="collapse navbar-collapse" id="iti-navbar-collapse" v-if="auth.isConnected">
                     <ul class="nav navbar-nav">
-                        <li><router-link to="/calendars">Gestion du calendrier</router-link></li>
-                        <li><router-link to="/tasks">Gestion des tâches</router-link></li>
-                        <li><router-link to="/contacts">Gestion des contacts</router-link></li>
+                        <li><router-link to="/calendars"><i class="glyphicon glyphicon-calendar"></i> Gestion du calendrier</router-link></li>
+                        <li><router-link to="/tasks"><i class="glyphicon glyphicon-list-alt"></i> Gestion des tâches</router-link></li>
+                        <li><router-link to="/contacts"><i class="glyphicon glyphicon-user"></i> Gestion des contacts</router-link></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">

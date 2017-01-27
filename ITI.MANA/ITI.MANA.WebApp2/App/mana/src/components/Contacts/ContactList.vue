@@ -12,7 +12,7 @@
 
         <!-- For the search, take a v-model -->
         <div class="panel panel-default">
-            <input type="text" name="search" v-model="search" id="search" placeholder="Rechercher" />
+            <input type="text" name="search" v-model="search" id="search" placeholder="Rechercher" /> <i class="glyphicon glyphicon-search"></i> 
         </div>
         <!-- End of search div -->
 

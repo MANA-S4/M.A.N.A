@@ -14,6 +14,7 @@
                 <tr>
                     <th>Name</th>
                     <th>Date</th>
+                    <th>Attribuer à </th>
                     <th>Options</th>       
                 </tr>
             </thead>
@@ -26,6 +27,7 @@
                 <tr v-for="i of list">
                     <td>{{ i.taskName }}</td>
                     <td>{{ i.taskDate }}</td>
+                    <td>{{ i.email }}</td>
                     <td>
                         <router-link :to="`tasks/edit/${i.taskId}`"><i class="glyphicon glyphicon-pencil"></i></router-link>
                         <a href="#"><i class="glyphicon glyphicon-remove" id="show-modal" @click="openDeleteTaskPrompt(i.taskId)"></i></a> <!-- To open the popup-->       
