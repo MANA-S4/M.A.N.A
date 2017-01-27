@@ -62,7 +62,7 @@ namespace ITI.MANA.WebApp.Controllers
         [HttpPut("{taskId}")]
         public IActionResult UpdateTask(int taskId, string taskName, [FromBody] TaskViewModel model)
         {
-            User attributeToUserId = _userService.
+            User attributeToUserId = _userService.FindUser(model.AttributeTo);
             Result<Task> result = _taskService.UpdateTask(taskId, model.TaskName, model.TaskDate, attributeToUserId.UserId);
             return this.CreateResult<Task, TaskViewModel>(result, o =>
             {
