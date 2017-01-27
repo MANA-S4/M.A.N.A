@@ -73,6 +73,7 @@ export default {
 <style lang="less">
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "../styles/cover.css";
+@import "../styles/one-page-wonder.css";
 
 li {
     text-align: center;
