@@ -6,8 +6,8 @@
 
         <div class="panel panel-default">
             <div class="panel-body text-right">
-                <button type="button" @click="exportFromGoogleAsync" class="btn btn-primary"><i class="fa fa-google" aria-hidden="true"></i><i class="glyphicon glyphicon-download-alt"></i> Importer votre calendrier Google</button>
-                <router-link class="btn btn-primary" :to="`calendars/create`"><i class="glyphicon glyphicon-plus"></i> Ajouter un évènements</router-link>
+                <button type="button" @click="exportFromGoogleAsync" class="btn btn-warning"><i class="fa fa-google" aria-hidden="true"></i><i class="glyphicon glyphicon-download-alt"></i> Importer votre calendrier Google</button>
+                <router-link class="btn btn-warning" :to="`calendars/create`"><i class="glyphicon glyphicon-plus"></i> Ajouter un évènement</router-link>
             </div>
         </div>
 

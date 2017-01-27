@@ -8,6 +8,13 @@
             <div class="panel-body text-right">
                 <router-link class="btn btn-warning" :to="`tasks/create`"><i class="glyphicon glyphicon-plus"></i> Ajouter une tâche</router-link>
             </div>
+        </div>
+
+        <!-- For the search, take a v-model -->
+        <div class="panel panel-default">
+            <input type="text" name="search" v-model="search" id="search" placeholder="Rechercher" /> <i class="glyphicon glyphicon-search"></i>
+        </div>
+        <!-- End of search div -->
 
         <table class="table table-striped table-hover table-bordered">
             <thead>
@@ -15,7 +22,7 @@
                     <th>Name</th>
                     <th>Date</th>
                     <th>Attribuer à </th>
-                    <th>Options</th>       
+                    <th>Options</th>
                 </tr>
             </thead>
 
@@ -30,46 +37,21 @@
                     <td>{{ i.email }}</td>
                     <td>
                         <router-link :to="`tasks/edit/${i.taskId}`"><i class="glyphicon glyphicon-pencil"></i></router-link>
-                        <a href="#"><i class="glyphicon glyphicon-remove" id="show-modal" @click="openDeleteTaskPrompt(i.taskId)"></i></a> <!-- To open the popup-->       
+                        <a href="#"><i class="glyphicon glyphicon-remove" id="show-modal" @click="openDeleteTaskPrompt(i.taskId)"></i></a>
+                        <!-- To open the popup-->
                     </td>
                 </tr>
 
             </tbody>
         </table>
 
-         <!-- If user click on "Non" popup close -->
+        <!-- If user click on "Non" popup close -->
         <delete-task-prompt v-if="showModal" @close="showModal = false" v-bind:taskId="deletingTaskId">
             <h3 slot="header">Suppression</h3>
         </delete-task-prompt>
         <!-- End -->
 
     </div>
-
-    <!--<div class="card">
-  <header class="card-header">
-    <p class="card-header-title">
-      Component
-    </p>
-    <a class="card-header-icon">
-      <span class="icon">
-        <i class="fa fa-angle-down"></i>
-      </span>
-    </a>
-  </header>
-  <div class="card-content">
-    <div class="content">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-      <a>@bulmaio</a>. <a>#css</a> <a>#responsive</a>
-      <br>
-      <small>11:09 PM - 1 Jan 2016</small>
-    </div>
-  </div>
-  <footer class="card-footer">
-    <a class="card-footer-item">Save</a>
-    <a class="card-footer-item">Edit</a>
-    <a class="card-footer-item">Delete</a>
-  </footer>
-</div>-->
 </template>
 
 <script>
@@ -102,11 +84,11 @@
         computed: {
             ...mapGetters(['taskList']),
 
-            list: function() {
-                let task =  [];
+            list: function () {
+                let task = [];
                 let i = 0;
-                
-                for(i = 0; i < this.taskList.length; i++) {
+
+                for (i = 0; i < this.taskList.length; i++) {
                     if (this.taskList[i].taskName.includes(this.search)) {
                         task.push(this.taskList[i]);
                     }
@@ -127,6 +109,7 @@
 </script>
 
 <style lang="less">
+@import "~bootstrap/dist/css/bootstrap.min.css";
 .panel-body text-right {
     text-align: left;
     background-color: #00b050; 

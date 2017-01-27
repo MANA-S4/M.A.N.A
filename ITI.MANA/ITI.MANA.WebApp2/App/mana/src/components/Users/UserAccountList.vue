@@ -5,35 +5,22 @@
         </div>
 
         <div class="panel panel-default">
-        <table class="table table-striped table-hover table-bordered">
-            <thead>
-                <tr>
-                    <th>Nom</th>
-                    <th>Prénom</th>
-                    <th>Email</th>
-                    <th>Date de Naissance</th>
-                    <th>Options</th>       
-                </tr>
-            </thead>
+            <table class="table table-striped table-hover table-bordered">
+                <thead>
+                    <a>Nom : {{userAccountList.lastName}}</a><br><br>
+                    <a>Prénom : {{userAccountList.firstName}}</a><br><br>
+                    <a>Email : {{userAccountList.email}}</a><br><br>
+                    <a>Date de Naissance : {{userAccountList.birthDate}}</a><br><br>
+                    <router-link :to="`users/edit`"><button type="button" class="btn btn-warning">Modifier</button></router-link>
+                </thead>
 
-            <tbody>
-                <tr v-if="userAccountList.length == 0">
-                    <td colspan="6" class="text-center">Il n'y a actuellement aucune information.</td>
-                </tr>
-                
-                <tr>
-                    <td>{{userAccountList.firstName}}</td>
-                    <td>{{userAccountList.lastName}}</td>
-                    <td>{{userAccountList.email}}</td>
-                    <td>{{userAccountList.birthDate}}</td>
-                    <td>
-                        <router-link :to="`users/edit/${userAccountList.userId}`"><i class="glyphicon glyphicon-pencil"></i></router-link>    
-                    </td>
-                </tr>
-
-            </tbody>
-        </table>
-    </div>
+                <tbody>
+                    <tr v-if="userAccountList.length == 0">
+                        <td colspan="6" class="text-center">Il n'y a actuellement aucune information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 </template>
 
 <script>
@@ -54,11 +41,11 @@
         computed: {
             ...mapGetters(['userAccountList']),
 
-            list: function() {
-                let user =  [];
+            list: function () {
+                let user = [];
                 let i = 0;
-                
-                for(i = 0; i < this.userAccountList.length; i++) {
+
+                for (i = 0; i < this.userAccountList.length; i++) {
                     if (this.userAccountList[i].lastName.includes(this.search)) {
                         user.push(this.userAccountList[i]);
                     }
