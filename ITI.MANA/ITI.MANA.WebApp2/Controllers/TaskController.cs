@@ -16,17 +16,19 @@ namespace ITI.MANA.WebApp.Controllers
     public class TaskController : Controller
     {
         readonly TaskService _taskService;
+        readonly UserService _userService;
 
-        public TaskController(TaskService taskService)
+        public TaskController(TaskService taskService, UserService userService)
         {
             _taskService = taskService;
+            _userService = userService;
         }
 
         [HttpGet]
         public IActionResult GetTaskList()
         {
-            int taskId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
-            Result<IEnumerable<Task>> result = _taskService.GetAll(taskId);
+            int userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            Result<IEnumerable<Task>> result = _taskService.GetAll(userId);
             return this.CreateResult<IEnumerable<Task>, IEnumerable<TaskViewModel>>(result, o =>
             {
                 o.ToViewModel = x => x.Select(s => s.ToTaskViewModel());
@@ -47,7 +49,8 @@ namespace ITI.MANA.WebApp.Controllers
         public IActionResult CreateTask([FromBody] TaskViewModel model)
         {
             int userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
-            Result<Task> result = _taskService.CreateTask(model.TaskName, userId);
+            User attributeToUserId = _userService.FindUser(model.AttributeTo);
+            Result<Task> result = _taskService.CreateTask(model.TaskName, userId, model.TaskDate, attributeToUserId.UserId);
             return this.CreateResult<Task, TaskViewModel>(result, o =>
             {
                 o.ToViewModel = s => s.ToTaskViewModel();
@@ -59,7 +62,8 @@ namespace ITI.MANA.WebApp.Controllers
         [HttpPut("{taskId}")]
         public IActionResult UpdateTask(int taskId, string taskName, [FromBody] TaskViewModel model)
         {
-            Result<Task> result = _taskService.UpdateTask(taskId, model.TaskName, model.TaskDate);
+            User attributeToUserId = _userService.FindUser(model.AttributeTo);
+            Result<Task> result = _taskService.UpdateTask(taskId, model.TaskName, model.TaskDate, attributeToUserId.UserId);
             return this.CreateResult<Task, TaskViewModel>(result, o =>
             {
                 o.ToViewModel = s => s.ToTaskViewModel();

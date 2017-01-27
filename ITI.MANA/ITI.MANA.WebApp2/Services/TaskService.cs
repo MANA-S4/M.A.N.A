@@ -21,19 +21,19 @@ namespace ITI.MANA.WebApp.Services
             return Result.Success(Status.Ok, task);
         }
 
-        public Result<IEnumerable<Task>> GetAll(int taskId)
+        public Result<IEnumerable<Task>> GetAll(int userId)
         {
-            return Result.Success(Status.Ok, _taskGateway.GetAll(taskId));
+            return Result.Success(Status.Ok, _taskGateway.GetAll(userId));
         }
 
-        public Result<Task> CreateTask(string taskName, int userId)
+        public Result<Task> CreateTask(string taskName, int userId, DateTime taskDate, int attributeTo)
         {
-            _taskGateway.Create(taskName, userId);
+            _taskGateway.Create(taskName, userId, taskDate, attributeTo);
             Task task = _taskGateway.FindTask(userId, taskName);
             return Result.Success(Status.Created, task);
         }
 
-        public Result<Task> UpdateTask(int taskId, string taskName, DateTime taskDate)
+        public Result<Task> UpdateTask(int taskId, string taskName, DateTime taskDate,int attributeTo)
         {
             Task task;
             if ((task = _taskGateway.FindById(taskId)) == null)
@@ -46,7 +46,7 @@ namespace ITI.MANA.WebApp.Services
                 if (c != null && c.TaskId != task.TaskId) return Result.Failure<Task>(Status.BadRequest, "A task with this name already exists.");
             }
 
-            _taskGateway.Update(taskId, taskName, taskDate);
+            _taskGateway.Update(taskId, taskName, taskDate, attributeTo);
             task = _taskGateway.FindById(taskId);
             return Result.Success(Status.Ok, task);
         }

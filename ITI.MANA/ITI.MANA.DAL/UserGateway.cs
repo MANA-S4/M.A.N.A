@@ -19,7 +19,7 @@ namespace ITI.MANA.DAL
 
         public IEnumerable<User> GetAll()
         {
-            using(SqlConnection con = new SqlConnection(_connectionString))
+            using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 return con.Query<User>("select u.UserId, u.Email, u.FirstName, u.LastName from iti.Users u;");
             }
@@ -30,7 +30,7 @@ namespace ITI.MANA.DAL
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 return con.Query<User>(
-                        "select u.UserId, u.Email, u.FirstName, u.LastName, u.BirthDate from iti.Users u where u.UserId = @UserId",
+                        "select u.Email from iti.Users u where u.UserId = @UserId",
                         new { UserId = userId })
                     .FirstOrDefault();
             }
@@ -58,13 +58,13 @@ namespace ITI.MANA.DAL
             }
         }
 
-        public void CreateGoogleUser(string email,string accessToken , string refreshToken, string tokenType, long expireIn)
+        public void CreateGoogleUser(string email, string accessToken, string refreshToken, string tokenType, long expireIn)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 con.Execute(
                     "iti.sGoogleUserCreate",
-                    new { Email = email,AccessToken = accessToken, RefreshToken = refreshToken, TokenType = tokenType, ExpireIn = expireIn },
+                    new { Email = email, AccessToken = accessToken, RefreshToken = refreshToken, TokenType = tokenType, ExpireIn = expireIn },
                     commandType: CommandType.StoredProcedure);
             }
         }
@@ -125,7 +125,7 @@ namespace ITI.MANA.DAL
             }
         }
 
-        public void UpdateGoogleToken(int userId, string accessToken , string refreshToken, string tokenType, long expireIn)
+        public void UpdateGoogleToken(int userId, string accessToken, string refreshToken, string tokenType, long expireIn)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {

@@ -130,9 +130,11 @@ create table iti.Tasks
 	TaskDate datetime2,
 	IsFinish bit,
 	UserId int,
+	AttributeTo int
 
 	constraint PK_Tasks primary key(TaskID),
-	constraint FK_Tasks_UserId foreign key(UserId) references iti.Users(UserId)
+	constraint FK_Tasks_UserId foreign key(UserId) references iti.Users(UserId),
+	constraint FK_Tasks_AttributeToId foreign key(AttributeTo) references iti.Users(UserId)
 );
 
 create table iti.Contacts

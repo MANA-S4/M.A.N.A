@@ -24,6 +24,13 @@
                 <input type="date" v-model="item.taskDate" class="form-control">
             </div>
 
+            <div class="form-group">
+                <label>Attribuer a : </label>
+                <select v-model="item.attributeTo">
+                    <option v-for="i of contactList">{{i.email}}</option>
+                </select>
+            </div>
+
             <button type="submit" class="btn btn-warning">Sauvegarder</button>
         </form>
     </div>
@@ -43,7 +50,7 @@
         },
 
         computed: {
-            ...mapGetters(['taskList'])
+            ...mapGetters(['taskList','contactList'])
         },
 
         created() {
@@ -61,7 +68,7 @@
         },
 
         methods: {
-            ...mapActions(['createTask', 'updateTask']),
+            ...mapActions(['createTask', 'updateTask','refreshContactList']),
 
             onSubmit: async function(e) {
                 e.preventDefault();

@@ -12,6 +12,7 @@ namespace ITI.MANA.DAL
         public string TaskName { get; set; }
 
         public DateTime TaskDate { get; set; }
-        
+
+        public string AttributeTo { get; set; }
     }
 }

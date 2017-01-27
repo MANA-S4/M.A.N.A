@@ -16,12 +16,13 @@ namespace ITI.MANA.DAL
             _connectionString = connectionString;
         }
 
-        public IEnumerable<Task> GetAll(int taskId)
+        public IEnumerable<Task> GetAll(int userId)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 return con.Query<Task>(
-                    @"select t.TaskId, t.TaskName, t.TaskDate, t.IsFinish, t.UserId from iti.Tasks t;");
+                    @"select t.TaskId, t.TaskName, t.TaskDate, t.IsFinish, t.UserId from iti.Tasks t where t.UserId = @UserId or t.AttributeTo = @UserId;",
+                    new { UserId = userId });
             }
         }
 
@@ -51,13 +52,13 @@ namespace ITI.MANA.DAL
             }
         }
 
-        public void Create(string taskName, int userId)
+        public void Create(string taskName, int userId, DateTime taskDate, int attributeTo)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 con.Execute(
                     "iti.sTaskCreate",
-                    new { TaskName = taskName, UserId = userId },
+                    new { TaskName = taskName, UserId = userId, TaskDate = taskDate, AttributeTo = attributeTo },
                     commandType: CommandType.StoredProcedure);
             }
         }
@@ -73,13 +74,13 @@ namespace ITI.MANA.DAL
             }
         }
 
-        public void Update(int taskId, string taskName, DateTime taskDate)
+        public void Update(int taskId, string taskName, DateTime taskDate, int attributeTo)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 con.Execute(
                     "iti.sTaskUpdate",
-                    new { TaskId = taskId, TaskName = taskName, TaskDate = taskDate },
+                    new { TaskId = taskId, TaskName = taskName, TaskDate = taskDate, AttributeTo = attributeTo },
                     commandType: CommandType.StoredProcedure);
             }
         }

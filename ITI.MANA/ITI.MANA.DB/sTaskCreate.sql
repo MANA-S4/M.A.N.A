@@ -1,14 +1,16 @@
-create proc iti.sTaskCreate 
+alter proc iti.sTaskCreate 
 (
 	@TaskName nvarchar(64),
-	@UserId int
+	@UserId int,
+	@TaskDate datetime2,
+	@AttributeTo int
 )
 
 as 
 begin
 
-insert into iti.Tasks(TaskName, UserId)
-	values(@TaskName, @UserId);
+insert into iti.Tasks(TaskName, UserId, TaskDate, AttributeTo)
+	values(@TaskName, @UserId, @TaskDate,@AttributeTo);
 
 return 0;
 end;
