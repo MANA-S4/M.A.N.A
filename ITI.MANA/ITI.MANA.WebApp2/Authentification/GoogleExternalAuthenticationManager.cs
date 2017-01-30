@@ -9,7 +9,6 @@ namespace ITI.MANA.WebApp.Authentification
     public class GoogleExternalAuthenticationManager : IExternalAuthenticationManager
     {
         readonly UserService _userService;
-        string email;
 
         public GoogleExternalAuthenticationManager(UserService userService)
         {

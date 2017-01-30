@@ -9,7 +9,7 @@ module.exports = {
 
   output: {
     path: path.resolve(wwwroot, './dist'),
-    publicPath: 'http://localhost:8080/dist/',
+    publicPath: '/dist/',
     filename: 'mana.js'
   },
 

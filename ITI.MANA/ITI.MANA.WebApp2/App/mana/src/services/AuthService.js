@@ -51,8 +51,6 @@ class AuthService {
     }
 
     onMessage = (e) => {
-        if(this.allowedOrigins.indexOf(e.origin) < 0) return;
-
         var data = typeof e.data == 'string' ? JSON.parse(e.data) : e.data;
 
         if(data.type == 'authenticated') this.onAuthenticated(data.payload);
