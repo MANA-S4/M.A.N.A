@@ -6,7 +6,7 @@
 
         <div class="panel panel-default">
             <div class="panel-body text-right">
-                <router-link class="btn btn-warning" :to="`contacts/create`"><i class="glyphicon glyphicon-plus"></i> Ajouter un contact</router-link>
+                <router-link class="btn btn-success" :to="`contacts/create`"><i class="glyphicon glyphicon-plus"></i> Ajouter un contact</router-link>
             </div>
         </div>
 
@@ -19,9 +19,8 @@
         <table class="table table-striped table-hover table-bordered">
             <thead>
                 <tr>
-                    <th>ContactId</th>
                     <th>Email</th>
-                    <th>RelationType</th>
+                    <th>Relation</th>
                     <th>Options</th>
                 </tr>
             </thead>
@@ -32,8 +31,6 @@
                 </tr>
 
                 <tr v-for="i of list">
-                    <!-- modification de contactList en list pour afficher les contacts en fonction de ma recherche -->
-                    <td>{{ i.contactId }}</td>
                     <td>{{ i.email }}</td>
                     <td>{{ i.relationType }}</td>
                     <td>
@@ -41,12 +38,6 @@
                         <a href="#"><i class="glyphicon glyphicon-remove" id="show-modal" @click="openDeletePrompt(i.contactId)"></i></a> <!-- To open the popup-->
                     </td>
                 </tr>
-
-                <tr>
-                    <a href="#" @click="previousList(i.contactId)"><i class="glyphicon glyphicon-menu-left"></i></a>
-                    <a href="#" @click="nextList(i.contactId)"><i class="glyphicon glyphicon-menu-right"></i></a>
-                </tr>
-
             </tbody>         
         </table>
         
@@ -120,11 +111,11 @@
     
     .panel {
         text-align: left;
-        background-color: #00b050;
+        background-color: #bdc3c7;
     }
     
     .panel-body {
-        background-color: #00b050;
+        background-color: #bdc3c7;
     }
     
     .table {

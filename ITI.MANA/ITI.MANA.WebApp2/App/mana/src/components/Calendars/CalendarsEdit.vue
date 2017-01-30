@@ -25,7 +25,7 @@
             </div>
 
             <div class="form-group">
-                <label>Membres additionnel</label>
+                <label>Membres additionnels</label>
                 <input type="text" v-model="item.members" class="form-control">
             </div>
 
@@ -34,7 +34,7 @@
                 <input type="checkbox" v-model="item.isPrivate" class="form-control">
             </div>
 
-            <button type="submit" class="btn btn-primary">Enregistrer</button>
+            <button type="submit" class="btn btn-warning">Enregistrer</button>
         </form>
     </div>
 </template>

@@ -70,7 +70,7 @@ h1 {
 }
 
 .text-muted {
-  color: darkorange;
+  color: green;
 }
 
 footer {
