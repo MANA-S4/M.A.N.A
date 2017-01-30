@@ -6,9 +6,9 @@
 
                     <div class="modal-body">
                         <slot name="body">
-                            default footer
+                            Voulez-vous supprimer cette tâche ?<br>
                         </slot>
-                        <button class="modal-default-button" @click="deleteTask(taskId) & $emit('close')">Oui</button>
+                        <button class="modal-default-button" @click="deleteTask(taskId) & $emit('close')">Oui</button><p>
                         <button class="modal-default-button" @click="$emit('close')">Non</button>
                     </div>
 
@@ -104,5 +104,9 @@
     
     body {
         color: black;
+    }
+    .modal-default-button {
+        display: block;
+        margin: auto;
     }
 </style>

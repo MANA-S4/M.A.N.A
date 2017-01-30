@@ -19,9 +19,9 @@
         <table class="table table-striped table-hover table-bordered">
             <thead>
                 <tr>
-                    <th>Name</th>
+                    <th>Nom de la tâche</th>
                     <th>Date</th>
-                    <th>Attribuer à </th>
+                    <th>Attribué à </th>
                     <th>Options</th>
                 </tr>
             </thead>

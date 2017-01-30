@@ -6,7 +6,7 @@
 
                     <div class="modal-body">
                         <slot name="body">
-                            default footer
+                            Voulez-vous supprimer ce contact ?<br>
                         </slot>
                         <button class="modal-default-button" @click="deleteContact(contactId) & $emit('close')">Oui</button> <!-- deleteContact(i.contactId) -->
                         <button class="modal-default-button" @click="$emit('close')">Non</button>
