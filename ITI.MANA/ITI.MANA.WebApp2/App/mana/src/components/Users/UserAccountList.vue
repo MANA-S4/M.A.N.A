@@ -11,7 +11,7 @@
                     <a>Prénom : {{userAccountList.firstName}}</a><br><br>
                     <a>Email : {{userAccountList.email}}</a><br><br>
                     <a>Date de Naissance : {{userAccountList.birthDate}}</a><br><br>
-                    <router-link :to="`users/edit`"><button type="button" class="btn btn-warning">Modifier</button></router-link>
+                    <router-link :to="`users/edit`"><button type="button" class="btn btn-success">Modifier</button></router-link>
                 </thead>
 
                 <tbody>

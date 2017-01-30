@@ -6,7 +6,7 @@
 
         <div class="panel panel-default">
             <div class="panel-body text-right">
-                <router-link class="btn btn-warning" :to="`contacts/create`"><i class="glyphicon glyphicon-plus"></i> Ajouter un contact</router-link>
+                <router-link class="btn btn-success" :to="`contacts/create`"><i class="glyphicon glyphicon-plus"></i> Ajouter un contact</router-link>
             </div>
         </div>
 
@@ -120,11 +120,11 @@
     
     .panel {
         text-align: left;
-        background-color: #00b050;
+        background-color: #bdc3c7;
     }
     
     .panel-body {
-        background-color: #00b050;
+        background-color: #bdc3c7;
     }
     
     .table {

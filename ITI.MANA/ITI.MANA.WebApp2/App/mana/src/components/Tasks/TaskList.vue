@@ -6,7 +6,7 @@
 
         <div class="panel panel-default">
             <div class="panel-body text-right">
-                <router-link class="btn btn-warning" :to="`tasks/create`"><i class="glyphicon glyphicon-plus"></i> Ajouter une tâche</router-link>
+                <router-link class="btn btn-success" :to="`tasks/create`"><i class="glyphicon glyphicon-plus"></i> Ajouter une tâche</router-link>
             </div>
         </div>
 
@@ -112,7 +112,7 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 .panel-body text-right {
     text-align: left;
-    background-color: #00b050; 
+    background-color: #bdc3c7; 
     }
 .table table-striped table-hover table-bordered { background-color: #00b050;}
 th {
