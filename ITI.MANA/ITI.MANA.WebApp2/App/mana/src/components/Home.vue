@@ -69,6 +69,14 @@ h1 {
   font-size: 35px;
 }
 
+h2 {
+  font-size: 35px;
+}
+
+.featurette-divider .h2 {
+  font-size: 34px;
+}
+
 .text-muted {
   color: green;
 }
