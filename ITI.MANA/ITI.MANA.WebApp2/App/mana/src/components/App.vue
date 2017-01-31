@@ -68,10 +68,14 @@ export default {
     a.router-link-active {
         font-weight: bold;
     }
+    #app {
+        background-color: #bdc3c7;
+    }
 </style>
 
 <style lang="less">
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "../styles/cover.css";
 @import "../styles/one-page-wonder.css";
+@import "~bulma/css/bulma.css";
 </style>

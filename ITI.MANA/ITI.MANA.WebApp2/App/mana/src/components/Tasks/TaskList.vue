@@ -1,57 +1,52 @@
 <template>
     <div>
-        <div class="page-header">
-            <h1>Gestion des tâches</h1>
-        </div>
-
         <div>
-            <div class="panel-body text-right">
-                <router-link class="btn btn-success" :to="`tasks/create`"><i class="glyphicon glyphicon-plus"></i> Ajouter une tâche</router-link>
+            <div class="page-header">
+                <h1>Gestion des tâches</h1>
+            </div>
+
+            <div>
+                <div class="panel-body text-right">
+                    <router-link class="btn btn-success" :to="`tasks/create`"><i class="glyphicon glyphicon-plus"></i> Ajouter une tâche</router-link>
+                </div>
+            </div>
+
+            <!-- For the search, take a v-model -->
+            <div class="panel">
+                <input type="text" name="search" v-model="search" id="search" placeholder="Rechercher" /> <i class="glyphicon glyphicon-search"></i>
+            </div>
+            <!-- End of search div -->
+
+            <div class="card" v-for="i of list">
+                <header class="card-header">
+                    <p class="card-header-title">
+                        {{i.taskName}}
+                    </p>
+                    <a class="card-header-icon">
+                        <span class="icon">
+                    <i class="fa fa-angle-down"></i>
+                </span>
+                    </a>
+                </header>
+                <div class="card-content">
+                    <div class="content">
+                        {{i.email}}
+                        <br><br>
+                        <small>{{i.taskDate}}</small>
+                    </div>
+                </div>
+                <footer class="card-footer">
+                    <a class="card-footer-item">
+                        <router-link :to="`tasks/edit/${i.taskId}`">Edit</a>
+                    </router-link>
+                    <a class="card-footer-item" id="show-modal" @click="openDeleteTaskPrompt(i.taskId)">Delete</a>
+                </footer>
+
+                <delete-task-prompt v-if="showModal" @close="showModal = false" v-bind:taskId="deletingTaskId">
+                    <h3 slot="header">Suppression</h3>
+                </delete-task-prompt>
             </div>
         </div>
-
-        <!-- For the search, take a v-model -->
-        <div class="panel">
-            <input type="text" name="search" v-model="search" id="search" placeholder="Rechercher" /> <i class="glyphicon glyphicon-search"></i>
-        </div>
-        <!-- End of search div -->
-
-        <table class="table table-striped table-bordered">
-            <thead>
-                <tr>
-                    <th>Nom de la tâche</th>
-                    <th>Date</th>
-                    <th>Attribué à </th>
-                    <th>Options</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <tr v-if="taskList.length == 0">
-                    <td colspan="6" class="text-center">Il n'y a actuellement aucune tâche.</td>
-                </tr>
-
-                <tr v-for="i of list">
-                    <td>{{ i.taskName }}</td>
-                    <td>{{ i.taskDate }}</td>
-                    <td>{{ i.email }}</td>
-                    <td>
-                        <router-link :to="`tasks/edit/${i.taskId}`"><i class="glyphicon glyphicon-pencil"></i></router-link>
-                        <a href="#"><i class="glyphicon glyphicon-remove" id="show-modal" @click="openDeleteTaskPrompt(i.taskId)"></i></a>
-                        <!-- To open the popup-->
-                    </td>
-                </tr>
-
-            </tbody>
-        </table>
-
-        <!-- If user click on "Non" popup close -->
-        <delete-task-prompt v-if="showModal" @close="showModal = false" v-bind:taskId="deletingTaskId">
-            <h3 slot="header">Suppression</h3>
-        </delete-task-prompt>
-        <!-- End -->
-
-    </div>
 </template>
 
 <script>
