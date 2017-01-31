@@ -4,19 +4,19 @@
             <h1>Gestion des tâches</h1>
         </div>
 
-        <div class="panel panel-default">
+        <div>
             <div class="panel-body text-right">
                 <router-link class="btn btn-success" :to="`tasks/create`"><i class="glyphicon glyphicon-plus"></i> Ajouter une tâche</router-link>
             </div>
         </div>
 
         <!-- For the search, take a v-model -->
-        <div class="panel panel-default">
+        <div class="panel">
             <input type="text" name="search" v-model="search" id="search" placeholder="Rechercher" /> <i class="glyphicon glyphicon-search"></i>
         </div>
         <!-- End of search div -->
 
-        <table class="table table-striped table-hover table-bordered">
+        <table class="table table-striped table-bordered">
             <thead>
                 <tr>
                     <th>Nom de la tâche</th>

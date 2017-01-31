@@ -4,18 +4,18 @@
             <h1>Gestion des évènements</h1>
         </div>
 
-        <div class="panel panel-default">
+        <div>
             <div class="panel-body text-right">
                 <button type="button" @click="exportFromGoogleAsync" class="btn btn-success"><i class="fa fa-google" aria-hidden="true"></i><i class="glyphicon glyphicon-download-alt"></i> Importer votre calendrier Google</button>
                 <router-link class="btn btn-success" :to="`calendars/create`"><i class="glyphicon glyphicon-plus"></i> Ajouter un évènement</router-link>
             </div>
         </div>
 
-        <div class="panel panel-default">
+        <div class="panel">
             <input type="text" name="search" v-model="search" placeholder="Rechercher"> <i class="glyphicon glyphicon-search"></i> 
         </div>
 
-        <table class="table table-striped table-hover table-bordered">
+        <table class="table table-striped table-bordered">
             <thead>
                 <tr>
                     <th>Évènements</th>

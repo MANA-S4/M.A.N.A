@@ -4,12 +4,16 @@
             <h1>Profil</h1>
         </div>
 
-        <div class="panel panel-default">
+        <div class="panel">
             <thead>
-                <a>Nom : {{userAccountList.lastName}}</a><br><br>
-                <a>Prénom : {{userAccountList.firstName}}</a><br><br>
-                <a>Email : {{userAccountList.email}}</a><br><br>
-                <a>Date de Naissance : {{userAccountList.birthDate}}</a><br><br>
+                <h4><p>Nom :</p></h4>
+                <p>{{userAccountList.lastName}}</p><br>
+                <h4><p>Prénom :</p></h4>
+                <p>{{userAccountList.firstName}}</p><br>
+                <h4><p>Email :</p></h4>
+                <p>{{userAccountList.email}}</p><br>
+                <h4><p>Date de Naissance :</p></h4>
+                <p>{{userAccountList.birthDate}}</p><br>
                 <router-link :to="`users/edit`"><button type="button" class="btn btn-success">Modifier</button></router-link>
             </thead>
 
@@ -60,13 +64,8 @@
 </script>
 
 <style lang="less">
-.panel-body text-right {
-    text-align: left;
-    background-color: #00b050; 
-    }
-.table table-striped table-hover table-bordered { background-color: #00b050;}
 a {
-    text-align: center;
+    text-align: left;
     color: black;
 }
 </style>

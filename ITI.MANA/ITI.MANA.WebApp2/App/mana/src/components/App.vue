@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <nav class="navbar navbar-default">
+        <nav class="navbar navbar-inverse">
             <div class="container-fluid">
 
                 <div class="navbar-header">
@@ -22,7 +22,7 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ auth.email }} <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><router-link to="/users">Mon compte</router-link></li>
+                                <li><router-link to="/users">Profil</router-link></li>
                                 <li><router-link to="/logout">Se déconnecter</router-link></li>
                             </ul>
                         </li>
@@ -74,8 +74,4 @@ export default {
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "../styles/cover.css";
 @import "../styles/one-page-wonder.css";
-
-li {
-    text-align: center;
-}
 </style>
