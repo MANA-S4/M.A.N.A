@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <!--<div>
         <div class="page-header">
             <h1>Gestion des contacts</h1>
         </div>
@@ -11,12 +11,12 @@
         </div>
 
         <!-- For the search, take a v-model -->
-        <div class="panel">
+    <!--<div class="panel">
             <input type="text" name="search" v-model="search" id="search" placeholder="Rechercher" /> <i class="glyphicon glyphicon-search"></i> 
         </div>
         <!-- End of search div -->
 
-        <table class="table table-striped table-bordered">
+    <!--<table class="table table-striped table-bordered">
             <thead>
                 <tr>
                     <th>Email</th>
@@ -36,17 +36,52 @@
                     <td>
                         <router-link :to="`contacts/edit/${i.contactId}`"><i class="glyphicon glyphicon-pencil"></i></router-link>
                         <a href="#"><i class="glyphicon glyphicon-remove" id="show-modal" @click="openDeletePrompt(i.contactId)"></i></a> <!-- To open the popup-->
-                    </td>
+    <!--</td>
                 </tr>
             </tbody>         
         </table>
         
         <!-- If user click on "Non" popup close -->
-        <delete-prompt v-if="showModal" @close="showModal = false" v-bind:contactId="deletingContactId">
+    <!--<delete-prompt v-if="showModal" @close="showModal = false" v-bind:contactId="deletingContactId">
             <h3 slot="header">Suppression</h3>
         </delete-prompt>
         <!-- End -->
 
+    <!-- </div>-->
+    <div>
+        <div class="page-header">
+            <h1>Gestion des contacts</h1>
+        </div>
+
+        <div>
+            <div class="panel-body text-right">
+                <router-link class="btn btn-success" :to="`contacts/create`"><i class="glyphicon glyphicon-plus"></i> Ajouter un contact</router-link>
+            </div>
+        </div>
+
+        <!-- For the search, take a v-model -->
+        <div class="panel">
+            <input type="text" name="search" v-model="search" id="search" placeholder="Rechercher" /> <i class="glyphicon glyphicon-search"></i> 
+        </div>
+        <!-- End of search div -->
+
+        <div class="box" v-for="i of list">
+            <article class="media">
+                <div class="media-left">
+                    <figure class="image is-64x64">
+                        <img src="http://bulma.io/images/placeholders/128x128.png" alt="Image">
+                    </figure>
+                </div>
+                <div class="media-content">
+                    <div class="content">
+                        <p>
+                            <strong>{{i.email}}</strong><br>
+                            <br> {{i.relationType}}
+                        </p>
+                    </div>
+                </div>
+            </article>
+        </div>
     </div>
 </template>
 
@@ -80,17 +115,17 @@
         computed: {
             ...mapGetters(['contactList']),
 
-            list: function() {
-                let contact =  [];
+            list: function () {
+                let contact = [];
                 let i = 0;
-                
-                for(i = 0; i < this.contactList.length; i++) {
+
+                for (i = 0; i < this.contactList.length; i++) {
                     if (this.contactList[i].email.includes(this.search)) {
                         contact.push(this.contactList[i]);
                     }
                 }
                 return contact;
-            }   
+            }
         },
 
         methods: {
