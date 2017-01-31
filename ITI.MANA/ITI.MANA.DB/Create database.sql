@@ -145,7 +145,8 @@ create table iti.Contacts
 	UserRelationId int,
 	
 	constraint PK_Contacts primary key(ContactId),
-	constraint FK_Contacts_UserId foreign key(UserId) references iti.Users(UserId)
+	constraint FK_Contacts_UserId foreign key(UserId) references iti.Users(UserId),
+	constraint FK_Contacts_UserRelationId foreign key(UserRelationId) references iti.Users(UserId)
 );
 
 create table iti.Events
