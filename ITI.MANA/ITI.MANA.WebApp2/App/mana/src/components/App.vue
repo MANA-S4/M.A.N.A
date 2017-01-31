@@ -74,4 +74,5 @@ export default {
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "../styles/cover.css";
 @import "../styles/one-page-wonder.css";
+@import "~bulma/css/bulma.css";
 </style>
