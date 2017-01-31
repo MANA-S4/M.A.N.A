@@ -79,10 +79,11 @@
 
         created() {
             this.refreshTaskList();
+            this.refreshContactList();
         },
 
         computed: {
-            ...mapGetters(['taskList']),
+            ...mapGetters(['taskList','contactList']),
 
             list: function () {
                 let task = [];
@@ -98,7 +99,7 @@
         },
 
         methods: {
-            ...mapActions(['refreshTaskList' ,'deleteTask']),
+            ...mapActions(['refreshTaskList' ,'deleteTask','refreshContactList']),
 
             openDeleteTaskPrompt(taskId) {
                 this.deletingTaskId = taskId;
