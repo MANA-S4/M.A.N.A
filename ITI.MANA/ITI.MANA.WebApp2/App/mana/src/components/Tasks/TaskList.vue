@@ -1,52 +1,55 @@
 <template>
     <div>
+        <div class="page-header">
+            <h1>Gestion des tâches</h1>
+        </div>
+
         <div>
-            <div class="page-header">
-                <h1>Gestion des tâches</h1>
-            </div>
-
-            <div>
-                <div class="panel-body text-right">
-                    <router-link class="btn btn-success" :to="`tasks/create`"><i class="glyphicon glyphicon-plus"></i> Ajouter une tâche</router-link>
-                </div>
-            </div>
-
-            <!-- For the search, take a v-model -->
-            <div class="panel">
-                <input type="text" name="search" v-model="search" id="search" placeholder="Rechercher" /> <i class="glyphicon glyphicon-search"></i>
-            </div>
-            <!-- End of search div -->
-
-            <div class="card" v-for="i of list">
-                <header class="card-header">
-                    <p class="card-header-title">
-                        {{i.taskName}}
-                    </p>
-                    <a class="card-header-icon">
-                        <span class="icon">
-                    <i class="fa fa-angle-down"></i>
-                </span>
-                    </a>
-                </header>
-                <div class="card-content">
-                    <div class="content">
-                        {{i.email}}
-                        <br><br>
-                        <small>{{i.taskDate}}</small>
-                    </div>
-                </div>
-                <footer class="card-footer">
-                    <a class="card-footer-item">
-                        <router-link :to="`tasks/edit/${i.taskId}`">Edit</a>
-                    </router-link>
-                    <a class="card-footer-item" id="show-modal" @click="openDeleteTaskPrompt(i.taskId)">Delete</a>
-                </footer>
-
-                <delete-task-prompt v-if="showModal" @close="showModal = false" v-bind:taskId="deletingTaskId">
-                    <h3 slot="header">Suppression</h3>
-                </delete-task-prompt>
+            <div class="panel-body text-right">
+                <router-link class="btn btn-success" :to="`tasks/create`"><i class="glyphicon glyphicon-plus"></i> Ajouter une tâche</router-link>
             </div>
         </div>
+
+        <!-- For the search, take a v-model -->
+        <div class="panel">
+            <input type="text" name="search" v-model="search" id="search" placeholder="Rechercher" /> <i class="glyphicon glyphicon-search"></i>
+        </div>
+        <!-- End of search div -->
+
+        <div class="columns">
+            <div class="card" v-for="i of list">
+                <div class="column">
+                    <header class="card-header">
+                        <p class="card-header-title">
+                            {{i.taskName}}
+                        </p>
+                        <a class="card-header-icon">
+                            <span class="icon">
+                    <i class="fa fa-angle-down"></i>
+                </span>
+                        </a>
+                    </header>
+                    <div class="card-content">
+                        <div class="content">
+                            {{i.email}}
+                            <br><br>
+                            <small>{{i.taskDate}}</small>
+                        </div>
+                    </div>
+                    <footer class="card-footer">
+                        <a class="card-footer-item">
+                            <router-link :to="`tasks/edit/${i.taskId}`">Edit</a>
+                        </router-link>
+                        <a class="card-footer-item" id="show-modal" @click="openDeleteTaskPrompt(i.taskId)">Delete</a>
+                    </footer>
+
+                    <delete-task-prompt v-if="showModal" @close="showModal = false" v-bind:taskId="deletingTaskId">
+                        <h3 slot="header">Suppression</h3>
+                    </delete-task-prompt>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -117,5 +120,18 @@ th {
 td {
     color: black;
     text-align: left;
+}
+.columns {
+    margin-bottom: 5px;
+    margin-right: 30px;
+    margin-left: 10px;
+}
+.card {
+    margin-top: 10px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+.card-footer {
+    margin-bottom: 0.01px;
 }
 </style>
