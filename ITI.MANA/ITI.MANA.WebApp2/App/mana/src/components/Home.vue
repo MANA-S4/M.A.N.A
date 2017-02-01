@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1>M.A.N.A</h1>
+    <br><h1>M.A.N.A</h1><br>
     <h2>Notre application vous aidera à organiser votre vie familiale ou entre colocataire. Vous pourrez ajouter des contacts,
       gérer vos calendriers (et inviter votre famille ou vos coloc' à des évènements). De plus vous pourrez ajouter des tâches
       pour savoir ce qu'il vous reste à faire.</h2>

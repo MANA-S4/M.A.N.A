@@ -26,8 +26,8 @@
                 <select v-model="item.relationType" class="form-control" required>
                     <option>Père</option>
                     <option>Mère</option>
-                    <option>Frère</option>
-                    <option>Soeur</option>
+                    <option>Enfant</option>
+                    <option>Frère/Soeur</option>
                     <option>Colocataire</option>
                 </select>
             </div>
