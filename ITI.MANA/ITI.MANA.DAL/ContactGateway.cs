@@ -20,9 +20,9 @@ namespace ITI.MANA.DAL
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 return con.Query<Contact>(
-                    @"select ContactId = u.UserId, u.Email, c.RelationType from iti.Contacts c inner join iti.Users u on c.UserRelationId = u.UserId where c.UserId = @UserId 
+                    @"select UserRelationId = u.UserId, u.Email,c.ContactId, from iti.Contacts c inner join iti.Users u on c.UserRelationId = u.UserId where c.UserId = @UserId 
                       union
-                      select ContactId = u.UserId, u.Email, c.RelationType from iti.Contacts c inner join iti.Users u on c.UserId = u.UserId where c.UserRelationId = @UserId;",
+                      select UserRelationId = u.UserId, u.Email,c.ContactId, from iti.Contacts c inner join iti.Users u on c.UserId = u.UserId where c.UserRelationId = @UserId;",
                     new { UserId = userId });
             }
         }
