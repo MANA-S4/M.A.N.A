@@ -12,7 +12,7 @@
 
         <!-- For the search, take a v-model -->
         <div class="panel">
-            <input type="text" name="search" v-model="search" id="search" placeholder="Rechercher" /> <i class="glyphicon glyphicon-search"></i> 
+            <input type="text" name="search" v-model="search" id="search" placeholder="Rechercher" /> <i class="glyphicon glyphicon-search"></i>
         </div>
         <!-- End of search div -->
 
@@ -31,7 +31,19 @@
                         </p>
                     </div>
                 </div>
+
+                <router-link :to="`contacts/edit/${i.contactId}`"><i class="glyphicon glyphicon-pencil"></i></router-link>
+                <a href="#"><i class="glyphicon glyphicon-remove" id="show-modal" @click="openDeletePrompt(i.contactId)"></i></a>
+                <!-- To open the popup-->
+
             </article>
+
+            <!-- If user click on "Non" popup close -->
+            <delete-prompt v-if="showModal" @close="showModal = false" v-bind:contactId="deletingContactId">
+                <h3 slot="header">Suppression</h3>
+            </delete-prompt>
+            <!-- End -->
+
         </div>
     </div>
 </template>
