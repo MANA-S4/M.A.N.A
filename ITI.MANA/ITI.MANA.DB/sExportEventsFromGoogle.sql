@@ -33,5 +33,3 @@ begin
 				
 	return 0;
 end;
-
-drop procedure iti.sExportEventsFromGoogle

@@ -13,5 +13,3 @@ begin
 	return 0;
 
 end;
-
-drop proc iti.sTaskDelete;

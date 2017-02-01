@@ -1,4 +1,4 @@
-alter proc iti.sContactCreate
+create proc iti.sContactCreate
 (
 	@UserId int,
 	@RelationType nvarchar(64),
@@ -12,5 +12,3 @@ begin
 	select @ContactId = scope_identity();
 	return 0;
 end;
-
-drop procedure iti.sContactCreate;

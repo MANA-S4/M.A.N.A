@@ -7,5 +7,3 @@ begin
 	delete from iti.Contacts where ContactId = @ContactId;
 	return 0;
 end;
-
-drop proc iti.sContactDelete;

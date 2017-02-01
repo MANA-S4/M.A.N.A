@@ -12,5 +12,3 @@ begin
 	                     values(@userId, @AccessToken);
 	return 0;
 end;
-
-drop procedure iti.sMicrosoftUserCreate

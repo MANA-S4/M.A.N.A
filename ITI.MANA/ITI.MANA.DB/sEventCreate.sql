@@ -11,5 +11,3 @@ begin
 	insert into iti.Events(EventName,EventDate,UserId,Members,IsPrivate) values(@EventName,@EventDate,@UserId,@Members,@IsPrivate);
 	return 0;
 end;
-
-drop procedure iti.sEventCreate

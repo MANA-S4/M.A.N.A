@@ -10,5 +10,3 @@ begin
 	update iti.GoogleUser set AccessToken = @AccessToken,TokenType = @TokenType,ExpireIn=@ExpireIn   where UserId = @UserId;
 	return 0;
 end;
-
-drop proc iti.sGoogleUserUpdate;

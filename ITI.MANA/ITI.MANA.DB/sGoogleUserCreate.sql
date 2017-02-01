@@ -16,6 +16,3 @@ set identity_insert iti.GoogleUser on;
 	                     values(@userId,@AccessToken,@RefreshToken,@TokenType,@ExpireIn);
 	return 0;
 end;
-
-drop procedure iti.sGoogleUserCreate
-  
