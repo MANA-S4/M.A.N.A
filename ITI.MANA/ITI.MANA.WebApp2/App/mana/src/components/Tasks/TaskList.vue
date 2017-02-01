@@ -33,7 +33,7 @@
                         <div class="content">
                             {{i.email}}
                             <br><br>
-                            <small>{{i.taskDate}}</small>
+                            <small>{{i.taskDate | showdate}}</small>
                         </div>
                     </div>
                     <footer class="card-footer">
@@ -55,8 +55,15 @@
 <script>
     import { mapGetters, mapActions } from 'vuex'
     import DeleteTaskPrompt from './DeleteTaskPrompt.vue' // Import the vue DeleteTaskPrompt
+    let showdate = function(value){
+                return value.slice(0,10)
+            }
 
     export default {
+        filters:{
+            showdate
+        },
+
         data() {
             return {
                 // Define popup false to default

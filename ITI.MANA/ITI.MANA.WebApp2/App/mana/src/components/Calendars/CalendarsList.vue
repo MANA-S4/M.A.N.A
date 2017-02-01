@@ -32,7 +32,7 @@
 
                 <tr v-for="i of List">
                     <td>{{ i.eventName }}</td>
-                    <td>{{ i.eventDate }}</td>
+                    <td>{{ i.eventDate | showdate }}</td>
                     <td v-if="i.isPrivate == true">Privé</td>
                     <td v-else>Public</td>
                     <td>
@@ -57,8 +57,14 @@
     import CalendarApiService from "../../services/CalendarApiService"
     import { mapGetters, mapActions } from 'vuex'
     import DeleteCalendarPrompt from './DeleteCalendarPrompt.vue'
+    let showdate = function(value){
+                return value.replace('T',' ')
+            }
 
     export default {
+        filters: {
+            showdate
+        },
 
         data() {
             return {
@@ -95,10 +101,10 @@
                     }
                 }
                 return calendars;
-            }
+            },
         },
 
-        methods: {
+        methods: {            
             updateResource(data) {
                 this.List = data
             },

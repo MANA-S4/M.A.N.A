@@ -7,13 +7,16 @@
         <div class="panel">
             <thead>
                 <h3><p>Nom :</p></h3>
-                <p>{{userAccountList.lastName}}</p><br>
+                <p v-if="userAccountList.lastName == null">NC</p>
+                <p v-else>{{userAccountList.lastName}}</p><br>
                 <h3><p>Prénom :</p></h3>
-                <p>{{userAccountList.firstName}}</p><br>
+                <p v-if="userAccountList.firstName == null">NC</p>
+                <p v-else>{{userAccountList.firstName}}</p><br>
                 <h3><p>Email :</p></h3>
                 <p>{{userAccountList.email}}</p><br>
                 <h3><p>Date de Naissance :</p></h3>
-                <p>{{userAccountList.birthDate}}</p><br>
+                <p v-if="userAccountList.birthDate == '0001-01-01T00:00:00'"> NC </p>
+                <p v-else>{{userAccountList.birthDate | showdate}}</p><br>
                 <router-link :to="`users/edit`"><button type="button" class="btn btn-success">Modifier</button></router-link>
             </thead>
 
@@ -28,6 +31,9 @@
 
 <script>
     import { mapGetters, mapActions } from 'vuex'
+    let showdate = function(value){
+                return value.slice(0,10)
+            }
 
     export default {
         data() {
@@ -39,6 +45,10 @@
 
         created() {
             this.refreshUserAccountList();
+        },
+
+        filters:{
+            showdate
         },
 
         computed: {
