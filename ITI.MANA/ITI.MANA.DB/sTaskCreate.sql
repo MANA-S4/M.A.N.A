@@ -1,4 +1,4 @@
-alter proc iti.sTaskCreate 
+create proc iti.sTaskCreate 
 (
 	@TaskName nvarchar(64),
 	@UserId int,
@@ -14,5 +14,3 @@ insert into iti.Tasks(TaskName, UserId, TaskDate, AttributeTo)
 
 return 0;
 end;
-
-drop proc iti.sTaskCreate;

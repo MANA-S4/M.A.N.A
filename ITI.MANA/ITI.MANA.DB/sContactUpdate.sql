@@ -10,5 +10,3 @@ begin
 	where ContactId = @ContactId;
 	return 0;
 end;
-
-drop proc iti.sContactUpdate;
