@@ -6,13 +6,13 @@
 
         <div class="panel">
             <thead>
-                <h4><p>Nom :</p></h4>
+                <h3><p>Nom :</p></h3>
                 <p>{{userAccountList.lastName}}</p><br>
-                <h4><p>Prénom :</p></h4>
+                <h3><p>Prénom :</p></h3>
                 <p>{{userAccountList.firstName}}</p><br>
-                <h4><p>Email :</p></h4>
+                <h3><p>Email :</p></h3>
                 <p>{{userAccountList.email}}</p><br>
-                <h4><p>Date de Naissance :</p></h4>
+                <h3><p>Date de Naissance :</p></h3>
                 <p>{{userAccountList.birthDate}}</p><br>
                 <router-link :to="`users/edit`"><button type="button" class="btn btn-success">Modifier</button></router-link>
             </thead>

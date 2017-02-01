@@ -6,13 +6,13 @@
 
         <div>
             <div class="panel-body text-right">
-                <button type="button" @click="exportFromGoogleAsync" class="btn btn-success"><i class="fa fa-google" aria-hidden="true"></i><i class="glyphicon glyphicon-download-alt"></i> Importer votre calendrier Google</button>
+                <button type="button" @click="exportFromGoogleAsync" class="btn btn-success"><i class="glyphicon glyphicon-download-alt"></i> Importer votre calendrier Google</button>
                 <router-link class="btn btn-success" :to="`calendars/create`"><i class="glyphicon glyphicon-plus"></i> Ajouter un évènement</router-link>
             </div>
         </div>
 
         <div class="panel">
-            <input type="text" name="search" v-model="search" placeholder="Rechercher"> <i class="glyphicon glyphicon-search"></i> 
+            <input type="text" name="search" v-model="search" placeholder="Rechercher"> <i class="glyphicon glyphicon-search"></i>
         </div>
 
         <table class="table table-striped table-bordered">
@@ -36,13 +36,14 @@
                     <td>{{ i.isPrivate }}</td>
                     <td>
                         <router-link :to="`calendars/edit/${i.eventId}`"><i class="glyphicon glyphicon-pencil"></i></router-link>
-                        <a href="#"><i class="glyphicon glyphicon-remove" id="show-modal" @click="openDeleteEventPrompt(i.eventId)"></i></a> <!-- To open the popup--> 
+                        <a href="#"><i class="glyphicon glyphicon-remove" id="show-modal" @click="openDeleteEventPrompt(i.eventId)"></i></a>
+                        <!-- To open the popup-->
                     </td>
                 </tr>
             </tbody>
         </table>
 
-         <!-- If user click on "Non" popup close -->
+        <!-- If user click on "Non" popup close -->
         <delete-calendar-prompt v-if="showModal" @close="showModal = false" v-bind:eventId="deletingEventId">
             <h3 slot="header">Suppression</h3>
         </delete-calendar-prompt>
@@ -70,7 +71,7 @@
             }
         },
 
-         // Call vue DeleteCalendarPrompt
+        // Call vue DeleteCalendarPrompt
         components: {
             DeleteCalendarPrompt
         },
@@ -108,7 +109,7 @@
 
             ...mapActions(['refreshEventsList' ,'deleteEvent']),
 
-             openDeleteEventPrompt(eventId) {
+            openDeleteEventPrompt(eventId) {
                 this.deletingEventId = eventId;
                 this.showModal = true;
             }
@@ -135,5 +136,9 @@ tr {
 }
 .glyphicon-pencil {
     color: black;
+}
+button {
+    width: 181,28px;
+    height: 32,9px;
 }
 </style>
