@@ -20,7 +20,7 @@
                 <tr>
                     <th>Évènements</th>
                     <th>Date</th>
-                    <th>Privé</th>
+                    <th>Visibilité</th>
                     <th>Options</th>
                 </tr>
             </thead>
@@ -33,7 +33,8 @@
                 <tr v-for="i of List">
                     <td>{{ i.eventName }}</td>
                     <td>{{ i.eventDate }}</td>
-                    <td>{{ i.isPrivate }}</td>
+                    <td v-if="i.isPrivate == true">Privé</td>
+                    <td v-else>Public</td>
                     <td>
                         <router-link :to="`calendars/edit/${i.eventId}`"><i class="glyphicon glyphicon-pencil"></i></router-link>
                         <a href="#"><i class="glyphicon glyphicon-remove" id="show-modal" @click="openDeleteEventPrompt(i.eventId)"></i></a> <!-- To open the popup--> 
