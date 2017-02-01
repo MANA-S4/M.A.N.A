@@ -48,9 +48,18 @@ namespace ITI.MANA.WebApp.Controllers
         [HttpPost]
         public IActionResult CreateTask([FromBody] TaskViewModel model)
         {
+            Result<Task> result;
             int userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
-            User attributeToUserId = _userService.FindUser(model.AttributeTo);
-            Result<Task> result = _taskService.CreateTask(model.TaskName, userId, model.TaskDate, attributeToUserId.UserId);
+            if (model.AttributeTo != null)
+            {
+                User attributeToUserId = _userService.FindUser(model.AttributeTo);
+                result = _taskService.CreateTask(model.TaskName, userId, model.TaskDate, attributeToUserId.UserId);
+            }
+            else
+            {
+                User attributeToUserId = _userService.FindUser(model.AttributeTo);
+                result = _taskService.CreateTask(model.TaskName, userId, model.TaskDate, 0);
+            }
             return this.CreateResult<Task, TaskViewModel>(result, o =>
             {
                 o.ToViewModel = s => s.ToTaskViewModel();
