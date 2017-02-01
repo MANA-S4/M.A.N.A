@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ITI.MANA.WebApp.Server;
-using ITI.MANA.DAL;
+﻿using ITI.MANA.WebApp.Server;
 
 namespace ITI.MANA.WebApp.Services
 {

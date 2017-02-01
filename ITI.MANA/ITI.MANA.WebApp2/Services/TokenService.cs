@@ -3,10 +3,6 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using ITI.MANA.WebApp.Authentification;
 using Microsoft.Extensions.Options;
-using Google.Apis.Auth.OAuth2;
-using Google.Apis.Auth.OAuth2.Responses;
-using Google.Apis.Auth.OAuth2.Flows;
-using Google.Apis.Calendar.v3;
 
 namespace ITI.MANA.WebApp.Services
 {

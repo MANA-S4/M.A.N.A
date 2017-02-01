@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using System.Linq;
 using Google.Apis.Auth.OAuth2.Flows;
 using Google.Apis.Calendar.v3;
 using Google.Apis.Auth.OAuth2;

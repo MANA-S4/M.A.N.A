@@ -2,14 +2,8 @@
 using ITI.MANA.WebApp.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ITI.MANA.WebApp.Authentification;
 using ITI.MANA.DAL;
 using ITI.MANA.WebApp.Models.AccountViewModels;
-using ITI.MANA.WebApp.Services;
 using System.Security.Claims;
 
 namespace ITI.MANA.WebApp.Controllers

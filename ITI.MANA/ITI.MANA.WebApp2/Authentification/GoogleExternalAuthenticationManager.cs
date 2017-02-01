@@ -2,7 +2,6 @@
 using ITI.MANA.WebApp.Services;
 using Microsoft.AspNetCore.Authentication.OAuth;
 using ITI.MANA.WebApp.Authentication;
-using ITI.MANA.WebApp.Server;
 
 namespace ITI.MANA.WebApp.Authentification
 {

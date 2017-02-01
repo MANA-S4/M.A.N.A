@@ -3,10 +3,6 @@ using ITI.MANA.WebApp.Models.AccountViewModels;
 using ITI.MANA.WebApp.Models.CalendarViewModel;
 using ITI.MANA.WebApp.Models.ContactViewModels;
 using ITI.MANA.WebApp.Models.TaskViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ITI.MANA.WebApp.Controllers
 {

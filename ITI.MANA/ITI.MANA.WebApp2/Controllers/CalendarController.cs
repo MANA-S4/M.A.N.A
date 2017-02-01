@@ -2,9 +2,6 @@
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using ITI.MANA.WebApp.Services;
-using Microsoft.AspNetCore.Authorization;
-using ITI.MANA.WebApp.Authentification;
-using Google.Apis.Calendar.v3.Data;
 using System.Security.Claims;
 using ITI.MANA.DAL;
 using ITI.MANA.WebApp.Models.CalendarViewModel;

@@ -1,7 +1,6 @@
 ﻿using System;
 using ITI.MANA.WebApp.Services;
 using Microsoft.AspNetCore.Mvc;
-using ITI.MANA.WebApp;
 
 namespace ITI.MANA.WebApp.Controllers
 {
